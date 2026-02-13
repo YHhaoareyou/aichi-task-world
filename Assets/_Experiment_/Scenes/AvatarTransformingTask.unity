@@ -1,0 +1,1477 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.17412685, g: 0.21774654, b: 0.2999423, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 12
+  m_GIWorkflowMode: 1
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 1
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 1
+    m_PVRDenoiserTypeIndirect: 1
+    m_PVRDenoiserTypeAO: 1
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &31239172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 31239173}
+  - component: {fileID: 31239174}
+  m_Layer: 0
+  m_Name: DirectionalLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &31239173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31239172}
+  m_LocalRotation: {x: 0.5880184, y: -0.20533462, z: 0.15755877, w: 0.7663207}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 876203314}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 75, y: -30.000002, z: 0}
+--- !u!108 &31239174
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31239172}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 1
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.802082
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!1 &332418146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 332418150}
+  - component: {fileID: 332418149}
+  - component: {fileID: 332418148}
+  - component: {fileID: 332418147}
+  m_Layer: 0
+  m_Name: AvatarTransformingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &332418147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332418146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f60bfc9a2c4b04bcd3524b54a1e838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldItemTemplates:
+  - id: genderSelector
+    worldItemTemplate: {fileID: 0}
+    itemTemplateId:
+      value: 0
+  - id: cloneMale
+    worldItemTemplate: {fileID: 0}
+    itemTemplateId:
+      value: 0
+  - id: cloneFemale
+    worldItemTemplate: {fileID: 0}
+    itemTemplateId:
+      value: 0
+--- !u!114 &332418148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332418146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61061896c654489a41575fc291bf4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceCodeAsset: {fileID: 5022602860645237092, guid: 823173f42bc36490592b997de7c58c16,
+    type: 3}
+  sourceCode: 
+--- !u!114 &332418149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332418146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3977a5e65e72f4db4b85ddba10d48dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id:
+    value: 0
+  itemName: 
+  size: {x: 0, y: 0, z: 0}
+--- !u!4 &332418150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332418146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &411973250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7045208590533207111, guid: c429a845517c96a419988cd638c846f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 930668817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &740794595
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2263574305700755203, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_Name
+      value: PortalBackToLuidaBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5475fa3e27333b2419a0bb8086303137, type: 3}
+--- !u!1 &787405256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787405257}
+  m_Layer: 0
+  m_Name: StaticObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &787405257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787405256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 828225984}
+  m_Father: {fileID: 2029845015}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &814595607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 814595608}
+  m_Layer: 0
+  m_Name: SpawnPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &814595608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814595607}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1154936611}
+  m_Father: {fileID: 1752504905}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &828225983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828225984}
+  - component: {fileID: 828225986}
+  - component: {fileID: 828225985}
+  m_Layer: 0
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &828225984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828225983}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 787405257}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &828225985
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828225983}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 8cdafa240bf0d43ff9d217a125c4c929, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &828225986
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828225983}
+  m_Mesh: {fileID: 4300000, guid: f9f571ff5f7df4b8e97c0b5cc019d9ef, type: 3}
+--- !u!1 &876203313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 876203314}
+  m_Layer: 0
+  m_Name: Lightings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &876203314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876203313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 31239173}
+  m_Father: {fileID: 2029845015}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &930668817
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3184581530073325, guid: c429a845517c96a419988cd638c846f1, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 320188938653792925, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: sourceCode
+      value: "expID = \"expID_example\";\r\ntoken = \"token_example\";\r\ncallExternalEndpointID
+        = \"callExternalEndpointID_example\";\r\npNum = 1;\r\n\r\n$.onStart(() =>
+        {\r\n  $.state.isBetweenSubjectsConditionsSet = false;\r\n  $.groupState.isParticipantsEnough
+        = false;\r\n  $.groupState.sessionID = Date.now() + \"_\" +  (Math.random()
+        + 1).toString(36).substring(2, 8);\r\n  $.groupState.participants = []; //
+        array of PlayerHandle who are currently in the experiment\r\n  $.state.participantsEnvInfo
+        = [];\r\n  $.state.idfc2userId = {};\r\n  $.state.timer = 0;\r\n  \r\n  //
+        TODO: load exp info so that we can check later what environments this experiment
+        requires\r\n})\r\n\r\n$.onUpdate((deltaTime) => {\r\n    if (!$.groupState.isParticipantsEnough)
+        {\r\n        $.state.timer += deltaTime;\r\n        if ($.state.timer >=
+        1){\r\n            $.state.timer = 0;\r\n            let pIdfcs = $.groupState.participants.map(p
+        => p.idfc);\r\n            const newPlayers = $.getPlayersNear($.getPosition(),
+        Infinity)\r\n                .filter(p => !pIdfcs.includes(p.idfc));\r\n           
+        if (newPlayers.length > 0) {\r\n                for (const newPlayer of newPlayers)
+        {\r\n                    // TODO: Check if the player is eligible to join
+        the experiment before adding them to $.groupState.participants.\r\n                   
+        $.groupState.participants = [ ...$.groupState.participants, newPlayer ];\r\n                   
+        $.setPlayerScript(newPlayer);\r\n                    newPlayer.send(\"initializeParticipant\",
+        true);\r\n                }\r\n            }\r\n            if (!$.groupState.isParticipantsEnough
+        && $.groupState.participants.length >= pNum) {\r\n                HandleParticipantsEnough();\r\n           
+        }\r\n        }\r\n    } else if ($.state.isBetweenSubjectsConditionsSet)
+        { // participants are enough & conditions are set\r\n        $.state.isBetweenSubjectsConditionsSet
+        = false;\r\n        let request = {\r\n            type: \"uploadCustomData\",\r\n           
+        data: {\r\n                pInfo: $.state.participantsEnvInfo.map(info =>
+        ({ ts: Date.now(), sID: $.groupState.sessionID || \"\", ...info, betweenSubjectsConditions:
+        $.state.betweenSubjectsConditions })),\r\n                idfc2userId: $.state.idfc2userId\r\n           
+        },\r\n            token: token || \"\",\r\n            eID: expID || \"\",\r\n           
+        sID: $.groupState.sessionID || \"\"\r\n        };\r\n        $.callExternal(new
+        ExternalEndpointId(callExternalEndpointID), JSON.stringify(request), \"customDataUploaded\");\r\n   
+        }\r\n/*\r\n  if ($.getStateCompat(\"this\", \"exp_checkJoinEligibility\",
+        \"boolean\")) {\r\n    $.setStateCompat(\"this\", \"exp_checkJoinEligibility\",
+        false);\r\n\r\n    let pIdfcs = $.groupState.participants.map(p => p.idfc);\r\n   
+        const newPlayers = $.getPlayersNear($.getPosition(), 1)\r\n      .filter(p
+        => !pIDFCs.includes(p.idfc));\r\n    \r\n    if (newPlayers.length > 0) {\r\n     
+        $.state.newPlayers = newPlayers;\r\n      $.log(newPlayers[0].idfc);\r\n\r\n     
+        const request = {\r\n        type: \"checkJoinEligibility\",\r\n        token:
+        token || \"\",\r\n        eID: expID || \"\",\r\n        idfcs: newPlayers.map(p
+        => p.idfc).join(\"|\")\r\n      };\r\n      $.callExternal(new ExternalEndpointId(callExternalEndpointID),
+        JSON.stringify(request), \"joinEligibilityChecked\");\r\n    }\r\n  }\r\n*/\r\n})\r\n\r\n$.onReceive((messageType,
+        arg, sender) => {\r\n    switch (messageType) {\r\n        case \"betweenSubjectsCondition\":\r\n           
+        $.state.betweenSubjectsConditions = arg;\r\n            $.state.isBetweenSubjectsConditionsSet
+        = true;\r\n            break;\r\n        case \"envInfoResponse\":\r\n           
+        $.state.participantsEnvInfo = [\r\n              ...$.state.participantsEnvInfo,\r\n             
+        {\r\n                idfc: sender.idfc,\r\n                envInfo: arg\r\n             
+        }\r\n            ];\r\n            let idfc2userId = { ...$.state.idfc2userId
+        };\r\n            idfc2userId[sender.idfc] = sender.userId;\r\n           
+        $.state.idfc2userId = idfc2userId;\r\n            break;\r\n        default:\r\n           
+        break;\r\n    }\r\n}, { item: true, player: true });\r\n\r\nfunction HandleParticipantsEnough()
+        {\r\n  $.log(\"Participants are enough to start the experiment.\");\r\n 
+        $.groupState.isParticipantsEnough = true;\r\n  $.sendSignalCompat(\"this\",
+        \"exp_playersAreEnough\");\r\n  $.sendSignalCompat(\"this\", \"exp_StartStateTransition\");\r\n\r\n 
+        const conditionManager = $.worldItemReference(\"ConditionManager\");\r\n 
+        if (conditionManager) {\r\n    conditionManager.send(\"luida_participants_info\",
+        {\r\n      participants: $.groupState.participants,\r\n      sessionID: $.groupState.sessionID\r\n   
+        });\r\n  }\r\n}\r\n\r\n/*\r\n$.onExternalCallEnd((res, meta, err) =>\r\n{\r\n 
+        if (res == null) {\r\n    $.log(\"callExternal ERROR: \" + err);\r\n    return;\r\n 
+        }\r\n\r\n  if (meta === \"joinEligibilityChecked\") {\r\n    const parsedRes
+        = JSON.parse(res);\r\n    $.state.newPlayers.forEach(newPlayer => {\r\n     
+        if (parsedRes.ineligibleIdfcs.includes(newPlayer.idfc)) {\r\n        // TODO:
+        Show message about that this player is not eligible to join this experiment,
+        and teleport the player back to LUIDA bar world.\r\n      } else {\r\n       
+        newPlayer.setMoveSpeedRate(1);\r\n        $.groupState.participants = [ ...$.groupState.participants,
+        newPlayer ];\r\n        // TODO: Instead of enabling move, teleport the player
+        from the checking area to the task area.\r\n      }\r\n    });\r\n    \r\n   
+        $.state.newPlayers = [];\r\n    $.log(\"Only users who have not joined this
+        experiment before are allowed to proceed to the experiment.\");\r\n  }\r\n});\r\n*/\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 908684358854966727, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_Name
+      value: LUIDA-ExpManagers
+      objectReference: {fileID: 0}
+    - target: {fileID: 951044395994331253, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: textMesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788665037610529933, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: id.value
+      value: 7924656228234659285
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963938157378484328, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: sourceCode
+      value: "const trialsCountForEachUniqueCondition = 1;\r\nconst within_subjects_variables
+        = [\r\n];\r\nconst between_subjects_variables = [\r\n];\r\nconst state_names
+        = [];\r\n\r\n$.onStart(() => {\r\n  initializeRandomBetweenSubjectsConditions();\r\n 
+        reset();\r\n});\r\n\r\n$.onUpdate(() => {\r\n  if (\r\n    $.state.trialID
+        !== $.getStateCompat(\"global\", \"exp_trialID\", \"integer\") &&\r\n     
+        $.getStateCompat(\"global\", \"exp_trialID\", \"integer\") >= 0\r\n  ) {\r\n   
+        $.state.trialID = $.getStateCompat(\"global\", \"exp_trialID\", \"integer\");\r\n   
+        updateCondition();\r\n  }\r\n});\r\n\r\n$.onReceive((messageType, arg, sender)
+        => {\r\n  switch (messageType) {\r\n    case \"luida_participants_info\":\r\n     
+        $.groupState.participants = arg.participants;\r\n      $.groupState.sessionID
+        = arg.sessionID;\r\n      sender.send(\"betweenSubjectsCondition\", $.state.betweenSubjectsConditions);\r\n     
+        break;\r\n    // case \"exp_questionnaire_answer\":\r\n    //     $.state.betweenSubjectsConditions
+        = GetBetweenSubjectsCondition(arg);\r\n    //     break;\r\n    default:\r\n     
+        break;\r\n  }\r\n});\r\n\r\nfunction updateCondition() {\r\n  if ($.state.trialID
+        >= $.state.trialCount) {\r\n    $.sendSignalCompat(\"this\", \"exp_resetTrials\");\r\n 
+        } else if ($.state.trialID <= -1) {\r\n    reset();\r\n  } else {\r\n   
+        let condition = { ...$.state.betweenSubjectsConditions };\r\n    for (let
+        i = 0; i < $.state.withinSubjectsVariableNames.length; i++) {\r\n      const
+        varName = $.state.withinSubjectsVariableNames[i];\r\n      const varValue
+        =\r\n          within_subjects_variables[i].values[\r\n              $.state.withinSubjectsConditionIndicesByTrial[$.state.trialID][i]\r\n             
+        ];\r\n      condition[varName] = varValue;\r\n    }\r\n    $.groupState.currentCondition
+        = condition;\r\n\r\n    // Check if this is the last trial (if true, stop
+        repeating trials when next state transition is triggered)\r\n    if (\r\n       
+        $.state.trialCount > 0 &&\r\n        !$.state.isLast &&\r\n        $.state.trialID
+        >= $.state.trialCount - 1\r\n    ) {\r\n      $.state.isLast = true;\r\n     
+        $.sendSignalCompat(\"this\", \"exp_readyToLeaveTrials\");\r\n    }\r\n  }\r\n}\r\n\r\nfunction
+        reset() {\r\n  $.state.trialID = 0;\r\n  if (!$.state.betweenSubjectsConditions)\r\n   
+        $.state.betweenSubjectsConditions = {};\r\n  $.state.withinSubjectsVariableNames
+        = [];\r\n  $.state.withinSubjectsConditionIndicesByTrial = [];\r\n  $.state.trialCount
+        = 1;\r\n  $.groupState.currentCondition = {\r\n    ...$.state.betweenSubjectsConditions,\r\n 
+        };\r\n  $.groupState.stateNames = state_names || [];\r\n  try {\r\n    initializeWithinSubjectsConditions(\r\n     
+        within_subjects_variables,\r\n      trialsCountForEachUniqueCondition\r\n   
+        );\r\n  } catch (error) {\r\n    $.log(error);\r\n    $.log(\"Within-subjects
+        variables are not defined.\");\r\n    initializeWithinSubjectsConditions([],
+        1);\r\n  }\r\n  updateCondition();\r\n}\r\n\r\nfunction initializeRandomBetweenSubjectsConditions()
+        {\r\n  let betweenSubjectsCondition = {};\r\n  try {\r\n    between_subjects_variables.forEach((v)
+        => {\r\n      if (!betweenSubjectsCondition[v.name]) {\r\n        if (v.debugValue)
+        {\r\n          betweenSubjectsCondition[v.name] = v.debugValue;\r\n       
+        } else if (v.isRandom) {\r\n          betweenSubjectsCondition[v.name] =\r\n             
+        v.values[Math.floor(Math.random() * v.values.length)];\r\n        }\r\n     
+        }\r\n    });\r\n  } catch (e) {\r\n    $.log(\"Between-subjects variables
+        are not defined.\");\r\n  }\r\n  $.state.betweenSubjectsConditions = betweenSubjectsCondition;\r\n}\r\n\r\nfunction
+        initializeWithinSubjectsConditions(variables, repeatsPerCond = 1) {\r\n 
+        variables = [...variables.sort((a, b) => a.isRandom - b.isRandom)];\r\n 
+        const varNames = variables.map((v) => v.name);\r\n\r\n  let indicesPerVar
+        = variables.map((v) =>\r\n    Array.from({ length: v.values.length }, (_,
+        i) => i)\r\n  );\r\n  let condIndicesList = indicesPerVar\r\n    .reduce(\r\n     
+        (acc, array) => {\r\n        return acc.flatMap((accItem) =>\r\n         
+        array.map((arrayItem) => [...accItem, arrayItem])\r\n        );\r\n     
+        },\r\n      [[]]\r\n    )\r\n    .flatMap((condIndices) =>\r\n      Array.from({
+        length: repeatsPerCond }, () => condIndices)\r\n    );\r\n\r\n  let shufflePartitionSize
+        = 0;\r\n  for (let i = 0; i < variables.length; i++) {\r\n    if (variables[i].isRandom)
+        {\r\n      shufflePartitionSize =\r\n        shufflePartitionSize === 0\r\n         
+        ? variables[i].values.length\r\n          : shufflePartitionSize * variables[i].values.length;\r\n   
+        }\r\n  }\r\n  shufflePartitionSize *= repeatsPerCond;\r\n\r\n  if (shufflePartitionSize
+        > 0) {\r\n    const result = [...condIndicesList]; // Copy the array to avoid
+        mutating the original\r\n    for (let i = 0; i < condIndicesList.length;
+        i += shufflePartitionSize) {\r\n      let partition = result.slice(i, i +
+        shufflePartitionSize);\r\n      partition = shuffleArray(partition);\r\n     
+        result.splice(i, shufflePartitionSize, ...partition);\r\n    }\r\n    condIndicesList
+        = result;\r\n  }\r\n\r\n  $.state.withinSubjectsVariableNames = varNames;\r\n 
+        $.state.withinSubjectsConditionIndicesByTrial = condIndicesList;\r\n  $.state.trialCount
+        = condIndicesList.length;\r\n}\r\n\r\nfunction shuffleArray(array) {\r\n 
+        for (let i = array.length - 1; i > 0; i--) {\r\n    const j = Math.floor(Math.random()
+        * (i + 1));\r\n    [array[i], array[j]] = [array[j], array[i]];\r\n  }\r\n 
+        return array;\r\n}\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321547682731800438, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: sourceCode
+      value: "const haptics = _.hapticsHandle;\r\n\r\n_.onReceive((id, body, sender)
+        => {\r\n    switch (id) {\r\n        case \"haptics\":\r\n            if
+        (haptics.isAvailable()) {\r\n                const effect = new HapticsEffect();\r\n               
+        effect.frequency = body.frequency;\r\n                effect.amplitude =
+        body.amplitude;\r\n                effect.duration = body.duration;\r\n               
+        haptics.playEffect(effect, body.target);\r\n            }\r\n           
+        break;\r\n        case \"sendOsc\":\r\n            sendOsc(body.address,
+        body.values);\r\n            break;\r\n        case \"initializeParticipant\":\r\n           
+        _.setMoveSpeedRate(1);\r\n            _.sendTo(sender, \"envInfoResponse\",
+        {\r\n                isAndroid: _.isAndroid,\r\n                isDesktop:
+        _.isDesktop,\r\n                isIos: _.isIos,\r\n                isMacOs:
+        _.isMacOs,\r\n                isMobile: _.isMobile,\r\n                isVr:
+        _.isVr,\r\n                isWindows: _.isWindows\r\n            });\r\n           
+        break;\r\n        case \"setQuestionnaireUI\":\r\n            setQuestionnaireUI(body.n,\r\n               
+        (body.hasOwnProperty(\"e\") ? body.e : null),\r\n                body.p,
+        body.r,\r\n                (body.hasOwnProperty(\"t\") ? body.t.toString()
+        : null));\r\n            break;\r\n        case \"setQuestionnaireUIs\":\r\n           
+        for (const ui of body) {\r\n                setQuestionnaireUI(ui.n,\r\n                   
+        (ui.hasOwnProperty(\"e\") ? ui.e : null),\r\n                    ui.p, ui.r,\r\n                   
+        (ui.hasOwnProperty(\"t\") ? ui.t.toString() : null));\r\n            }\r\n           
+        break;\r\n        case \"clearQuestionnaireAnswerUIs\":\r\n            let
+        targetUI = _.playerLocalObject(\"luida_questionnaire_ui\").findObject(\"AnsText\");\r\n           
+        targetUI.setEnabled(false);\r\n            for (let i = 0; i < 20; i++) {\r\n               
+        targetUI = _.playerLocalObject(\"luida_questionnaire_ui\").findObject(\"AnsOptLabel_\"
+        + i);\r\n                if (targetUI) {\r\n                    targetUI.setEnabled(false);\r\n               
+        } else {\r\n                    break;\r\n                }\r\n           
+        }\r\n            break;\r\n        default:\r\n            break;\r\n   
+        }\r\n});\r\n\r\nfunction setQuestionnaireUI(targetName, isEnabled, position,
+        rotation, text) {\r\n    let targetUI = _.playerLocalObject(\"luida_questionnaire_ui\").findObject(targetName);\r\n   
+        if (!targetUI) return;\r\n    if (isEnabled !== null) targetUI.setEnabled(isEnabled);\r\n   
+        if (position) targetUI.getUnityComponent(\"Transform\").unityProp.localPosition
+        = position;\r\n    if (rotation) targetUI.getUnityComponent(\"Transform\").unityProp.localRotation
+        = rotation;\r\n    if (text !== null) targetUI.findObject(\"Text\").getUnityComponent(\"Text\").unityProp.text
+        = text;\r\n}\r\n\r\nfunction sendOsc(address, values) {\r\n    if (typeof
+        _ === 'undefined' || typeof _.oscHandle === 'undefined') {\r\n        _.log(\"Error:
+        PlayerScript environment or oscHandle not found.\");\r\n        return;\r\n   
+        }\r\n\r\n    try {\r\n        const oscValues = values.map(val => {\r\n           
+        const type = typeof val;\r\n            if (type === 'boolean') {\r\n               
+        return OscValue.bool(val);\r\n            } else if (type === 'number') {\r\n               
+        if (Number.isInteger(val)) {\r\n                    return OscValue.int(val);\r\n               
+        } else {\r\n                    return OscValue.float(val);\r\n               
+        }\r\n            } else if (type === 'string') {\r\n                return
+        OscValue.asciiString(val);\r\n            } else {\r\n                _.log(`Warning:
+        Unsupported data type '${type}' for value '${val}'. Skipping.`);\r\n               
+        return null;\r\n            }\r\n        }).filter(v => v !== null);\r\n       
+        const message = new OscMessage(address, oscValues);\r\n        _.oscHandle.send(message);\r\n       
+        // _.log(`OSC message sent to ${address} with ${oscValues.length} value(s).`);\r\n\r\n   
+        } catch (e) {\r\n        _.log(`Error sending OSC message: ${e.message}`);\r\n   
+        }\r\n}\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3660925819112729135, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: id.value
+      value: 12473752313814709956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011396560662714600, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011396560662714600, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: editableChildNames.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011396560662714600, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: editableChildNames.Array.data[0]
+      value: ParticipantManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4216203501617148641, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: playerLocalObjectReferences.Array.data[0].targetObject
+      value: 
+      objectReference: {fileID: 411973250}
+    - target: {fileID: 7159572344244222357, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: worldItemTemplates.Array.data[0].itemTemplateId.value
+      value: 18318326325945984652
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159572344244222357, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: worldItemTemplates.Array.data[1].itemTemplateId.value
+      value: 6552733022385601861
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159572344244222357, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: worldItemTemplates.Array.data[2].itemTemplateId.value
+      value: 2082325906578372832
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159572344244222357, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: worldItemTemplates.Array.data[3].itemTemplateId.value
+      value: 3562310097586366381
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159572344244222357, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: worldItemTemplates.Array.data[4].itemTemplateId.value
+      value: 11297569293038321797
+      objectReference: {fileID: 0}
+    - target: {fileID: 7311121729470545767, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: id.value
+      value: 11678093082988358695
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428161057630051971, guid: c429a845517c96a419988cd638c846f1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c429a845517c96a419988cd638c846f1, type: 3}
+--- !u!114 &930668818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7022389377809828575, guid: c429a845517c96a419988cd638c846f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 930668817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6487efbf7339493cb3e1fa581f53b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &997367276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997367277}
+  - component: {fileID: 997367278}
+  m_Layer: 0
+  m_Name: PlaneCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &997367277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997367276}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1604143552}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &997367278
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997367276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.1, z: 10}
+  m_Center: {x: 0, y: -0.05, z: 0}
+--- !u!1001 &1154936610
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 814595608}
+    m_Modifications:
+    - target: {fileID: 1331264762693232, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_Name
+      value: SpawnPointEntrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8aad3465d2c6df7418cbced5b4ac4a81, type: 3}
+--- !u!4 &1154936611 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4677043343313530, guid: 8aad3465d2c6df7418cbced5b4ac4a81,
+    type: 3}
+  m_PrefabInstance: {fileID: 1154936610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1434940726
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1752504905}
+    m_Modifications:
+    - target: {fileID: 1091242992622558, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_Name
+      value: DespawnHeight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d071927c08ddb64ab3a3959ffa1281b, type: 3}
+--- !u!4 &1434940727 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4515277542911952, guid: 7d071927c08ddb64ab3a3959ffa1281b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1434940726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1594737542
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2627616726396763139, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: clusterScripts.Array.data[2]
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 30bd7f0545cfc4d5abc0da4d8d895d4a,
+        type: 3}
+    - target: {fileID: 5964733846762761523, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_Name
+      value: LUIDA-DataCollector
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964733846762761526, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: sourceCode
+      value: "expID = \"expID_example\";\ntoken = \"token_example\";\ncallExternalEndpointID
+        = \"callExternalEndpointID_example\";\npNum = 1;\n\r\nconst uploadInterval
+        = 1;\nconst dataLengthPerUpload = 100;\nconst dataByteLengthPerUpload = 100000;
+        // 102400\n\n$.onStart(() => {\n    $.state.customData = [];\n    $.state.uploadIndex
+        = 0;\n    $.state.elapsedTime = 0;\n    // $.state.dataLength = 0;\n    $.state.steps
+        = 0;\n    $.state.isUploading = false;\n})\n\n$.onUpdate((deltaTime) => {\n   
+        if ($.getStateCompat(\"this\", \"exp_recordCustomData\", \"boolean\")) {\n       
+        $.setStateCompat(\"this\", \"exp_recordCustomData\", false);\n        recordData();\n   
+        }\n    if ($.getStateCompat(\"this\", \"exp_uploadCustomData\", \"boolean\"))
+        {\n        if ($.state.uploadIndex === 0) {\n            uploadDataInit();\n           
+        $.setStateCompat(\"this\", \"exp_uploadCustomData\", false);\n        }\n   
+        }\n    if ($.state.isUploading) {\n        $.state.elapsedTime = $.state.elapsedTime
+        + deltaTime;\n        if ($.state.elapsedTime >= uploadInterval && $.state.uploadIndex
+        < $.state.steps) {\n            $.state.elapsedTime = 0;\n            uploadDataStep();\n       
+        }\n    }\n})\n\n$.onExternalCallEnd((res, meta, err) =>\n{\n    if (res ==
+        null) {\n        $.log(\"callExternal ERROR: \" + err);\n        return;\n   
+        }\n\n    if (meta === \"customDataUploaded\") {\n        $.log(\"Response
+        after customDataUploaded called: \" + JSON.stringify(res));\n    }\n});\n\nfunction
+        recordData () {\n    $.state.customData = calculateData();\n}\n\nfunction
+        uploadDataInit() {\n    $.state.uploadIndex = 0;\n    $.state.elapsedTime
+        = 0;\n    $.state.isUploading = true;\n\n    let dataByteLength = utf8ByteLength(JSON.stringify($.state.customData));\n   
+        $.log(\"Data byte length: \" + dataByteLength);\n    $.state.steps = Math.ceil(dataByteLength
+        / dataByteLengthPerUpload);\n}\n\nfunction uploadDataStep() {\n    $.log(\"Upload
+        data step: \" + $.state.uploadIndex);\n    if ($.state.uploadIndex < $.state.steps)
+        {\n        let request = {\n            type: \"uploadCustomData\",\n           
+        token: token || \"\",\n            data: { data: $.state.customData.slice($.state.uploadIndex
+        * dataLengthPerUpload, ($.state.uploadIndex + 1) * dataLengthPerUpload) },\n           
+        eID: expID || \"\",\n            sID: $.groupState.sessionID || \"\"\n       
+        };\n        $.log(JSON.stringify(request));\n        $.callExternal(\n           
+        new ExternalEndpointId(callExternalEndpointID),\n            JSON.stringify(request),\n           
+        \"customDataUploaded\");\n        $.state.uploadIndex = $.state.uploadIndex
+        + 1;\n\n        if ($.state.uploadIndex >= $.state.steps) {\n           
+        $.state.uploadIndex = 0;\n            $.state.isUploading = false;\n           
+        $.state.customData = [];\n        }\n    }\n}\n\nfunction utf8ByteLength(str)
+        {\n    let bytes = 0;\n    for (let i = 0; i < str.length; i++) {\n       
+        const code = str.charCodeAt(i);\n\n        if (code <= 0x7F)                     
+        bytes += 1; // U+0000 \u2013 U+007F\n        else if (code <= 0x7FF)               
+        bytes += 2; // U+0080 \u2013 U+07FF\n        else if (code >= 0xD800 && code
+        <= 0xDBFF) {\n            // Surrogate pair (astral plane)\n            bytes
+        += 4;                          // Whole pair is 4 bytes\n            i++;                                
+        // Skip the next surrogate\n        }\n        else                                  
+        bytes += 3; // U+0800 \u2013 U+FFFF\n    }\n    return bytes;\n}\n\nfunction
+        calculateData () {\n    let returnData = $.state.customData;\n    if (!Array.isArray(returnData))
+        returnData = [];\n    const CONDITION = $.groupState.currentCondition;\n   
+        const PARTICIPANTS = [null].concat($.groupState.participants);\n    const
+        COLLECTED_DATA = $.groupState.collectedData;\n    function saveData() {\n\r\n/*\n#
+        Available Variables in LUIDA Data Collector Script\n\nThe script for LUIDA
+        Data Collector is primarily to be written using ClusterScript (https://docs.cluster.mu/script/index.html).\n\nWe
+        also provide the following variables that work with LUIDA-only features.\n\nTip:
+        When asking an LLM service for coding assistance, first share the `Asset/Doc/CCK-Types.d.ts`
+        file and this comment section with it.\n\n### CONDITION\n    - Only available
+        if **LUIDA experiment progress automation feature is enabled and during the
+        trial states** (e.g., `Trial - Start`, `Trial - Rest`).\n    - Contains values
+        from your configured experimental variables for the current trial.\n    -
+        Use `CONDITION[\"your_variable_name\"]` to retrieve a specific condition
+        value within the current trial.\n\n### PARTICIPANTS\n    - An array of PlayerHandle
+        of the participants joining this experiment.\"\n    - Use `PARTICIPANTS[1]`
+        to retrieve the first participant, `PARTICIPANTS[2]` to retrieve the second
+        participant, etc.\n\n### COLLECTED_DATA\n    - Contains data that are sent
+        from state-listening items' `Send Data To Collector` action or a customized
+        action script's `SendDataToCollector(\"your_data_label\", your_data_value)`
+        function.\n    - Use `COLLECTED_DATA[\"your_data_label\"]` to retrieve specific
+        values.\n\n---\n\n**Important Note:** The script **must return a value**
+        at the end of its code block.\n\nExamples:\n    - return { score: 100 };`\n   
+        - const answer = $.getStateCompat('global', 'count', 'integer') > 5; return
+        { isLarger: answer };`\n*/\nreturn {\n    stateLog: COLLECTED_DATA ? COLLECTED_DATA[\"stateLog\"]
+        : \"\", // Include log of the current state by default (state name, id, and
+        the timestamp when the state starts)\n    cond: CONDITION || {}, // Include
+        conditions in the collected data by default (if you have enabled the experiment
+        automation feature)\n    someCckState: $.getStateCompat(\"global\", \"someCckState\",
+        \"boolean\"), // Replace with your in-scene state triggered by CCK components\n   
+        foo: 'bar' // Replace with your custom collected data\n};\n\r\n    return
+        {};\n  }\n  returnData.push(saveData());\n  return returnData;\n}\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273925800708392170, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: host
+      value: 
+      objectReference: {fileID: 930668818}
+    - target: {fileID: 8901108051797212556, guid: 964d6187f971a8f43b4ee67279f1ef90,
+        type: 3}
+      propertyPath: calculationScript
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 30bd7f0545cfc4d5abc0da4d8d895d4a,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 964d6187f971a8f43b4ee67279f1ef90, type: 3}
+--- !u!1 &1604143551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1604143552}
+  m_Layer: 0
+  m_Name: Colliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1604143552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604143551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 997367277}
+  m_Father: {fileID: 2029845015}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1752504904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1752504905}
+  m_Layer: 0
+  m_Name: System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1752504905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752504904}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1434940727}
+  - {fileID: 814595608}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2029845014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2029845015}
+  m_Layer: 0
+  m_Name: Environment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2029845015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029845014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 876203314}
+  - {fileID: 787405257}
+  - {fileID: 1604143552}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7785412501808660973
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580053, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785412502199580062, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e,
+        type: 3}
+      propertyPath: m_Name
+      value: MaleAvatar
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5d63f35ef3114ba1bfc2365d5d7ae1e, type: 3}
+--- !u!1001 &8602643101155829172
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456839, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602643101711456858, guid: 1d58554a0918a4b489e2f4bd6d7349aa,
+        type: 3}
+      propertyPath: m_Name
+      value: FemaleAvatar
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d58554a0918a4b489e2f4bd6d7349aa, type: 3}
