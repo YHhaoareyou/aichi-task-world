@@ -38,58 +38,58 @@ $.onReceive((messageType, arg, sender) => {
 
 // --- Every frame ---
 $.onUpdate((deltaTime) => {
-
-  // === Init timeout check ===
-  if (!$.state.initialized) {
-    let timer = ($.state.initTimer ?? 0) + deltaTime;
-    if (timer > INIT_TIMEOUT) {
-      $.log("clone init timeout, self-destructing");
-      $.destroy();
+  /*
+    // === Init timeout check ===
+    if (!$.state.initialized) {
+      let timer = ($.state.initTimer ?? 0) + deltaTime;
+      if (timer > INIT_TIMEOUT) {
+        $.log("clone init timeout, self-destructing");
+        $.destroy();
+        return;
+      }
+      $.state.initTimer = timer;
       return;
     }
-    $.state.initTimer = timer;
-    return;
-  }
-
-  const player = $.state.player;
-  if (!player || !player.exists()) return;
-
-  // === Position/Rotation sync ===
-  const pos = player.getPosition();
-  const rot = player.getRotation();
-  if (pos) $.setPosition(pos);
-  if (rot) $.setRotation(rot);
-
-  // === Squat detection ===
-  const headPos = player.getHumanoidBonePosition(HumanoidBone.Head);
-  if (pos && headPos) {
-    const currentHeadHeight = headPos.y - pos.y;
-
-    // Record standing head height on first measurement
-    let standingHeight = $.state.standingHeight;
-    if (standingHeight === null) {
-      standingHeight = currentHeadHeight;
-      $.state.standingHeight = standingHeight;
+  */
+    const player = $.state.player;
+    if (!player || !player.exists()) return;
+  
+    // === Position/Rotation sync ===
+    const pos = player.getPosition();
+    const rot = player.getRotation();
+    if (pos) $.setPosition(pos);
+    if (rot) $.setRotation(rot);
+  
+    // === Squat detection ===
+    const headPos = player.getHumanoidBonePosition(HumanoidBone.Head);
+    if (pos && headPos) {
+      const currentHeadHeight = headPos.y - pos.y;
+  
+      // Record standing head height on first measurement
+      let standingHeight = $.state.standingHeight;
+      if (standingHeight === null) {
+        standingHeight = currentHeadHeight;
+        $.state.standingHeight = standingHeight;
+      }
+  
+      let cooldown = Math.max(0, ($.state.cooldown ?? 0) - deltaTime);
+      const isSquatting  = (standingHeight - currentHeadHeight) > SQUAT_THRESHOLD;
+      const wasSquatting = $.state.wasSquatting ?? false;
+  
+      // squat -> stand up = 1 cycle = add 0.1
+      if (wasSquatting && !isSquatting && cooldown <= 0) {
+        let v = Math.min(($.state.muscleValue ?? 0) + 0.1, 1.0);
+        $.state.muscleValue = v;
+        cooldown = COOLDOWN;
+        $.log("squat! Muscle -> " + (v * 100).toFixed(0) + "%");
+      }
+  
+      $.state.wasSquatting = isSquatting;
+      $.state.cooldown     = cooldown;
     }
-
-    let cooldown = Math.max(0, ($.state.cooldown ?? 0) - deltaTime);
-    const isSquatting  = (standingHeight - currentHeadHeight) > SQUAT_THRESHOLD;
-    const wasSquatting = $.state.wasSquatting ?? false;
-
-    // squat -> stand up = 1 cycle = add 0.1
-    if (wasSquatting && !isSquatting && cooldown <= 0) {
-      let v = Math.min(($.state.muscleValue ?? 0) + 0.1, 1.0);
-      $.state.muscleValue = v;
-      cooldown = COOLDOWN;
-      $.log("squat! Muscle -> " + (v * 100).toFixed(0) + "%");
+  
+    // === Apply blendshape value to Animator ===
+    if (animator) {
+      animator.setFloat("MuscleWeight", $.state.muscleValue ?? 0);
     }
-
-    $.state.wasSquatting = isSquatting;
-    $.state.cooldown     = cooldown;
-  }
-
-  // === Apply blendshape value to Animator ===
-  if (animator) {
-    animator.setFloat("ArmatureWeight", $.state.muscleValue ?? 0);
-  }
 });

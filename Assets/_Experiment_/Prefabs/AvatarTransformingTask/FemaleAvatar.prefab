@@ -104,10 +104,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8602643101711456839}
     m_Modifications:
+    - target: {fileID: 4875865596702370774, guid: 34e435d1dfea644649bb067e32b015f5,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7423200945722021464, guid: 34e435d1dfea644649bb067e32b015f5,
         type: 3}
       propertyPath: m_Name
-      value: Female Avatar
+      value: HumanoidModel
       objectReference: {fileID: 0}
     - target: {fileID: 8472816335697639422, guid: 34e435d1dfea644649bb067e32b015f5,
         type: 3}

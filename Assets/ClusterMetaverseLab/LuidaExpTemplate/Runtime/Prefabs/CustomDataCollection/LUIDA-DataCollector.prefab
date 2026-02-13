@@ -68,78 +68,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceCodeAsset: {fileID: 0}
-  sourceCode: "expID = \"expID_example\";\r\ntoken = \"token_example\";\r\ncallExternalEndpointID
-    = \"callExternalEndpointID_example\";\r\npNum = 1;\r\n\r\nconst uploadInterval
-    = 1;\r\nconst dataLengthPerUpload = 100;\r\nconst dataByteLengthPerUpload = 100000;
-    // 102400\r\n\r\n$.onStart(() => {\r\n    $.state.customData = [];\r\n    $.state.uploadIndex
-    = 0;\r\n    $.state.elapsedTime = 0;\r\n    // $.state.dataLength = 0;\r\n   
-    $.state.steps = 0;\r\n    $.state.isUploading = false;\r\n})\r\n\r\n$.onUpdate((deltaTime)
-    => {\r\n    if ($.getStateCompat(\"this\", \"exp_recordCustomData\", \"boolean\"))
-    {\r\n        $.setStateCompat(\"this\", \"exp_recordCustomData\", false);\r\n       
-    recordData();\r\n    }\r\n    if ($.getStateCompat(\"this\", \"exp_uploadCustomData\",
-    \"boolean\")) {\r\n        if ($.state.uploadIndex === 0) {\r\n            uploadDataInit();\r\n           
-    $.setStateCompat(\"this\", \"exp_uploadCustomData\", false);\r\n        }\r\n   
-    }\r\n    if ($.state.isUploading) {\r\n        $.state.elapsedTime = $.state.elapsedTime
-    + deltaTime;\r\n        if ($.state.elapsedTime >= uploadInterval && $.state.uploadIndex
-    < $.state.steps) {\r\n            $.state.elapsedTime = 0;\r\n            uploadDataStep();\r\n       
-    }\r\n    }\r\n})\r\n\r\n$.onExternalCallEnd((res, meta, err) =>\r\n{\r\n    if
-    (res == null) {\r\n        $.log(\"callExternal ERROR: \" + err);\r\n       
-    return;\r\n    }\r\n\r\n    if (meta === \"customDataUploaded\") {\r\n       
-    $.log(\"Response after customDataUploaded called: \" + JSON.stringify(res));\r\n   
-    }\r\n});\r\n\r\nfunction recordData () {\r\n    $.state.customData = calculateData();\r\n}\r\n\r\nfunction
-    uploadDataInit() {\r\n    $.state.uploadIndex = 0;\r\n    $.state.elapsedTime
-    = 0;\r\n    $.state.isUploading = true;\r\n\r\n    let dataByteLength = utf8ByteLength(JSON.stringify($.state.customData));\r\n   
-    $.log(\"Data byte length: \" + dataByteLength);\r\n    $.state.steps = Math.ceil(dataByteLength
-    / dataByteLengthPerUpload);\r\n}\r\n\r\nfunction uploadDataStep() {\r\n    $.log(\"Upload
-    data step: \" + $.state.uploadIndex);\r\n    if ($.state.uploadIndex < $.state.steps)
-    {\r\n        let request = {\r\n            type: \"uploadCustomData\",\r\n           
-    token: token || \"\",\r\n            data: { data: $.state.customData.slice($.state.uploadIndex
-    * dataLengthPerUpload, ($.state.uploadIndex + 1) * dataLengthPerUpload) },\r\n           
-    eID: expID || \"\",\r\n            sID: $.groupState.sessionID || \"\"\r\n       
-    };\r\n        $.log(JSON.stringify(request));\r\n        $.callExternal(\r\n           
-    new ExternalEndpointId(callExternalEndpointID),\r\n            JSON.stringify(request),\r\n           
-    \"customDataUploaded\");\r\n        $.state.uploadIndex = $.state.uploadIndex
-    + 1;\r\n\r\n        if ($.state.uploadIndex >= $.state.steps) {\r\n           
-    $.state.uploadIndex = 0;\r\n            $.state.isUploading = false;\r\n           
-    $.state.customData = [];\r\n        }\r\n    }\r\n}\r\n\r\nfunction utf8ByteLength(str)
-    {\r\n    let bytes = 0;\r\n    for (let i = 0; i < str.length; i++) {\r\n       
-    const code = str.charCodeAt(i);\r\n\r\n        if (code <= 0x7F)                     
-    bytes += 1; // U+0000 \u2013 U+007F\r\n        else if (code <= 0x7FF)               
-    bytes += 2; // U+0080 \u2013 U+07FF\r\n        else if (code >= 0xD800 && code
-    <= 0xDBFF) {\r\n            // Surrogate pair (astral plane)\r\n            bytes
-    += 4;                          // Whole pair is 4 bytes\r\n            i++;                                
-    // Skip the next surrogate\r\n        }\r\n        else                                  
-    bytes += 3; // U+0800 \u2013 U+FFFF\r\n    }\r\n    return bytes;\r\n}\r\n\r\nfunction
-    calculateData () {\r\n    let returnData = $.state.customData;\r\n    if (!Array.isArray(returnData))
-    returnData = [];\r\n    const CONDITION = $.groupState.currentCondition;\r\n   
-    const PARTICIPANTS = [null].concat($.groupState.participants);\r\n    const COLLECTED_DATA
-    = $.groupState.collectedData;\r\n    function saveData() {\r\n\r\n/*\r\n# Available
-    Variables in LUIDA Data Collector Script\r\n\r\nThe script for LUIDA Data Collector
-    is primarily to be written using ClusterScript (https://docs.cluster.mu/script/index.html).\r\n\r\nWe
-    also provide the following variables that work with LUIDA-only features.\r\n\r\nTip:
+  sourceCode: "expID = \"expID_example\";\ntoken = \"token_example\";\ncallExternalEndpointID
+    = \"callExternalEndpointID_example\";\npNum = 1;\n\r\nconst uploadInterval =
+    1;\nconst dataLengthPerUpload = 100;\nconst dataByteLengthPerUpload = 100000;
+    // 102400\n\n$.onStart(() => {\n    $.state.customData = [];\n    $.state.uploadIndex
+    = 0;\n    $.state.elapsedTime = 0;\n    // $.state.dataLength = 0;\n    $.state.steps
+    = 0;\n    $.state.isUploading = false;\n})\n\n$.onUpdate((deltaTime) => {\n   
+    if ($.getStateCompat(\"this\", \"exp_recordCustomData\", \"boolean\")) {\n       
+    $.setStateCompat(\"this\", \"exp_recordCustomData\", false);\n        recordData();\n   
+    }\n    if ($.getStateCompat(\"this\", \"exp_uploadCustomData\", \"boolean\"))
+    {\n        if ($.state.uploadIndex === 0) {\n            uploadDataInit();\n           
+    $.setStateCompat(\"this\", \"exp_uploadCustomData\", false);\n        }\n   
+    }\n    if ($.state.isUploading) {\n        $.state.elapsedTime = $.state.elapsedTime
+    + deltaTime;\n        if ($.state.elapsedTime >= uploadInterval && $.state.uploadIndex
+    < $.state.steps) {\n            $.state.elapsedTime = 0;\n            uploadDataStep();\n       
+    }\n    }\n})\n\n$.onExternalCallEnd((res, meta, err) =>\n{\n    if (res == null)
+    {\n        $.log(\"callExternal ERROR: \" + err);\n        return;\n    }\n\n   
+    if (meta === \"customDataUploaded\") {\n        $.log(\"Response after customDataUploaded
+    called: \" + JSON.stringify(res));\n    }\n});\n\nfunction recordData () {\n   
+    $.state.customData = calculateData();\n}\n\nfunction uploadDataInit() {\n   
+    $.state.uploadIndex = 0;\n    $.state.elapsedTime = 0;\n    $.state.isUploading
+    = true;\n\n    let dataByteLength = utf8ByteLength(JSON.stringify($.state.customData));\n   
+    $.log(\"Data byte length: \" + dataByteLength);\n    $.state.steps = Math.ceil(dataByteLength
+    / dataByteLengthPerUpload);\n}\n\nfunction uploadDataStep() {\n    $.log(\"Upload
+    data step: \" + $.state.uploadIndex);\n    if ($.state.uploadIndex < $.state.steps)
+    {\n        let request = {\n            type: \"uploadCustomData\",\n           
+    token: token || \"\",\n            data: { data: $.state.customData.slice($.state.uploadIndex
+    * dataLengthPerUpload, ($.state.uploadIndex + 1) * dataLengthPerUpload) },\n           
+    eID: expID || \"\",\n            sID: $.groupState.sessionID || \"\"\n       
+    };\n        $.log(JSON.stringify(request));\n        $.callExternal(\n           
+    new ExternalEndpointId(callExternalEndpointID),\n            JSON.stringify(request),\n           
+    \"customDataUploaded\");\n        $.state.uploadIndex = $.state.uploadIndex +
+    1;\n\n        if ($.state.uploadIndex >= $.state.steps) {\n            $.state.uploadIndex
+    = 0;\n            $.state.isUploading = false;\n            $.state.customData
+    = [];\n        }\n    }\n}\n\nfunction utf8ByteLength(str) {\n    let bytes =
+    0;\n    for (let i = 0; i < str.length; i++) {\n        const code = str.charCodeAt(i);\n\n       
+    if (code <= 0x7F)                      bytes += 1; // U+0000 \u2013 U+007F\n       
+    else if (code <= 0x7FF)                bytes += 2; // U+0080 \u2013 U+07FF\n       
+    else if (code >= 0xD800 && code <= 0xDBFF) {\n            // Surrogate pair (astral
+    plane)\n            bytes += 4;                          // Whole pair is 4 bytes\n           
+    i++;                                 // Skip the next surrogate\n        }\n       
+    else                                   bytes += 3; // U+0800 \u2013 U+FFFF\n   
+    }\n    return bytes;\n}\n\nfunction calculateData () {\n    let returnData =
+    $.state.customData;\n    if (!Array.isArray(returnData)) returnData = [];\n   
+    const CONDITION = $.groupState.currentCondition;\n    const PARTICIPANTS = [null].concat($.groupState.participants);\n   
+    const COLLECTED_DATA = $.groupState.collectedData;\n    function saveData() {\n\r\n/*\n#
+    Available Variables in LUIDA Data Collector Script\n\nThe script for LUIDA Data
+    Collector is primarily to be written using ClusterScript (https://docs.cluster.mu/script/index.html).\n\nWe
+    also provide the following variables that work with LUIDA-only features.\n\nTip:
     When asking an LLM service for coding assistance, first share the `Asset/Doc/CCK-Types.d.ts`
-    file and this comment section with it.\r\n\r\n### CONDITION\r\n    - Only available
+    file and this comment section with it.\n\n### CONDITION\n    - Only available
     if **LUIDA experiment progress automation feature is enabled and during the trial
-    states** (e.g., `Trial - Start`, `Trial - Rest`).\r\n    - Contains values from
-    your configured experimental variables for the current trial.\r\n    - Use `CONDITION[\"your_variable_name\"]`
-    to retrieve a specific condition value within the current trial.\r\n\r\n### PARTICIPANTS\r\n   
-    - An array of PlayerHandle of the participants joining this experiment.\"\r\n   
+    states** (e.g., `Trial - Start`, `Trial - Rest`).\n    - Contains values from
+    your configured experimental variables for the current trial.\n    - Use `CONDITION[\"your_variable_name\"]`
+    to retrieve a specific condition value within the current trial.\n\n### PARTICIPANTS\n   
+    - An array of PlayerHandle of the participants joining this experiment.\"\n   
     - Use `PARTICIPANTS[1]` to retrieve the first participant, `PARTICIPANTS[2]`
-    to retrieve the second participant, etc.\r\n\r\n### COLLECTED_DATA\r\n    - Contains
+    to retrieve the second participant, etc.\n\n### COLLECTED_DATA\n    - Contains
     data that are sent from state-listening items' `Send Data To Collector` action
     or a customized action script's `SendDataToCollector(\"your_data_label\", your_data_value)`
-    function.\r\n    - Use `COLLECTED_DATA[\"your_data_label\"]` to retrieve specific
-    values.\r\n\r\n---\r\n\r\n**Important Note:** The script **must return a value**
-    at the end of its code block.\r\n\r\nExamples:\r\n    - return { score: 100 };`\r\n   
-    - const answer = $.getStateCompat('global', 'count', 'integer') > 5; return {
-    isLarger: answer };`\r\n*/\r\nreturn {\r\n    stateLog: COLLECTED_DATA ? COLLECTED_DATA[\"stateLog\"]
+    function.\n    - Use `COLLECTED_DATA[\"your_data_label\"]` to retrieve specific
+    values.\n\n---\n\n**Important Note:** The script **must return a value** at the
+    end of its code block.\n\nExamples:\n    - return { score: 100 };`\n    - const
+    answer = $.getStateCompat('global', 'count', 'integer') > 5; return { isLarger:
+    answer };`\n*/\nreturn {\n    stateLog: COLLECTED_DATA ? COLLECTED_DATA[\"stateLog\"]
     : \"\", // Include log of the current state by default (state name, id, and the
-    timestamp when the state starts)\r\n    cond: CONDITION || {}, // Include conditions
+    timestamp when the state starts)\n    cond: CONDITION || {}, // Include conditions
     in the collected data by default (if you have enabled the experiment automation
-    feature)\r\n    someCckState: $.getStateCompat(\"global\", \"someCckState\",
-    \"boolean\"), // Replace with your in-scene state triggered by CCK components\r\n   
-    foo: 'bar' // Replace with your custom collected data\r\n};\r\n\r\n    return
-    {};\r\n  }\r\n  returnData.push(saveData());\r\n  return returnData;\r\n}\r\n"
+    feature)\n    someCckState: $.getStateCompat(\"global\", \"someCckState\", \"boolean\"),
+    // Replace with your in-scene state triggered by CCK components\n    foo: 'bar'
+    // Replace with your custom collected data\n};\n\r\n    return {};\n  }\n  returnData.push(saveData());\n 
+    return returnData;\n}\n"
 --- !u!114 &4976748577095326931
 MonoBehaviour:
   m_ObjectHideFlags: 0

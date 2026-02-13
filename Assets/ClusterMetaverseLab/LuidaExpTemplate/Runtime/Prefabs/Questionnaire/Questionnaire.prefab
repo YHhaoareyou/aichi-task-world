@@ -634,174 +634,169 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceCodeAsset: {fileID: 0}
-  sourceCode: "expID = \"expID_example\";\r\ntoken = \"token_example\";\r\ncallExternalEndpointID
-    = \"callExternalEndpointID_example\";\r\npNum = 1;\r\n\r\n$.onStart(() => {\r\n   
-    reset();\r\n    $.state.isParticipantAssigned = false;\r\n    $.groupState.qCompletedCount
-    = 0;\r\n});\r\n\r\n$.onUpdate((deltaTime) => {\r\n    if (!$.state.isParticipantAssigned
-    && $.groupState.isParticipantsEnough) {\r\n        let player = $.groupState.participants[($.getStateCompat(\"this\",
-    \"pID\", \"integer\") - 1) || 0];\r\n        $.state.participant = player;\r\n       
-    $.requestOwner(player);\r\n        $.setVisiblePlayers([player]);\r\n\r\n       
-    $.worldItemReference(\"PrevButton\").send(\"setParticipant\", player);\r\n       
-    $.worldItemReference(\"NextButton\").send(\"setParticipant\", player);\r\n\r\n       
-    $.state.isParticipantAssigned = true;\r\n    }\r\n\r\n    // Ensure that the
-    question is only initialized after all currently displayed answer options are
-    destroyed\r\n    if (!$.state.isInitiated && $.getStateCompat(\"this\", \"form_set_content_active\",
-    \"boolean\")) {\r\n        $.state.isInitiated = true;\r\n        $.state.qID
-    = 0;\r\n        $.state.questions = [];\r\n        $.setStateCompat(\"this\",
-    \"form_show_start_hint\", false);\r\n        $.setStateCompat(\"this\", \"form_show_loading_bar\",
-    true);\r\n        $.state.participant.send(\"setQuestionnaireUI\", {\r\n           
-    n: \"LoadingText\",\r\n            e: true,\r\n            p: $.subNode(\"LoadingBar\").getGlobalPosition(),\r\n           
-    r: $.subNode(\"LoadingBar\").getGlobalRotation(),\r\n        });\r\n\r\n       
-    // Reintroduced callExternal to get questions\r\n        const questionnaireID
-    = $.getStateCompat(\"this\", \"qID\", \"integer\");\r\n        if (questionnaireID
-    > 0) {\r\n            let request = { type: \"questions\", token: token || \"\",
-    eID: expID || \"\", qID: questionnaireID, startIndex: 0 };\r\n            $.callExternal(new
-    ExternalEndpointId(callExternalEndpointID), JSON.stringify(request), \"getQuestions\");\r\n       
-    } else {\r\n            $.log(\"No questionnaire ID (qID) provided or it is invalid.\");\r\n       
-    }\r\n    }\r\n\r\n    if ($.state.tryInitQuestion && !$.state.answerOptionUIs.some(ans
-    => ans.exists())) {\r\n        initQuestion();\r\n    }\r\n\r\n    // Timer to
-    trigger batch generation of answer options\r\n    $.state.timer = ($.state.timer
-    || 0) + deltaTime;\r\n    if ($.state.timer > 0.2 && $.state.pendingAnswerOptions
-    && $.state.pendingAnswerOptions.length > 0) {\r\n        spawnNextAnswerOption();\r\n       
-    $.state.timer = 0; // Reset the timer after generating a batch\r\n    }\r\n});\r\n\r\n$.onInteract(()
-    => {\r\n    if (!$.state.isInitiated) $.setStateCompat(\"this\", \"form_set_content_active\",
-    true);\r\n});\r\n\r\n$.onReceive((messageType, arg) => {\r\n    if (!$.state.isInitiated)
-    return;\r\n    switch (messageType) {\r\n        case \"form_answer\":\r\n           
-    handleFormAnswer(arg);\r\n            break;\r\n        case \"form_to_next\":\r\n           
-    saveAnswer();\r\n            break;\r\n        case \"form_to_prev\":\r\n           
-    toPrev();\r\n            break;\r\n    }\r\n});\r\n\r\nfunction tryInitQuestion()
-    {\r\n    $.state.tryInitQuestion = true;\r\n}\r\n\r\nfunction initQuestion()
-    {\r\n    // Prepare to stop destruction of answer options and initialize a new
-    question\r\n    $.state.tryInitQuestion = false;\r\n    $.state.answerOptionUIs
-    = [];\r\n    $.state.answerOptionLocalPositions = [];\r\n    const q = $.state.questions[$.state.qID];\r\n   
-    $.state.participant?.send(\"setQuestionnaireUIs\", [\r\n        {\r\n           
-    n: \"Title\",\r\n            e: true,\r\n            p: $.subNode(\"Title\").getGlobalPosition(),\r\n           
-    r: $.subNode(\"Title\").getGlobalRotation(),\r\n            t: q.t\r\n       
-    },\r\n        {\r\n            n: \"Description\",\r\n            e: true,\r\n           
-    p: $.subNode(\"Description\").getGlobalPosition(),\r\n            r: $.subNode(\"Description\").getGlobalRotation(),\r\n           
-    t: q.d\r\n        }\r\n    ]);\r\n    $.state.questionTypeID = q.i;\r\n    $.state.answerOptions
-    = Array.isArray(q.a)\r\n        ? q.a\r\n        : (typeof q.a === \"string\"
-    ? q.a.split(\",\") : []) ;\r\n    if (q.i === 1 && $.state.answerOptions.length
-    === 0) {\r\n        $.state.answerOptions = [1,2,3,4,5,6,7];\r\n    }\r\n   
-    if ($.state.answerOptions.length === 0) $.state.answerOptions = [\"\"];\r\n   
-    spawnAnswerOptionUI();\r\n}\r\n\r\nfunction spawnAnswerOptionUI() {\r\n    $.state.pendingAnswerOptions
-    = $.state.answerOptions.slice();\r\n    $.state.answerOptionIndex = 0;\r\n}\r\n\r\nfunction
-    addAnswerOption (id, localPos, rot, ansId) {\r\n    const itemHandle = $.createItem(id,
-    $.getPosition().clone().add(localPos.clone().applyQuaternion(rot)), rot);\r\n   
-    $.state.answerOptionUIs = [...$.state.answerOptionUIs, itemHandle];\r\n    $.state.answerOptionLocalPositions
-    = [...$.state.answerOptionLocalPositions, localPos];\r\n    itemHandle.send(\"form_init_answer_option\",
-    { value: ansId + 1, label: $.state.answerOptions[ansId], participant: $.state.participant
-    });\r\n}\r\n\r\nfunction spawnNextAnswerOption() {\r\n    const n = $.state.pendingAnswerOptions.length
-    || 0;\r\n    if ($.state.answerOptionIndex >= n) {\r\n        $.state.pendingAnswerOptions
-    = [];\r\n        if ($.state.questionTypeID !== 3) {\r\n            let rot =
-    $.getRotation().clone();\r\n            let posOffset = $.getPosition().clone().add(new
-    Vector3(\r\n                $.state.questionTypeID === 1 ? 0.06 : $.state.questionTypeID
-    === 4 ? 0 : 0.2,\r\n                $.state.questionTypeID === 1 ? 0.2: 0, 0));\r\n           
-    const req = $.state.answerOptions.map((label, i) => ({\r\n                n:
-    $.state.questionTypeID === 4 ? \"AnsText\" : (\"AnsOptLabel_\" + i),\r\n               
-    e: true,\r\n                p: $.state.answerOptionLocalPositions[i].clone().add(posOffset),\r\n               
-    r: rot,\r\n                t: $.state.questionTypeID === 4 ? \"Click here\" :
-    label\r\n            }));\r\n            $.state.participant?.send(\"setQuestionnaireUIs\",
-    req);\r\n        }\r\n        return;\r\n    }\r\n\r\n    let rotOffset = $.getRotation().clone();\r\n   
-    let answerUiId = \"\";\r\n\r\n    // Maximum number of rows (per column)\r\n   
-    const maxRows = 5;\r\n    const batchSize = 3; // Number of options to generate
-    in each batch\r\n    const numColumns = Math.ceil(n / maxRows); // Calculate
-    number of columns based on total options and max rows per column\r\n\r\n    //
-    Adjust x-position based on number of columns to center them\r\n    const totalWidth
-    = numColumns * 0.5; // Adjust total width depending on your frame size\r\n   
-    let i = 0;\r\n\r\n    for (i = 0; i < batchSize && $.state.answerOptionIndex
-    < n; i++) {\r\n        let columnIndex = Math.floor($.state.answerOptionIndex
-    / maxRows);\r\n        let rowIndex = $.state.answerOptionIndex % maxRows;\r\n\r\n       
-    // Calculate dynamic x and y positions\r\n        let x = (columnIndex - (numColumns
-    - 1) / 2) - 0.2; // Adjust 0.5 for spacing between columns\r\n        let y =
-    ((maxRows - 1) / 2 - rowIndex) * 0.2 - 0.1; // 0.2 is the vertical spacing between
-    rows\r\n\r\n        switch ($.state.questionTypeID) {\r\n            case 0:
-    // Radio Buttons (single answer)\r\n            case 2: // Checkbox (multiple
-    answers)\r\n                answerUiId = new WorldItemTemplateId($.state.questionTypeID
-    === 0\r\n                    ? \"answer-option-radio-button\"\r\n                   
-    : \"answer-option-checkbox\");\r\n\r\n                // Add the option at calculated
-    x and y positions\r\n                addAnswerOption(answerUiId, new Vector3(x,
-    y, 0), rotOffset, $.state.answerOptionIndex);\r\n                break;\r\n\r\n           
-    case 1: // Linear Scale\r\n                answerUiId = new WorldItemTemplateId(\"answer-option-scale-button\");\r\n\r\n               
+  sourceCode: "expID = \"expID_example\";\ntoken = \"token_example\";\ncallExternalEndpointID
+    = \"callExternalEndpointID_example\";\npNum = 1;\n\r\n$.onStart(() => {\n   
+    reset();\n    $.state.isParticipantAssigned = false;\n    $.groupState.qCompletedCount
+    = 0;\n});\n\n$.onUpdate((deltaTime) => {\n    if (!$.state.isParticipantAssigned
+    && $.groupState.isParticipantsEnough) {\n        let player = $.groupState.participants[($.getStateCompat(\"this\",
+    \"pID\", \"integer\") - 1) || 0];\n        $.state.participant = player;\n       
+    $.requestOwner(player);\n        $.setVisiblePlayers([player]);\n\n        $.worldItemReference(\"PrevButton\").send(\"setParticipant\",
+    player);\n        $.worldItemReference(\"NextButton\").send(\"setParticipant\",
+    player);\n\n        $.state.isParticipantAssigned = true;\n    }\n\n    // Ensure
+    that the question is only initialized after all currently displayed answer options
+    are destroyed\n    if (!$.state.isInitiated && $.getStateCompat(\"this\", \"form_set_content_active\",
+    \"boolean\")) {\n        $.state.isInitiated = true;\n        $.state.qID = 0;\n       
+    $.state.questions = [];\n        $.setStateCompat(\"this\", \"form_show_start_hint\",
+    false);\n        $.setStateCompat(\"this\", \"form_show_loading_bar\", true);\n       
+    $.state.participant.send(\"setQuestionnaireUI\", {\n            n: \"LoadingText\",\n           
+    e: true,\n            p: $.subNode(\"LoadingBar\").getGlobalPosition(),\n           
+    r: $.subNode(\"LoadingBar\").getGlobalRotation(),\n        });\n\n        //
+    Reintroduced callExternal to get questions\n        const questionnaireID = $.getStateCompat(\"this\",
+    \"qID\", \"integer\");\n        if (questionnaireID > 0) {\n            let request
+    = { type: \"questions\", token: token || \"\", eID: expID || \"\", qID: questionnaireID,
+    startIndex: 0 };\n            $.callExternal(new ExternalEndpointId(callExternalEndpointID),
+    JSON.stringify(request), \"getQuestions\");\n        } else {\n            $.log(\"No
+    questionnaire ID (qID) provided or it is invalid.\");\n        }\n    }\n\n   
+    if ($.state.tryInitQuestion && !$.state.answerOptionUIs.some(ans => ans.exists()))
+    {\n        initQuestion();\n    }\n\n    // Timer to trigger batch generation
+    of answer options\n    $.state.timer = ($.state.timer || 0) + deltaTime;\n   
+    if ($.state.timer > 0.2 && $.state.pendingAnswerOptions && $.state.pendingAnswerOptions.length
+    > 0) {\n        spawnNextAnswerOption();\n        $.state.timer = 0; // Reset
+    the timer after generating a batch\n    }\n});\n\n$.onInteract(() => {\n    if
+    (!$.state.isInitiated) $.setStateCompat(\"this\", \"form_set_content_active\",
+    true);\n});\n\n$.onReceive((messageType, arg) => {\n    if (!$.state.isInitiated)
+    return;\n    switch (messageType) {\n        case \"form_answer\":\n           
+    handleFormAnswer(arg);\n            break;\n        case \"form_to_next\":\n           
+    saveAnswer();\n            break;\n        case \"form_to_prev\":\n           
+    toPrev();\n            break;\n    }\n});\n\nfunction tryInitQuestion() {\n   
+    $.state.tryInitQuestion = true;\n}\n\nfunction initQuestion() {\n    // Prepare
+    to stop destruction of answer options and initialize a new question\n    $.state.tryInitQuestion
+    = false;\n    $.state.answerOptionUIs = [];\n    $.state.answerOptionLocalPositions
+    = [];\n    const q = $.state.questions[$.state.qID];\n    $.state.participant?.send(\"setQuestionnaireUIs\",
+    [\n        {\n            n: \"Title\",\n            e: true,\n            p:
+    $.subNode(\"Title\").getGlobalPosition(),\n            r: $.subNode(\"Title\").getGlobalRotation(),\n           
+    t: q.t\n        },\n        {\n            n: \"Description\",\n            e:
+    true,\n            p: $.subNode(\"Description\").getGlobalPosition(),\n           
+    r: $.subNode(\"Description\").getGlobalRotation(),\n            t: q.d\n       
+    }\n    ]);\n    $.state.questionTypeID = q.i;\n    $.state.answerOptions = Array.isArray(q.a)\n       
+    ? q.a\n        : (typeof q.a === \"string\" ? q.a.split(\",\") : []) ;\n    if
+    (q.i === 1 && $.state.answerOptions.length === 0) {\n        $.state.answerOptions
+    = [1,2,3,4,5,6,7];\n    }\n    if ($.state.answerOptions.length === 0) $.state.answerOptions
+    = [\"\"];\n    spawnAnswerOptionUI();\n}\n\nfunction spawnAnswerOptionUI() {\n   
+    $.state.pendingAnswerOptions = $.state.answerOptions.slice();\n    $.state.answerOptionIndex
+    = 0;\n}\n\nfunction addAnswerOption (id, localPos, rot, ansId) {\n    const itemHandle
+    = $.createItem(id, $.getPosition().clone().add(localPos.clone().applyQuaternion(rot)),
+    rot);\n    $.state.answerOptionUIs = [...$.state.answerOptionUIs, itemHandle];\n   
+    $.state.answerOptionLocalPositions = [...$.state.answerOptionLocalPositions,
+    localPos];\n    itemHandle.send(\"form_init_answer_option\", { value: ansId +
+    1, label: $.state.answerOptions[ansId], participant: $.state.participant });\n}\n\nfunction
+    spawnNextAnswerOption() {\n    const n = $.state.pendingAnswerOptions.length
+    || 0;\n    if ($.state.answerOptionIndex >= n) {\n        $.state.pendingAnswerOptions
+    = [];\n        if ($.state.questionTypeID !== 3) {\n            let rot = $.getRotation().clone();\n           
+    let posOffset = $.getPosition().clone().add(new Vector3(\n                $.state.questionTypeID
+    === 1 ? 0.06 : $.state.questionTypeID === 4 ? 0 : 0.2,\n                $.state.questionTypeID
+    === 1 ? 0.2: 0, 0));\n            const req = $.state.answerOptions.map((label,
+    i) => ({\n                n: $.state.questionTypeID === 4 ? \"AnsText\" : (\"AnsOptLabel_\"
+    + i),\n                e: true,\n                p: $.state.answerOptionLocalPositions[i].clone().add(posOffset),\n               
+    r: rot,\n                t: $.state.questionTypeID === 4 ? \"Click here\" : label\n           
+    }));\n            $.state.participant?.send(\"setQuestionnaireUIs\", req);\n       
+    }\n        return;\n    }\n\n    let rotOffset = $.getRotation().clone();\n   
+    let answerUiId = \"\";\n\n    // Maximum number of rows (per column)\n    const
+    maxRows = 5;\n    const batchSize = 3; // Number of options to generate in each
+    batch\n    const numColumns = Math.ceil(n / maxRows); // Calculate number of
+    columns based on total options and max rows per column\n\n    // Adjust x-position
+    based on number of columns to center them\n    const totalWidth = numColumns
+    * 0.5; // Adjust total width depending on your frame size\n    let i = 0;\n\n   
+    for (i = 0; i < batchSize && $.state.answerOptionIndex < n; i++) {\n        let
+    columnIndex = Math.floor($.state.answerOptionIndex / maxRows);\n        let rowIndex
+    = $.state.answerOptionIndex % maxRows;\n\n        // Calculate dynamic x and
+    y positions\n        let x = (columnIndex - (numColumns - 1) / 2) - 0.2; // Adjust
+    0.5 for spacing between columns\n        let y = ((maxRows - 1) / 2 - rowIndex)
+    * 0.2 - 0.1; // 0.2 is the vertical spacing between rows\n\n        switch ($.state.questionTypeID)
+    {\n            case 0: // Radio Buttons (single answer)\n            case 2:
+    // Checkbox (multiple answers)\n                answerUiId = new WorldItemTemplateId($.state.questionTypeID
+    === 0\n                    ? \"answer-option-radio-button\"\n                   
+    : \"answer-option-checkbox\");\n\n                // Add the option at calculated
+    x and y positions\n                addAnswerOption(answerUiId, new Vector3(x,
+    y, 0), rotOffset, $.state.answerOptionIndex);\n                break;\n\n           
+    case 1: // Linear Scale\n                answerUiId = new WorldItemTemplateId(\"answer-option-scale-button\");\n\n               
     let scaleX = ((n > 11 ? 3 : 2) / (n - 1)) * ($.state.answerOptionIndex - (n -
-    1) / 2);\r\n                addAnswerOption(answerUiId, new Vector3(scaleX, 0,
-    0), rotOffset, $.state.answerOptionIndex);\r\n                break;\r\n\r\n           
-    case 3: // Toggle\r\n                answerUiId = new WorldItemTemplateId(\"answer-option-toggle\");\r\n               
-    addAnswerOption(answerUiId, new Vector3(0, 0, 0), rotOffset, $.state.answerOptionIndex);\r\n               
-    break;\r\n\r\n            case 4: // Text Input\r\n                answerUiId
-    = new WorldItemTemplateId(\"answer-option-text-input\");\r\n                addAnswerOption(answerUiId,
-    new Vector3(0, 0, 0), rotOffset, $.state.answerOptionIndex);\r\n               
-    break;\r\n\r\n            default:\r\n                break;\r\n        }\r\n\r\n       
-    $.state.answerOptionIndex += 1;\r\n    }\r\n}\r\n\r\nfunction destroyAnswerOptionUIs()
-    {\r\n    if ($.state.answerOptionUIs) {\r\n        for (const optionUi of $.state.answerOptionUIs)
-    {\r\n            optionUi.send(\"form_destroy_answer_option\", true);\r\n       
-    }\r\n    }\r\n    $.state.answerOptionUIs = [];\r\n    $.state.participant?.send(\"clearQuestionnaireAnswerUIs\",
-    true);\r\n}\r\n\r\nfunction handleFormAnswer(arg) {\r\n    let posOffset = $.getPosition().clone();\r\n   
-    switch ($.state.questionTypeID) {\r\n        case 0: // Radio Buttons\r\n       
-    case 1: // Linear Scale\r\n            $.subNode(\"RadioButtonIndicator\").setEnabled(true);\r\n           
+    1) / 2);\n                addAnswerOption(answerUiId, new Vector3(scaleX, 0,
+    0), rotOffset, $.state.answerOptionIndex);\n                break;\n\n           
+    case 3: // Toggle\n                answerUiId = new WorldItemTemplateId(\"answer-option-toggle\");\n               
+    addAnswerOption(answerUiId, new Vector3(0, 0, 0), rotOffset, $.state.answerOptionIndex);\n               
+    break;\n\n            case 4: // Text Input\n                answerUiId = new
+    WorldItemTemplateId(\"answer-option-text-input\");\n                addAnswerOption(answerUiId,
+    new Vector3(0, 0, 0), rotOffset, $.state.answerOptionIndex);\n               
+    break;\n\n            default:\n                break;\n        }\n\n       
+    $.state.answerOptionIndex += 1;\n    }\n}\n\nfunction destroyAnswerOptionUIs()
+    {\n    if ($.state.answerOptionUIs) {\n        for (const optionUi of $.state.answerOptionUIs)
+    {\n            optionUi.send(\"form_destroy_answer_option\", true);\n       
+    }\n    }\n    $.state.answerOptionUIs = [];\n    $.state.participant?.send(\"clearQuestionnaireAnswerUIs\",
+    true);\n}\n\nfunction handleFormAnswer(arg) {\n    let posOffset = $.getPosition().clone();\n   
+    switch ($.state.questionTypeID) {\n        case 0: // Radio Buttons\n       
+    case 1: // Linear Scale\n            $.subNode(\"RadioButtonIndicator\").setEnabled(true);\n           
     $.subNode(\"RadioButtonIndicator\").setPosition($.state.answerOptionLocalPositions[arg
-    - 1].clone());\r\n        case 3: // Toggle\r\n        case 4: // Text Input\r\n           
-    $.state.tmpAnswer = arg;\r\n            break;\r\n        case 2: // Checkbox\r\n           
-    if (!Array.isArray($.state.tmpAnswer)) $.state.tmpAnswer = [];\r\n           
-    if (arg.isOn) {\r\n                if (!$.state.tmpAnswer.includes(arg.value))
-    $.state.tmpAnswer = [...$.state.tmpAnswer, arg.value];\r\n            } else
-    {\r\n                $.state.tmpAnswer = $.state.tmpAnswer.filter(item => item
-    !== arg.value);\r\n            }\r\n            break;\r\n    }\r\n}\r\n\r\nfunction
-    saveAnswer() {\r\n    if (!$.state.questions[$.state.qID]) return;\r\n    if
-    ($.state.questions[$.state.qID].r && (!$.state.tmpAnswer && $.state.tmpAnswer
-    !== false)) return;\r\n    let answers = [ ...$.state.answers ];\r\n    answers[$.state.qID]
-    = $.state.tmpAnswer;\r\n    $.state.answers = answers;\r\n    toNext();\r\n}\r\n\r\nfunction
-    submitAnswers() {\r\n    $.log(\"Send final answers: \" + JSON.stringify($.state.answers));\r\n   
-    let request = {\r\n        type: \"questionAnswers\",\r\n        token: token
-    || \"\",\r\n        eID: expID || \"\",\r\n        qID: $.getStateCompat(\"this\",
-    \"qID\", \"integer\").toString() || \"1\",\r\n        pID: $.state.participant.idfc
-    || \"\", // TODO: rename to pIdfc, or simply don't send idfc\r\n        pRole:
-    $.getStateCompat(\"this\", \"pID\", \"integer\").toString() || \"1\", // TODO:
-    rename to pID?\r\n        sessionID: $.groupState.sessionID || \"\",\r\n       
-    answers: $.state.answers\r\n    };\r\n    const conditionManager = $.worldItemReference(\"ConditionManager\");\r\n   
-    if (conditionManager) {\r\n        conditionManager.send(\"exp_questionnaire_answer\",
-    $.state.answers);\r\n    }\r\n    $.callExternal(new ExternalEndpointId(callExternalEndpointID),
-    JSON.stringify(request), \"postQuestionAnswers\");\r\n    $.state.participant?.send(\"setQuestionnaireUI\",
-    {\r\n        n: \"WaitingText\",\r\n        p: $.getPosition(),\r\n        r:
-    $.getRotation(),\r\n        e: true\r\n    });\r\n    reset(false);\r\n}\r\n\r\nfunction
-    toNext() {\r\n    destroyAnswerOptionUIs(); // Ensure previous UI elements are
-    destroyed\r\n    $.state.qID = $.state.qID + 1;\r\n    $.subNode(\"RadioButtonIndicator\").setEnabled(false);\r\n   
-    if ($.state.qID >= $.state.questions.length) {\r\n        submitAnswers();\r\n   
-    } else {\r\n        $.state.tmpAnswer = null;\r\n        tryInitQuestion();\r\n   
-    }\r\n}\r\n\r\nfunction toPrev() {\r\n    if ($.state.qID <= 0) return;\r\n   
-    destroyAnswerOptionUIs(); // Ensure previous UI elements are destroyed\r\n   
-    $.subNode(\"RadioButtonIndicator\").setEnabled(false);\r\n    $.state.qID = $.state.qID
-    - 1;\r\n    $.state.tmpAnswer = null;\r\n    tryInitQuestion();\r\n}\r\n\r\nfunction
-    reset(enableReactivation = true) {\r\n    destroyAnswerOptionUIs(); // destroy
-    any existing answer option UIs first\r\n    $.subNode(\"RadioButtonIndicator\").setEnabled(false);\r\n   
-    $.state.answers = [];\r\n    $.state.qID = 0;\r\n    $.state.isInitiated = !enableReactivation;\r\n   
-    $.state.tryInitQuestion = false;\r\n    $.state.answerOptionUIs = [];\r\n   
-    $.state.answerOptionLocalPositions = [];\r\n    $.state.answerOptionIndex = 0;\r\n   
-    $.state.pendingAnswerOptions = [];\r\n    $.setStateCompat(\"this\", \"form_set_content_active\",
-    false);\r\n    $.state.participant?.send(\"setQuestionnaireUIs\", [\r\n       
-    { n: \"Title\", e: false }, { n: \"Description\", e: false }\r\n    ]);\r\n}\r\n\r\n$.onExternalCallEnd((res,
-    meta, err) => {\r\n    if (res == null) {\r\n        $.log(\"callExternal ERROR:
-    \" + err);\r\n        return;\r\n    }\r\n\r\n    if (meta === \"getQuestions\")
-    {\r\n        const parsedRes = JSON.parse(res);\r\n        let isFirstGet = $.state.questions.length
-    === 0;\r\n        $.state.questions = [ ...$.state.questions, ...parsedRes.questions
-    ];\r\n        $.setStateCompat(\"this\", \"form_show_loading_bar\", false);\r\n       
-    $.state.participant?.send(\"setQuestionnaireUI\", {\r\n            n: \"LoadingText\",\r\n           
-    e: false\r\n        });\r\n        if (isFirstGet) tryInitQuestion();\r\n\r\n       
-    if (\"isDone\" in parsedRes && !parsedRes.isDone) {\r\n            const questionnaireID
-    = $.getStateCompat(\"this\", \"qID\", \"integer\");\r\n            if (questionnaireID
-    !== -1) {\r\n                let request = { type: \"questions\", token: token
+    - 1].clone());\n        case 3: // Toggle\n        case 4: // Text Input\n           
+    $.state.tmpAnswer = arg;\n            break;\n        case 2: // Checkbox\n           
+    if (!Array.isArray($.state.tmpAnswer)) $.state.tmpAnswer = [];\n            if
+    (arg.isOn) {\n                if (!$.state.tmpAnswer.includes(arg.value)) $.state.tmpAnswer
+    = [...$.state.tmpAnswer, arg.value];\n            } else {\n                $.state.tmpAnswer
+    = $.state.tmpAnswer.filter(item => item !== arg.value);\n            }\n           
+    break;\n    }\n}\n\nfunction saveAnswer() {\n    if (!$.state.questions[$.state.qID])
+    return;\n    if ($.state.questions[$.state.qID].r && (!$.state.tmpAnswer && $.state.tmpAnswer
+    !== false)) return;\n    let answers = [ ...$.state.answers ];\n    answers[$.state.qID]
+    = $.state.tmpAnswer;\n    $.state.answers = answers;\n    toNext();\n}\n\nfunction
+    submitAnswers() {\n    $.log(\"Send final answers: \" + JSON.stringify($.state.answers));\n   
+    let request = {\n        type: \"questionAnswers\",\n        token: token ||
+    \"\",\n        eID: expID || \"\",\n        qID: $.getStateCompat(\"this\", \"qID\",
+    \"integer\").toString() || \"1\",\n        pID: $.state.participant.idfc || \"\",
+    // TODO: rename to pIdfc, or simply don't send idfc\n        pRole: $.getStateCompat(\"this\",
+    \"pID\", \"integer\").toString() || \"1\", // TODO: rename to pID?\n        sessionID:
+    $.groupState.sessionID || \"\",\n        answers: $.state.answers\n    };\n   
+    const conditionManager = $.worldItemReference(\"ConditionManager\");\n    if
+    (conditionManager) {\n        conditionManager.send(\"exp_questionnaire_answer\",
+    $.state.answers);\n    }\n    $.callExternal(new ExternalEndpointId(callExternalEndpointID),
+    JSON.stringify(request), \"postQuestionAnswers\");\n    $.state.participant?.send(\"setQuestionnaireUI\",
+    {\n        n: \"WaitingText\",\n        p: $.getPosition(),\n        r: $.getRotation(),\n       
+    e: true\n    });\n    reset(false);\n}\n\nfunction toNext() {\n    destroyAnswerOptionUIs();
+    // Ensure previous UI elements are destroyed\n    $.state.qID = $.state.qID +
+    1;\n    $.subNode(\"RadioButtonIndicator\").setEnabled(false);\n    if ($.state.qID
+    >= $.state.questions.length) {\n        submitAnswers();\n    } else {\n       
+    $.state.tmpAnswer = null;\n        tryInitQuestion();\n    }\n}\n\nfunction toPrev()
+    {\n    if ($.state.qID <= 0) return;\n    destroyAnswerOptionUIs(); // Ensure
+    previous UI elements are destroyed\n    $.subNode(\"RadioButtonIndicator\").setEnabled(false);\n   
+    $.state.qID = $.state.qID - 1;\n    $.state.tmpAnswer = null;\n    tryInitQuestion();\n}\n\nfunction
+    reset(enableReactivation = true) {\n    destroyAnswerOptionUIs(); // destroy
+    any existing answer option UIs first\n    $.subNode(\"RadioButtonIndicator\").setEnabled(false);\n   
+    $.state.answers = [];\n    $.state.qID = 0;\n    $.state.isInitiated = !enableReactivation;\n   
+    $.state.tryInitQuestion = false;\n    $.state.answerOptionUIs = [];\n    $.state.answerOptionLocalPositions
+    = [];\n    $.state.answerOptionIndex = 0;\n    $.state.pendingAnswerOptions =
+    [];\n    $.setStateCompat(\"this\", \"form_set_content_active\", false);\n   
+    $.state.participant?.send(\"setQuestionnaireUIs\", [\n        { n: \"Title\",
+    e: false }, { n: \"Description\", e: false }\n    ]);\n}\n\n$.onExternalCallEnd((res,
+    meta, err) => {\n    if (res == null) {\n        $.log(\"callExternal ERROR:
+    \" + err);\n        return;\n    }\n\n    if (meta === \"getQuestions\") {\n       
+    const parsedRes = JSON.parse(res);\n        let isFirstGet = $.state.questions.length
+    === 0;\n        $.state.questions = [ ...$.state.questions, ...parsedRes.questions
+    ];\n        $.setStateCompat(\"this\", \"form_show_loading_bar\", false);\n       
+    $.state.participant?.send(\"setQuestionnaireUI\", {\n            n: \"LoadingText\",\n           
+    e: false\n        });\n        if (isFirstGet) tryInitQuestion();\n\n       
+    if (\"isDone\" in parsedRes && !parsedRes.isDone) {\n            const questionnaireID
+    = $.getStateCompat(\"this\", \"qID\", \"integer\");\n            if (questionnaireID
+    !== -1) {\n                let request = { type: \"questions\", token: token
     || \"\", eID: expID || \"\", qID: questionnaireID, startIndex: $.state.questions.length
-    };\r\n                $.callExternal(new ExternalEndpointId(callExternalEndpointID),
-    JSON.stringify(request), \"getQuestions\");\r\n            }\r\n        }\r\n   
-    }\r\n\r\n    if (meta === \"postQuestionAnswers\") {\r\n        $.log(\"Answers
-    recorded!\");\r\n        $.groupState.qCompletedCount += 1;\r\n        if ($.groupState.qCompletedCount
-    >= $.groupState.participants.length) {\r\n            $.log(\"All participants
-    have completed the questionnaire!\");\r\n            $.groupState.qCompletedCount
-    = 0;\r\n            $.sendSignalCompat(\"this\", \"form_allPlayersCompleted\");
-    // state_triggerTransition\r\n            $.groupState.participants.forEach(p
-    => {\r\n                p.send(\"setQuestionnaireUI\", {\r\n                   
-    n: \"WaitingText\",\r\n                    e: false\r\n                });\r\n           
-    });\r\n            reset();\r\n        }\r\n    }\r\n});\r\n"
+    };\n                $.callExternal(new ExternalEndpointId(callExternalEndpointID),
+    JSON.stringify(request), \"getQuestions\");\n            }\n        }\n    }\n\n   
+    if (meta === \"postQuestionAnswers\") {\n        $.log(\"Answers recorded!\");\n       
+    $.groupState.qCompletedCount += 1;\n        if ($.groupState.qCompletedCount
+    >= $.groupState.participants.length) {\n            $.log(\"All participants
+    have completed the questionnaire!\");\n            $.groupState.qCompletedCount
+    = 0;\n            $.sendSignalCompat(\"this\", \"form_allPlayersCompleted\");
+    // state_triggerTransition\n            $.groupState.participants.forEach(p =>
+    {\n                p.send(\"setQuestionnaireUI\", {\n                    n: \"WaitingText\",\n                   
+    e: false\n                });\n            });\n            reset();\n       
+    }\n    }\n});\n"
 --- !u!114 &5697374075709122382
 MonoBehaviour:
   m_ObjectHideFlags: 0

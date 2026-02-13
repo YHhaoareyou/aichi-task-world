@@ -223,70 +223,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceCodeAsset: {fileID: 0}
-  sourceCode: "const trialsCountForEachUniqueCondition = 1;\r\nconst within_subjects_variables
-    = [\r\n];\r\nconst between_subjects_variables = [\r\n];\r\nconst state_names
-    = [];\r\n\r\n$.onStart(() => {\r\n  initializeRandomBetweenSubjectsConditions();\r\n 
-    reset();\r\n});\r\n\r\n$.onUpdate(() => {\r\n  if (\r\n    $.state.trialID !==
-    $.getStateCompat(\"global\", \"exp_trialID\", \"integer\") &&\r\n      $.getStateCompat(\"global\",
-    \"exp_trialID\", \"integer\") >= 0\r\n  ) {\r\n    $.state.trialID = $.getStateCompat(\"global\",
-    \"exp_trialID\", \"integer\");\r\n    updateCondition();\r\n  }\r\n});\r\n\r\n$.onReceive((messageType,
-    arg, sender) => {\r\n  switch (messageType) {\r\n    case \"luida_participants_info\":\r\n     
-    $.groupState.participants = arg.participants;\r\n      $.groupState.sessionID
-    = arg.sessionID;\r\n      sender.send(\"betweenSubjectsCondition\", $.state.betweenSubjectsConditions);\r\n     
-    break;\r\n    // case \"exp_questionnaire_answer\":\r\n    //     $.state.betweenSubjectsConditions
-    = GetBetweenSubjectsCondition(arg);\r\n    //     break;\r\n    default:\r\n     
-    break;\r\n  }\r\n});\r\n\r\nfunction updateCondition() {\r\n  if ($.state.trialID
-    >= $.state.trialCount) {\r\n    $.sendSignalCompat(\"this\", \"exp_resetTrials\");\r\n 
-    } else if ($.state.trialID <= -1) {\r\n    reset();\r\n  } else {\r\n    let
-    condition = { ...$.state.betweenSubjectsConditions };\r\n    for (let i = 0;
-    i < $.state.withinSubjectsVariableNames.length; i++) {\r\n      const varName
-    = $.state.withinSubjectsVariableNames[i];\r\n      const varValue =\r\n         
-    within_subjects_variables[i].values[\r\n              $.state.withinSubjectsConditionIndicesByTrial[$.state.trialID][i]\r\n             
-    ];\r\n      condition[varName] = varValue;\r\n    }\r\n    $.groupState.currentCondition
-    = condition;\r\n\r\n    // Check if this is the last trial (if true, stop repeating
-    trials when next state transition is triggered)\r\n    if (\r\n        $.state.trialCount
-    > 0 &&\r\n        !$.state.isLast &&\r\n        $.state.trialID >= $.state.trialCount
-    - 1\r\n    ) {\r\n      $.state.isLast = true;\r\n      $.sendSignalCompat(\"this\",
-    \"exp_readyToLeaveTrials\");\r\n    }\r\n  }\r\n}\r\n\r\nfunction reset() {\r\n 
-    $.state.trialID = 0;\r\n  if (!$.state.betweenSubjectsConditions)\r\n    $.state.betweenSubjectsConditions
-    = {};\r\n  $.state.withinSubjectsVariableNames = [];\r\n  $.state.withinSubjectsConditionIndicesByTrial
-    = [];\r\n  $.state.trialCount = 1;\r\n  $.groupState.currentCondition = {\r\n   
-    ...$.state.betweenSubjectsConditions,\r\n  };\r\n  $.groupState.stateNames =
-    state_names || [];\r\n  try {\r\n    initializeWithinSubjectsConditions(\r\n     
-    within_subjects_variables,\r\n      trialsCountForEachUniqueCondition\r\n   
-    );\r\n  } catch (error) {\r\n    $.log(error);\r\n    $.log(\"Within-subjects
-    variables are not defined.\");\r\n    initializeWithinSubjectsConditions([],
-    1);\r\n  }\r\n  updateCondition();\r\n}\r\n\r\nfunction initializeRandomBetweenSubjectsConditions()
-    {\r\n  let betweenSubjectsCondition = {};\r\n  try {\r\n    between_subjects_variables.forEach((v)
-    => {\r\n      if (!betweenSubjectsCondition[v.name]) {\r\n        if (v.debugValue)
-    {\r\n          betweenSubjectsCondition[v.name] = v.debugValue;\r\n        }
-    else if (v.isRandom) {\r\n          betweenSubjectsCondition[v.name] =\r\n             
-    v.values[Math.floor(Math.random() * v.values.length)];\r\n        }\r\n     
-    }\r\n    });\r\n  } catch (e) {\r\n    $.log(\"Between-subjects variables are
-    not defined.\");\r\n  }\r\n  $.state.betweenSubjectsConditions = betweenSubjectsCondition;\r\n}\r\n\r\nfunction
-    initializeWithinSubjectsConditions(variables, repeatsPerCond = 1) {\r\n  variables
-    = [...variables.sort((a, b) => a.isRandom - b.isRandom)];\r\n  const varNames
-    = variables.map((v) => v.name);\r\n\r\n  let indicesPerVar = variables.map((v)
-    =>\r\n    Array.from({ length: v.values.length }, (_, i) => i)\r\n  );\r\n  let
-    condIndicesList = indicesPerVar\r\n    .reduce(\r\n      (acc, array) => {\r\n       
-    return acc.flatMap((accItem) =>\r\n          array.map((arrayItem) => [...accItem,
-    arrayItem])\r\n        );\r\n      },\r\n      [[]]\r\n    )\r\n    .flatMap((condIndices)
-    =>\r\n      Array.from({ length: repeatsPerCond }, () => condIndices)\r\n   
-    );\r\n\r\n  let shufflePartitionSize = 0;\r\n  for (let i = 0; i < variables.length;
-    i++) {\r\n    if (variables[i].isRandom) {\r\n      shufflePartitionSize =\r\n       
-    shufflePartitionSize === 0\r\n          ? variables[i].values.length\r\n         
-    : shufflePartitionSize * variables[i].values.length;\r\n    }\r\n  }\r\n  shufflePartitionSize
-    *= repeatsPerCond;\r\n\r\n  if (shufflePartitionSize > 0) {\r\n    const result
-    = [...condIndicesList]; // Copy the array to avoid mutating the original\r\n   
-    for (let i = 0; i < condIndicesList.length; i += shufflePartitionSize) {\r\n     
-    let partition = result.slice(i, i + shufflePartitionSize);\r\n      partition
-    = shuffleArray(partition);\r\n      result.splice(i, shufflePartitionSize, ...partition);\r\n   
-    }\r\n    condIndicesList = result;\r\n  }\r\n\r\n  $.state.withinSubjectsVariableNames
-    = varNames;\r\n  $.state.withinSubjectsConditionIndicesByTrial = condIndicesList;\r\n 
-    $.state.trialCount = condIndicesList.length;\r\n}\r\n\r\nfunction shuffleArray(array)
-    {\r\n  for (let i = array.length - 1; i > 0; i--) {\r\n    const j = Math.floor(Math.random()
-    * (i + 1));\r\n    [array[i], array[j]] = [array[j], array[i]];\r\n  }\r\n  return
-    array;\r\n}\r\n"
+  sourceCode: "const trialsCountForEachUniqueCondition = 1;\nconst within_subjects_variables
+    = [\n];\nconst between_subjects_variables = [\n];\nconst state_names = [];\n\r\n$.onStart(()
+    => {\n  initializeRandomBetweenSubjectsConditions();\n  reset();\n});\n\n$.onUpdate(()
+    => {\n  if (\n    $.state.trialID !== $.getStateCompat(\"global\", \"exp_trialID\",
+    \"integer\") &&\n      $.getStateCompat(\"global\", \"exp_trialID\", \"integer\")
+    >= 0\n  ) {\n    $.state.trialID = $.getStateCompat(\"global\", \"exp_trialID\",
+    \"integer\");\n    updateCondition();\n  }\n});\n\n$.onReceive((messageType,
+    arg, sender) => {\n  switch (messageType) {\n    case \"luida_participants_info\":\n     
+    $.groupState.participants = arg.participants;\n      $.groupState.sessionID =
+    arg.sessionID;\n      sender.send(\"betweenSubjectsCondition\", $.state.betweenSubjectsConditions);\n     
+    break;\n    // case \"exp_questionnaire_answer\":\n    //     $.state.betweenSubjectsConditions
+    = GetBetweenSubjectsCondition(arg);\n    //     break;\n    default:\n      break;\n 
+    }\n});\n\nfunction updateCondition() {\n  if ($.state.trialID >= $.state.trialCount)
+    {\n    $.sendSignalCompat(\"this\", \"exp_resetTrials\");\n  } else if ($.state.trialID
+    <= -1) {\n    reset();\n  } else {\n    let condition = { ...$.state.betweenSubjectsConditions
+    };\n    for (let i = 0; i < $.state.withinSubjectsVariableNames.length; i++)
+    {\n      const varName = $.state.withinSubjectsVariableNames[i];\n      const
+    varValue =\n          within_subjects_variables[i].values[\n              $.state.withinSubjectsConditionIndicesByTrial[$.state.trialID][i]\n             
+    ];\n      condition[varName] = varValue;\n    }\n    $.groupState.currentCondition
+    = condition;\n\n    // Check if this is the last trial (if true, stop repeating
+    trials when next state transition is triggered)\n    if (\n        $.state.trialCount
+    > 0 &&\n        !$.state.isLast &&\n        $.state.trialID >= $.state.trialCount
+    - 1\n    ) {\n      $.state.isLast = true;\n      $.sendSignalCompat(\"this\",
+    \"exp_readyToLeaveTrials\");\n    }\n  }\n}\n\nfunction reset() {\n  $.state.trialID
+    = 0;\n  if (!$.state.betweenSubjectsConditions)\n    $.state.betweenSubjectsConditions
+    = {};\n  $.state.withinSubjectsVariableNames = [];\n  $.state.withinSubjectsConditionIndicesByTrial
+    = [];\n  $.state.trialCount = 1;\n  $.groupState.currentCondition = {\n    ...$.state.betweenSubjectsConditions,\n 
+    };\n  $.groupState.stateNames = state_names || [];\n  try {\n    initializeWithinSubjectsConditions(\n     
+    within_subjects_variables,\n      trialsCountForEachUniqueCondition\n    );\n 
+    } catch (error) {\n    $.log(error);\n    $.log(\"Within-subjects variables are
+    not defined.\");\n    initializeWithinSubjectsConditions([], 1);\n  }\n  updateCondition();\n}\n\nfunction
+    initializeRandomBetweenSubjectsConditions() {\n  let betweenSubjectsCondition
+    = {};\n  try {\n    between_subjects_variables.forEach((v) => {\n      if (!betweenSubjectsCondition[v.name])
+    {\n        if (v.debugValue) {\n          betweenSubjectsCondition[v.name] =
+    v.debugValue;\n        } else if (v.isRandom) {\n          betweenSubjectsCondition[v.name]
+    =\n              v.values[Math.floor(Math.random() * v.values.length)];\n       
+    }\n      }\n    });\n  } catch (e) {\n    $.log(\"Between-subjects variables
+    are not defined.\");\n  }\n  $.state.betweenSubjectsConditions = betweenSubjectsCondition;\n}\n\nfunction
+    initializeWithinSubjectsConditions(variables, repeatsPerCond = 1) {\n  variables
+    = [...variables.sort((a, b) => a.isRandom - b.isRandom)];\n  const varNames =
+    variables.map((v) => v.name);\n\n  let indicesPerVar = variables.map((v) =>\n   
+    Array.from({ length: v.values.length }, (_, i) => i)\n  );\n  let condIndicesList
+    = indicesPerVar\n    .reduce(\n      (acc, array) => {\n        return acc.flatMap((accItem)
+    =>\n          array.map((arrayItem) => [...accItem, arrayItem])\n        );\n     
+    },\n      [[]]\n    )\n    .flatMap((condIndices) =>\n      Array.from({ length:
+    repeatsPerCond }, () => condIndices)\n    );\n\n  let shufflePartitionSize =
+    0;\n  for (let i = 0; i < variables.length; i++) {\n    if (variables[i].isRandom)
+    {\n      shufflePartitionSize =\n        shufflePartitionSize === 0\n         
+    ? variables[i].values.length\n          : shufflePartitionSize * variables[i].values.length;\n   
+    }\n  }\n  shufflePartitionSize *= repeatsPerCond;\n\n  if (shufflePartitionSize
+    > 0) {\n    const result = [...condIndicesList]; // Copy the array to avoid mutating
+    the original\n    for (let i = 0; i < condIndicesList.length; i += shufflePartitionSize)
+    {\n      let partition = result.slice(i, i + shufflePartitionSize);\n      partition
+    = shuffleArray(partition);\n      result.splice(i, shufflePartitionSize, ...partition);\n   
+    }\n    condIndicesList = result;\n  }\n\n  $.state.withinSubjectsVariableNames
+    = varNames;\n  $.state.withinSubjectsConditionIndicesByTrial = condIndicesList;\n 
+    $.state.trialCount = condIndicesList.length;\n}\n\nfunction shuffleArray(array)
+    {\n  for (let i = array.length - 1; i > 0; i--) {\n    const j = Math.floor(Math.random()
+    * (i + 1));\n    [array[i], array[j]] = [array[j], array[i]];\n  }\n  return
+    array;\n}\n"
 --- !u!114 &4731245737645068636
 MonoBehaviour:
   m_ObjectHideFlags: 0

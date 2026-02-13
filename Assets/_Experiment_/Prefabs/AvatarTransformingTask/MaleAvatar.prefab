@@ -104,6 +104,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7785412502199580053}
     m_Modifications:
+    - target: {fileID: 1068288941414817080, guid: fb1bb045a871a4b868cec4ab5c17ad80,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 31ae5a3b27231419382eae0924e4d244, type: 2}
+    - target: {fileID: 1068288941414817080, guid: fb1bb045a871a4b868cec4ab5c17ad80,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2846646057318159630, guid: fb1bb045a871a4b868cec4ab5c17ad80,
         type: 3}
       propertyPath: m_RootOrder
@@ -162,7 +172,7 @@ PrefabInstance:
     - target: {fileID: 5201696785751211669, guid: fb1bb045a871a4b868cec4ab5c17ad80,
         type: 3}
       propertyPath: m_Name
-      value: Male Avatar
+      value: HumanoidModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb1bb045a871a4b868cec4ab5c17ad80, type: 3}
