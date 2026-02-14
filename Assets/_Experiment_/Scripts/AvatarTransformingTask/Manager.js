@@ -33,13 +33,14 @@ $.onUpdate((deltaTime) => {
     const player = currentPlayers[i];
     if (known[player.id]) continue;
 
-    const pos = player.getPosition();
+    const malePos = player.getPosition().clone().add(new Vector3(-0.5, 1, 1));
+    const femalePos = player.getPosition().clone().add(new Vector3(0.5, 1, 1));
     const rot = player.getRotation();
-    if (!pos || !rot) continue;
+    if (!malePos || !femalePos || !rot) continue;
 
     // Create 2 selectors in front of player
-    const selMale = $.createItem(TEMPLATE_SELECTOR, pos, rot);
-    const selFemale = $.createItem(TEMPLATE_SELECTOR, pos, rot);
+    const selMale = $.createItem(TEMPLATE_SELECTOR, malePos, rot);
+    const selFemale = $.createItem(TEMPLATE_SELECTOR, femalePos, rot);
 
     // Send player and gender info to each selector
     selMale.send("init", {

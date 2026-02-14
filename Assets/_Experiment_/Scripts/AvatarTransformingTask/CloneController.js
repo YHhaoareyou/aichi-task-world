@@ -7,6 +7,33 @@ const INIT_TIMEOUT    = 5.0;  // seconds: self-destruct if assignPlayer not rece
 
 let animator = null; // Retrieved in onStart
 
+// Mapping: HumanoidBone enum -> bone node name in hierarchy (Character Creator naming)
+const BONE_MAP = [
+  { bone: HumanoidBone.Hips, name: "CC_Base_Hip" },
+  { bone: HumanoidBone.Spine, name: "CC_Base_Spine01" },
+  { bone: HumanoidBone.Chest, name: "CC_Base_Spine02" },
+  { bone: HumanoidBone.Neck, name: "CC_Base_NeckTwist01" },
+  { bone: HumanoidBone.Head, name: "CC_Base_Head" },
+  { bone: HumanoidBone.LeftShoulder, name: "CC_Base_L_Clavicle" },
+  { bone: HumanoidBone.LeftUpperArm, name: "CC_Base_L_Upperarm" },
+  { bone: HumanoidBone.LeftLowerArm, name: "CC_Base_L_Forearm" },
+  { bone: HumanoidBone.LeftHand, name: "CC_Base_L_Hand" },
+  { bone: HumanoidBone.RightShoulder, name: "CC_Base_R_Clavicle" },
+  { bone: HumanoidBone.RightUpperArm, name: "CC_Base_R_Upperarm" },
+  { bone: HumanoidBone.RightLowerArm, name: "CC_Base_R_Forearm" },
+  { bone: HumanoidBone.RightHand, name: "CC_Base_R_Hand" },
+  { bone: HumanoidBone.LeftUpperLeg, name: "CC_Base_L_Thigh" },
+  { bone: HumanoidBone.LeftLowerLeg, name: "CC_Base_L_Calf" },
+  { bone: HumanoidBone.LeftFoot, name: "CC_Base_L_Foot" },
+  { bone: HumanoidBone.LeftToes, name: "CC_Base_L_ToeBase" },
+  { bone: HumanoidBone.RightUpperLeg, name: "CC_Base_R_Thigh" },
+  { bone: HumanoidBone.RightLowerLeg, name: "CC_Base_R_Calf" },
+  { bone: HumanoidBone.RightFoot, name: "CC_Base_R_Foot" },
+  { bone: HumanoidBone.RightToes, name: "CC_Base_R_ToeBase" }
+];
+
+let boneNodes = []; // Cached bone node references
+
 $.onStart(() => {
   $.state.player         = null;  // PlayerHandle
   $.state.muscleValue  = 0;     // 0.0 ~ 1.0
@@ -19,7 +46,16 @@ $.onStart(() => {
   // Get Animator (must be done in onStart, not top level)
   const modelNode = $.subNode("HumanoidModel");
   if (modelNode) {
-    animator = modelNode.getUnityComponent("Animator");
+    // animator = modelNode.getUnityComponent("Animator");
+  }
+
+  // Cache bone node references
+  boneNodes = [];
+  for (let i = 0; i < BONE_MAP.length; i++) {
+    const entry = BONE_MAP[i];
+    const node = $.subNode(entry.name);
+    if (!node) continue;
+    boneNodes.push({ bone: entry.bone, node: node });
   }
 });
 
@@ -59,6 +95,18 @@ $.onUpdate((deltaTime) => {
     const rot = player.getRotation();
     if (pos) $.setPosition(pos);
     if (rot) $.setRotation(rot);
+    // $.subNode("HumanoidModel").setPosition(new Vector3(0, 1, 0));
+
+    // === Apply all bone rotations from player to clone ===
+    for (let i = 0; i < boneNodes.length; i++) {
+      const entry = boneNodes[i];
+      if (entry.node) {
+        const boneRot = player.getHumanoidBoneRotation(entry.bone);
+        if (boneRot) {
+          entry.node.setRotation(boneRot);
+        }
+      }
+    }
   
     // === Squat detection ===
     const headPos = player.getHumanoidBonePosition(HumanoidBone.Head);
@@ -90,6 +138,6 @@ $.onUpdate((deltaTime) => {
   
     // === Apply blendshape value to Animator ===
     if (animator) {
-      animator.setFloat("MuscleWeight", $.state.muscleValue ?? 0);
+      // animator.setFloat("MuscleWeight", $.state.muscleValue ?? 0);
     }
 });

@@ -48,11 +48,9 @@ $.onInteract((interactPlayer) => {
       gender:   $.state.gender
     });
   }
-
-  // Destroy self (the other selector will be destroyed by Manager)
-  $.destroy();
 });
 
+/*
 // --- Timeout: self-destruct if init is not received ---
 $.onUpdate((deltaTime) => {
   if ($.state.initialized) return;
@@ -65,3 +63,4 @@ $.onUpdate((deltaTime) => {
   }
   $.state.initTimer = timer;
 });
+*/
