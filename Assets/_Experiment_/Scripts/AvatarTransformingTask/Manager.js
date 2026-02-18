@@ -6,6 +6,12 @@ const TEMPLATE_MALE     = new WorldItemTemplateId("cloneMale");
 const TEMPLATE_FEMALE   = new WorldItemTemplateId("cloneFemale");
 const SCAN_INTERVAL     = 0.5; // seconds
 
+// Avatar assignment mode: "male", "female", or "choice"
+// - "male": Auto-assign male model to all players
+// - "female": Auto-assign female model to all players
+// - "choice": Allow each player to choose (shows selector buttons)
+const AVATAR_ASSIGNMENT_MODE = "male";
+
 $.onStart(() => {
   $.state.knownPlayers = {};
   $.state.scanTimer    = 0;
@@ -28,40 +34,58 @@ $.onUpdate((deltaTime) => {
 
   const known = $.state.knownPlayers ?? {};
 
-  // --- New player -> Create Selectors ---
+  // --- New player -> Create Clone or Selectors based on mode ---
   for (let i = 0; i < currentPlayers.length; i++) {
     const player = currentPlayers[i];
     if (known[player.id]) continue;
 
-    const malePos = player.getPosition().clone().add(new Vector3(-0.5, 1, 1));
-    const femalePos = player.getPosition().clone().add(new Vector3(0.5, 1, 1));
+    const pos = player.getPosition();
     const rot = player.getRotation();
-    if (!malePos || !femalePos || !rot) continue;
+    if (!pos || !rot) continue;
 
-    // Create 2 selectors in front of player
-    const selMale = $.createItem(TEMPLATE_SELECTOR, malePos, rot);
-    const selFemale = $.createItem(TEMPLATE_SELECTOR, femalePos, rot);
+    if (AVATAR_ASSIGNMENT_MODE === "male" || AVATAR_ASSIGNMENT_MODE === "female") {
+      // Direct assignment mode: create clone immediately
+      const templateId = (AVATAR_ASSIGNMENT_MODE === "male") ? TEMPLATE_MALE : TEMPLATE_FEMALE;
+      const clone = $.createItem(templateId, pos, rot);
+      clone.send("assignPlayer", player);
 
-    // Send player and gender info to each selector
-    selMale.send("init", {
-      player: player,
-      gender: "male",
-      label:  "Male"
-    });
-    selFemale.send("init", {
-      player: player,
-      gender: "female",
-      label:  "Female"
-    });
+      known[player.id] = {
+        selMale:   null,
+        selFemale: null,
+        clone:     clone,
+        playerId:  player.id,
+        gender:    AVATAR_ASSIGNMENT_MODE
+      };
 
-    known[player.id] = {
-      selMale:   selMale,
-      selFemale: selFemale,
-      clone:     null,
-      playerId:  player.id
-    };
+      $.log("clone (" + AVATAR_ASSIGNMENT_MODE + ") auto-assigned to: " + player.userDisplayName);
+    } else {
+      // Choice mode: create selectors for player to choose
+      const malePos = pos.clone().add(new Vector3(-0.5, 1, 1));
+      const femalePos = pos.clone().add(new Vector3(0.5, 1, 1));
 
-    $.log("selectors created for: " + player.userDisplayName);
+      const selMale = $.createItem(TEMPLATE_SELECTOR, malePos, rot);
+      const selFemale = $.createItem(TEMPLATE_SELECTOR, femalePos, rot);
+
+      selMale.send("init", {
+        player: player,
+        gender: "male",
+        label:  "Male"
+      });
+      selFemale.send("init", {
+        player: player,
+        gender: "female",
+        label:  "Female"
+      });
+
+      known[player.id] = {
+        selMale:   selMale,
+        selFemale: selFemale,
+        clone:     null,
+        playerId:  player.id
+      };
+
+      $.log("selectors created for: " + player.userDisplayName);
+    }
   }
 
   // --- Player left -> Destroy related items ---

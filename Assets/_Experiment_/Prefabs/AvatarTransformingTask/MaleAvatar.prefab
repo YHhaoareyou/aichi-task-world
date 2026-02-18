@@ -411,6 +411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7528065326306987251, guid: 9d20d4517187243cc9b72ee9c1c7f172,
         type: 3}
+      propertyPath: m_Name
+      value: BodyMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528065326306987251, guid: 9d20d4517187243cc9b72ee9c1c7f172,
+        type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -449,20 +454,61 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.12547666
       objectReference: {fileID: 0}
+    - target: {fileID: 7582963894316192990, guid: 9d20d4517187243cc9b72ee9c1c7f172,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582963894316192990, guid: 9d20d4517187243cc9b72ee9c1c7f172,
+        type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8257555369249262957, guid: 9d20d4517187243cc9b72ee9c1c7f172,
         type: 3}
       propertyPath: m_Name
       value: HumanoidModel
       objectReference: {fileID: 0}
+    - target: {fileID: 8448239747877349381, guid: 9d20d4517187243cc9b72ee9c1c7f172,
+        type: 3}
+      propertyPath: m_Name
+      value: JeansMesh
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d20d4517187243cc9b72ee9c1c7f172, type: 3}
+--- !u!1 &441840816093421567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8448239747877349381, guid: 9d20d4517187243cc9b72ee9c1c7f172,
+    type: 3}
+  m_PrefabInstance: {fileID: 8295514702626486266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8195051968765030459
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441840816093421567}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: a99cef6c0e96c46bebde4c6d5b1e7987, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4165df20794a44bcdb1238a63ae131d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1974433904184163081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7528065326306987251, guid: 9d20d4517187243cc9b72ee9c1c7f172,
     type: 3}
   m_PrefabInstance: {fileID: 8295514702626486266}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &4455300324506594566
+--- !u!95 &7683164759840023506
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
