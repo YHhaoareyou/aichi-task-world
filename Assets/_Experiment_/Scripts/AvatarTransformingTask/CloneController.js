@@ -204,21 +204,26 @@ $.onUpdate((deltaTime) => {
     const rightArmOffsetRot = createAxisRotation(RIGHT_ARM_OFFSET.axis, RIGHT_ARM_OFFSET.degrees);
     const leftArmOffsetRot = createAxisRotation(LEFT_ARM_OFFSET.axis, LEFT_ARM_OFFSET.degrees);
 
+    // Convert global bone rotations to item-local by removing item rotation
+    // (getHumanoidBoneRotation returns global; subNode.setRotation expects item-local)
+    const invRot = new Quaternion(-rot.x, -rot.y, -rot.z, rot.w);
+
     for (let i = 0; i < boneNodes.length; i++) {
       const entry = boneNodes[i];
       if (entry.node) {
         const boneRot = player.getHumanoidBoneRotation(entry.bone);
         if (boneRot) {
+          const localBoneRot = multiplyQuaternions(invRot, boneRot);
           if (isRightLowerArmOrHand(entry.bone)) {
             // Fixed offset for right lower arm and hand: Z +90
-            const correctedRot = multiplyQuaternions(boneRot, rightArmOffsetRot);
+            const correctedRot = multiplyQuaternions(localBoneRot, rightArmOffsetRot);
             entry.node.setRotation(correctedRot);
           } else if (isLeftLowerArmOrHand(entry.bone)) {
             // Fixed offset for left lower arm and hand: Z -90
-            const correctedRot = multiplyQuaternions(boneRot, leftArmOffsetRot);
+            const correctedRot = multiplyQuaternions(localBoneRot, leftArmOffsetRot);
             entry.node.setRotation(correctedRot);
           } else {
-            entry.node.setRotation(boneRot);
+            entry.node.setRotation(localBoneRot);
           }
         }
       }
