@@ -10,7 +10,7 @@ const SCAN_INTERVAL     = 0.5; // seconds
 // - "male": Auto-assign male model to all players
 // - "female": Auto-assign female model to all players
 // - "choice": Allow each player to choose (shows selector buttons)
-const AVATAR_ASSIGNMENT_MODE = "male";
+const AVATAR_ASSIGNMENT_MODE = "choice";
 
 $.onStart(() => {
   $.state.knownPlayers = {};
