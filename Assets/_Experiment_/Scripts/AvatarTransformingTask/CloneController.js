@@ -117,6 +117,12 @@ $.onReceive((messageType, arg, sender) => {
     $.log("clone assigned to: " + arg.userDisplayName);
   }
 
+  if (messageType === "setScale") {
+    const s = arg;
+    const transform = $.getUnityComponent("Transform");
+    transform.unityProp.localScale = new Vector3(s, s, s);
+  }
+
   if (messageType === "selfDestruct") {
     $.destroy();
   }

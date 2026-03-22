@@ -48,6 +48,10 @@ $.onUpdate((deltaTime) => {
       const templateId = (AVATAR_ASSIGNMENT_MODE === "male") ? TEMPLATE_MALE : TEMPLATE_FEMALE;
       const clone = $.createItem(templateId, pos, rot);
       clone.send("assignPlayer", player);
+      const headPos = player.getHumanoidBonePosition(HumanoidBone.Head);
+      if (headPos) {
+        clone.send("setScale", headPos.y / 1.6);
+      }
 
       known[player.id] = {
         selMale:   null,
@@ -130,6 +134,10 @@ $.onUpdate((deltaTime) => {
             const tid = (entry.gender === "male") ? TEMPLATE_MALE : TEMPLATE_FEMALE;
             const newClone = $.createItem(tid, p, r);
             newClone.send("assignPlayer", ph);
+            const headPos2 = ph.getHumanoidBonePosition(HumanoidBone.Head);
+            if (headPos2) {
+              newClone.send("setScale", headPos2.y / 1.6);
+            }
             entry.clone = newClone;
             $.log("clone re-created for: " + pid);
           }
@@ -185,6 +193,10 @@ $.onReceive((messageType, arg, sender) => {
   const templateId = (gender === "male") ? TEMPLATE_MALE : TEMPLATE_FEMALE;
   const clone = $.createItem(templateId, pos, rot);
   clone.send("assignPlayer", playerHandle);
+  const headPos = playerHandle.getHumanoidBonePosition(HumanoidBone.Head);
+  if (headPos) {
+    clone.send("setScale", headPos.y / 1.6);
+  }
 
   entry.clone = clone;
   $.state.knownPlayers = known;
