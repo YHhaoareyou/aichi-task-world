@@ -5,7 +5,7 @@ const SQUAT_THRESHOLD = 0.35; // meters: head drops more than this = squatting
 const INIT_TIMEOUT    = 5.0;  // seconds: self-destruct if assignPlayer not received
 
 // === Non-VR Test Mode Settings ===
-const TEST_MODE_ENABLED   = true;  // Set to false for production
+const TEST_MODE_ENABLED   = false;  // Set to false for production
 const TEST_SQUAT_INTERVAL = 3.0;   // seconds between simulated squats
 const TEST_SQUAT_COUNT    = 20;    // total number of simulated squats
 
@@ -64,7 +64,33 @@ const BONE_MAP = [
   { bone: HumanoidBone.RightToes, name: "CC_Base_R_ToeBase" }
 ];
 
+// Parent bone for each bone (null = parent is item root)
+const BONE_PARENT = {
+  [HumanoidBone.Hips]: null,
+  [HumanoidBone.Spine]: HumanoidBone.Hips,
+  [HumanoidBone.Chest]: HumanoidBone.Spine,
+  [HumanoidBone.Neck]: HumanoidBone.Chest,
+  [HumanoidBone.Head]: HumanoidBone.Neck,
+  [HumanoidBone.LeftShoulder]: HumanoidBone.Chest,
+  [HumanoidBone.LeftUpperArm]: HumanoidBone.LeftShoulder,
+  [HumanoidBone.LeftLowerArm]: HumanoidBone.LeftUpperArm,
+  [HumanoidBone.LeftHand]: HumanoidBone.LeftLowerArm,
+  [HumanoidBone.RightShoulder]: HumanoidBone.Chest,
+  [HumanoidBone.RightUpperArm]: HumanoidBone.RightShoulder,
+  [HumanoidBone.RightLowerArm]: HumanoidBone.RightUpperArm,
+  [HumanoidBone.RightHand]: HumanoidBone.RightLowerArm,
+  [HumanoidBone.LeftUpperLeg]: HumanoidBone.Hips,
+  [HumanoidBone.LeftLowerLeg]: HumanoidBone.LeftUpperLeg,
+  [HumanoidBone.LeftFoot]: HumanoidBone.LeftLowerLeg,
+  [HumanoidBone.LeftToes]: HumanoidBone.LeftFoot,
+  [HumanoidBone.RightUpperLeg]: HumanoidBone.Hips,
+  [HumanoidBone.RightLowerLeg]: HumanoidBone.RightUpperLeg,
+  [HumanoidBone.RightFoot]: HumanoidBone.RightLowerLeg,
+  [HumanoidBone.RightToes]: HumanoidBone.RightFoot,
+};
+
 let boneNodes = []; // Cached bone node references
+let hipsNode = null; // Cached Hips subnode for position sync
 
 $.onStart(() => {
   $.state.player         = null;  // PlayerHandle
@@ -105,7 +131,9 @@ $.onStart(() => {
     const entry = BONE_MAP[i];
     const node = $.subNode(entry.name);
     if (!node) continue;
-    boneNodes.push({ bone: entry.bone, node: node });
+    const parentBone = BONE_PARENT[entry.bone] !== undefined ? BONE_PARENT[entry.bone] : null;
+    boneNodes.push({ bone: entry.bone, node: node, parentBone: parentBone });
+    if (entry.bone === HumanoidBone.Hips) hipsNode = node;
   }
 });
 
@@ -164,6 +192,20 @@ function isLeftLowerArmOrHand(bone) {
          bone === HumanoidBone.LeftHand;
 }
 
+// Helper: Rotate a vector by a quaternion (v' = q * v * q_inv)
+function rotateVector(q, x, y, z) {
+  const qx = q.x, qy = q.y, qz = q.z, qw = q.w;
+  // t = 2 * cross(q.xyz, v)
+  const tx = 2 * (qy * z - qz * y);
+  const ty = 2 * (qz * x - qx * z);
+  const tz = 2 * (qx * y - qy * x);
+  return new Vector3(
+    x + qw * tx + (qy * tz - qz * ty),
+    y + qw * ty + (qz * tx - qx * tz),
+    z + qw * tz + (qx * ty - qy * tx)
+  );
+}
+
 // Helper: Multiply two quaternions
 function multiplyQuaternions(q1, q2) {
   return new Quaternion(
@@ -199,34 +241,51 @@ $.onUpdate((deltaTime) => {
     if (rot) $.setRotation(rot);
     // $.subNode("HumanoidModel").setPosition(new Vector3(0, 1, 0));
 
+    // === Sync Hips position so the clone squats down with the player ===
+    if (hipsNode && pos && rot) {
+      const hipsWorldPos = player.getHumanoidBonePosition(HumanoidBone.Hips);
+      if (hipsWorldPos) {
+        const dx = hipsWorldPos.x - pos.x;
+        const dy = hipsWorldPos.y - pos.y;
+        const dz = hipsWorldPos.z - pos.z;
+        const invRot = new Quaternion(-rot.x, -rot.y, -rot.z, rot.w);
+        const hipsLocalPos = rotateVector(invRot, dx, dy, dz);
+        hipsNode.setPosition(new Vector3(hipsLocalPos.x, hipsLocalPos.y + 0.1, hipsLocalPos.z));
+      }
+    }
+
     // === Apply all bone rotations from player to clone ===
-    // Pre-compute fixed offset rotations for left/right arms
-    const rightArmOffsetRot = createAxisRotation(RIGHT_ARM_OFFSET.axis, RIGHT_ARM_OFFSET.degrees);
-    const leftArmOffsetRot = createAxisRotation(LEFT_ARM_OFFSET.axis, LEFT_ARM_OFFSET.degrees);
+    // Fetch all world bone rotations in one pass
+    const worldRots = {};
+    for (let i = 0; i < boneNodes.length; i++) {
+      const boneRot = player.getHumanoidBoneRotation(boneNodes[i].bone);
+      if (boneRot) worldRots[boneNodes[i].bone] = boneRot;
+    }
 
-    // Convert global bone rotations to item-local by removing item rotation
-    // (getHumanoidBoneRotation returns global; subNode.setRotation expects item-local)
-    const invRot = new Quaternion(-rot.x, -rot.y, -rot.z, rot.w);
-
+    // Convert world rotations to parent-local for each bone
+    // setRotation sets rotation relative to the parent node, so:
+    //   localRot = inverse(parentWorldRot) * boneWorldRot
     for (let i = 0; i < boneNodes.length; i++) {
       const entry = boneNodes[i];
-      if (entry.node) {
-        const boneRot = player.getHumanoidBoneRotation(entry.bone);
-        if (boneRot) {
-          const localBoneRot = multiplyQuaternions(invRot, boneRot);
-          if (isRightLowerArmOrHand(entry.bone)) {
-            // Fixed offset for right lower arm and hand: Z +90
-            const correctedRot = multiplyQuaternions(localBoneRot, rightArmOffsetRot);
-            entry.node.setRotation(correctedRot);
-          } else if (isLeftLowerArmOrHand(entry.bone)) {
-            // Fixed offset for left lower arm and hand: Z -90
-            const correctedRot = multiplyQuaternions(localBoneRot, leftArmOffsetRot);
-            entry.node.setRotation(correctedRot);
-          } else {
-            entry.node.setRotation(localBoneRot);
-          }
+      const boneRot = worldRots[entry.bone];
+      if (!entry.node || !boneRot) continue;
+
+      // Determine parent's world rotation
+      let parentWorldRot;
+      if (entry.parentBone === null) {
+        // Hips: parent is the item root
+        parentWorldRot = rot;
+      } else {
+        parentWorldRot = worldRots[entry.parentBone];
+        if (!parentWorldRot) {
+          // Fallback to item root if parent rotation unavailable
+          parentWorldRot = rot;
         }
       }
+
+      const invParent = new Quaternion(-parentWorldRot.x, -parentWorldRot.y, -parentWorldRot.z, parentWorldRot.w);
+      const localBoneRot = multiplyQuaternions(invParent, boneRot);
+      entry.node.setRotation(localBoneRot);
     }
 
     // === Squat detection ===
@@ -246,8 +305,8 @@ $.onUpdate((deltaTime) => {
       if (isSquatting) {
         $.log(standingHeight - currentHeadHeight);}
 
-      // squat -> stand up = 1 cycle = trigger pump animation
-      if (wasSquatting && !isSquatting && $.state.muscleAnimPhase === "none") {
+      // stand -> squat down = trigger pump animation
+      if (!wasSquatting && isSquatting && $.state.muscleAnimPhase === "none") {
         const squatNum = ($.state.squatCount ?? 0) + 1;
         $.state.squatCount = squatNum;
 
@@ -262,6 +321,11 @@ $.onUpdate((deltaTime) => {
         $.state.musclePeakValue  = Math.min(base + MUSCLE_GROW_AMOUNT, 1.0);
         $.state.muscleFinalValue = Math.min(base + netGain, 1.0);
         $.log("squat #" + squatNum + "! Starting muscle pump... (net gain: " + netGain + ")");
+
+        // TODO: Play muscle pump sound effect
+        // $.subNode("MuscleAudioSource").getUnityComponent("AudioSource").play();
+        // TODO: Enable VFX
+        // $.subNode("MuscleVFX").setEnabled(true);
       }
 
       $.state.wasSquatting = isSquatting;
@@ -288,6 +352,11 @@ $.onUpdate((deltaTime) => {
         $.state.muscleFinalValue = Math.min(base + netGain, 1.0);
 
         $.log("[TEST] Simulated squat #" + squatNum + "/" + TEST_SQUAT_COUNT + " (net gain: " + netGain + ")");
+
+        // TODO: Play muscle pump sound effect
+        // $.subNode("MuscleAudioSource").getUnityComponent("AudioSource").play();
+        // TODO: Enable VFX
+        // $.subNode("MuscleVFX").setEnabled(true);
 
         $.state.testSquatsDone = squatNum;
         testTimer = 0;
@@ -319,6 +388,11 @@ $.onUpdate((deltaTime) => {
           $.state.muscleAnimPhase = "none";
           $.state.muscleValue = $.state.muscleFinalValue;
           $.log("Muscle -> " + ($.state.muscleFinalValue * 100).toFixed(0) + "%");
+
+          // TODO: Stop muscle pump sound effect
+          // $.subNode("MuscleAudioSource").getUnityComponent("AudioSource").stop();
+          // TODO: Disable VFX
+          // $.subNode("MuscleVFX").setEnabled(false);
         }
       }
 

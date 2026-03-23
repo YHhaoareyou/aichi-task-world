@@ -12,9 +12,19 @@ const SCAN_INTERVAL     = 0.5; // seconds
 // - "choice": Allow each player to choose (shows selector buttons)
 const AVATAR_ASSIGNMENT_MODE = "choice";
 
+// Initial placement: spread new players around a circle far from center
+const INITIAL_RADIUS = 40;
+const GOLDEN_ANGLE   = 2.399; // radians (~137.5°), ensures maximum angular spread
+
+// Teleport destination after gender selection (near mirror)
+const MIRROR_POS_X = 0;
+const MIRROR_POS_Z = -3;
+const MIRROR_RANDOM_RANGE = 0.5; // ± offset
+
 $.onStart(() => {
-  $.state.knownPlayers = {};
-  $.state.scanTimer    = 0;
+  $.state.knownPlayers    = {};
+  $.state.scanTimer       = 0;
+  $.state.nextPlayerIndex = 0;
 });
 
 $.onUpdate((deltaTime) => {
@@ -63,22 +73,55 @@ $.onUpdate((deltaTime) => {
 
       $.log("clone (" + AVATAR_ASSIGNMENT_MODE + ") auto-assigned to: " + player.userDisplayName);
     } else {
-      // Choice mode: create selectors for player to choose
-      const malePos = pos.clone().add(new Vector3(-0.5, 1, 1));
-      const femalePos = pos.clone().add(new Vector3(0.5, 1, 1));
+      // Choice mode: teleport player to unique initial location, show selectors there
+      const idx = $.state.nextPlayerIndex ?? 0;
+      $.state.nextPlayerIndex = idx + 1;
 
-      const selMale = $.createItem(TEMPLATE_SELECTOR, malePos, rot);
-      const selFemale = $.createItem(TEMPLATE_SELECTOR, femalePos, rot);
+      const angle = idx * GOLDEN_ANGLE;
+      const initX = INITIAL_RADIUS * Math.cos(angle);
+      const initZ = INITIAL_RADIUS * Math.sin(angle);
+      const initPos = new Vector3(initX, 0, initZ);
+
+      // Face toward center (0,0,0)
+      const facingAngle = Math.atan2(-initX, -initZ); // angle from +Z toward center
+      const halfA = facingAngle / 2;
+      const facingRot = new Quaternion(0, Math.sin(halfA), 0, Math.cos(halfA));
+
+      // Teleport player to initial location
+      player.setPosition(initPos);
+      player.setRotation(facingRot);
+
+      // Place selectors in front of the player (in their facing direction)
+      const fwdX = Math.sin(facingAngle); // forward vector from facing rotation
+      const fwdZ = Math.cos(facingAngle);
+      // Right vector (perpendicular to forward, Y-up)
+      const rightX = fwdZ;
+      const rightZ = -fwdX;
+
+      // Selectors: 1m forward, 1m up, ±0.5m left/right
+      const malePos = new Vector3(
+        initX + fwdX * 1 - rightX * 0.5,
+        1,
+        initZ + fwdZ * 1 - rightZ * 0.5
+      );
+      const femalePos = new Vector3(
+        initX + fwdX * 1 + rightX * 0.5,
+        1,
+        initZ + fwdZ * 1 + rightZ * 0.5
+      );
+
+      const selMale = $.createItem(TEMPLATE_SELECTOR, malePos, facingRot);
+      const selFemale = $.createItem(TEMPLATE_SELECTOR, femalePos, facingRot);
 
       selMale.send("init", {
         player: player,
         gender: "male",
-        label:  "Male"
+        label:  "男性"
       });
       selFemale.send("init", {
         player: player,
         gender: "female",
-        label:  "Female"
+        label:  "女性"
       });
 
       known[player.id] = {
@@ -88,7 +131,7 @@ $.onUpdate((deltaTime) => {
         playerId:  player.id
       };
 
-      $.log("selectors created for: " + player.userDisplayName);
+      $.log("selectors created for: " + player.userDisplayName + " at (" + initX.toFixed(1) + ", 0, " + initZ.toFixed(1) + ")");
     }
   }
 
@@ -182,16 +225,18 @@ $.onReceive((messageType, arg, sender) => {
     return;
   }
 
-  // Create Clone
-  const pos = playerHandle.getPosition();
-  const rot = playerHandle.getRotation();
-  if (!pos || !rot) {
-    $.state.knownPlayers = known;
-    return;
-  }
+  // Teleport player to mirror area
+  const rx = (Math.random() - 0.5) * MIRROR_RANDOM_RANGE * 2;
+  const rz = (Math.random() - 0.5) * MIRROR_RANDOM_RANGE * 2;
+  const mirrorTarget = new Vector3(MIRROR_POS_X + rx, 0, MIRROR_POS_Z + rz);
+  // Face +Z direction (toward mirror)
+  const mirrorRot = new Quaternion(0, 0, 0, 1);
+  playerHandle.setPosition(mirrorTarget);
+  playerHandle.setRotation(mirrorRot);
 
+  // Create Clone at mirror position
   const templateId = (gender === "male") ? TEMPLATE_MALE : TEMPLATE_FEMALE;
-  const clone = $.createItem(templateId, pos, rot);
+  const clone = $.createItem(templateId, mirrorTarget, mirrorRot);
   clone.send("assignPlayer", playerHandle);
   const headPos = playerHandle.getHumanoidBonePosition(HumanoidBone.Head);
   if (headPos) {
