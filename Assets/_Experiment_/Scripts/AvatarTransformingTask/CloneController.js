@@ -322,10 +322,7 @@ $.onUpdate((deltaTime) => {
         $.state.muscleFinalValue = Math.min(base + netGain, 1.0);
         $.log("squat #" + squatNum + "! Starting muscle pump... (net gain: " + netGain + ")");
 
-        // TODO: Play muscle pump sound effect
-        // $.subNode("MuscleAudioSource").getUnityComponent("AudioSource").play();
-        // TODO: Enable VFX
-        // $.subNode("MuscleVFX").setEnabled(true);
+        $.subNode("ChargeEffect").setEnabled(true);
       }
 
       $.state.wasSquatting = isSquatting;
@@ -353,10 +350,7 @@ $.onUpdate((deltaTime) => {
 
         $.log("[TEST] Simulated squat #" + squatNum + "/" + TEST_SQUAT_COUNT + " (net gain: " + netGain + ")");
 
-        // TODO: Play muscle pump sound effect
-        // $.subNode("MuscleAudioSource").getUnityComponent("AudioSource").play();
-        // TODO: Enable VFX
-        // $.subNode("MuscleVFX").setEnabled(true);
+        $.subNode("ChargeEffect").setEnabled(true);
 
         $.state.testSquatsDone = squatNum;
         testTimer = 0;
@@ -389,10 +383,7 @@ $.onUpdate((deltaTime) => {
           $.state.muscleValue = $.state.muscleFinalValue;
           $.log("Muscle -> " + ($.state.muscleFinalValue * 100).toFixed(0) + "%");
 
-          // TODO: Stop muscle pump sound effect
-          // $.subNode("MuscleAudioSource").getUnityComponent("AudioSource").stop();
-          // TODO: Disable VFX
-          // $.subNode("MuscleVFX").setEnabled(false);
+          $.subNode("ChargeEffect").setEnabled(false);
         }
       }
 
