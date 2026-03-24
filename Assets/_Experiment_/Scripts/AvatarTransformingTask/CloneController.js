@@ -10,11 +10,13 @@ const TEST_SQUAT_INTERVAL = 3.0;   // seconds between simulated squats
 const TEST_SQUAT_COUNT    = 20;    // total number of simulated squats
 
 // Muscle pump animation settings
+const MUSCLE_GROW_DELAY      = 0.5;  // seconds: charge effect plays before muscle starts growing
 const MUSCLE_GROW_DURATION   = 1;  // seconds
 const MUSCLE_SHRINK_DURATION = 0.2;  // seconds
-const MUSCLE_GROW_AMOUNT     = 0.5;  // inflate amount
-const MUSCLE_SHRINK_AMOUNT   = 0.45;  // shrink amount for first 15 squats (net gain = 0.1)
-const SQUAT_CAP              = 15;   // after this many squats, net gain becomes 0
+const MUSCLE_GROW_BASE       = 0.5;  // initial inflate amount (escalates each squat)
+const MUSCLE_GROW_INCREMENT  = 0.05; // extra inflate/shrink per squat
+const MUSCLE_SHRINK_AMOUNT   = 0.46;  // shrink amount for first 15 squats (net gain = 0.05)
+const SQUAT_CAP              = 20;   // after this many squats, net gain becomes 0
 
 // Fixed rotation offsets for lower arms and hands
 // Right side: Z +90, Left side: Z -90
@@ -36,7 +38,8 @@ const animators = []; // Content retrieved in onStart
 
 const MUSCLE_ADJUSTABLE_SUBNODE_NAMES = [
     "BodyMesh",
-    "JeansMesh"
+    "JeansMesh",
+    "ClothesMesh"
 ];
 
 // Mapping: HumanoidBone enum -> bone node name in hierarchy (Character Creator naming)
@@ -311,14 +314,13 @@ $.onUpdate((deltaTime) => {
         $.state.squatCount = squatNum;
 
         const base = $.state.muscleValue ?? 0;
-        // After SQUAT_CAP squats, shrink amount equals grow amount (net gain = 0)
-        const shrinkAmount = squatNum > SQUAT_CAP ? MUSCLE_GROW_AMOUNT : MUSCLE_SHRINK_AMOUNT;
-        const netGain = MUSCLE_GROW_AMOUNT - shrinkAmount;
+        const growAmount = MUSCLE_GROW_BASE + (squatNum - 1) * MUSCLE_GROW_INCREMENT;
+        const netGain = squatNum > SQUAT_CAP ? 0 : (MUSCLE_GROW_BASE - MUSCLE_SHRINK_AMOUNT);
 
-        $.state.muscleAnimPhase  = "growing";
+        $.state.muscleAnimPhase  = "waiting";
         $.state.muscleAnimTimer  = 0;
         $.state.muscleBaseValue  = base;
-        $.state.musclePeakValue  = Math.min(base + MUSCLE_GROW_AMOUNT, 1.0);
+        $.state.musclePeakValue  = Math.min(base + growAmount, 1.0);
         $.state.muscleFinalValue = Math.min(base + netGain, 1.0);
         $.log("squat #" + squatNum + "! Starting muscle pump... (net gain: " + netGain + ")");
 
@@ -338,14 +340,13 @@ $.onUpdate((deltaTime) => {
 
         // Trigger muscle pump animation as if player completed a squat
         const base = $.state.muscleValue ?? 0;
-        // After SQUAT_CAP squats, shrink amount equals grow amount (net gain = 0)
-        const shrinkAmount = squatNum > SQUAT_CAP ? MUSCLE_GROW_AMOUNT : MUSCLE_SHRINK_AMOUNT;
-        const netGain = MUSCLE_GROW_AMOUNT - shrinkAmount;
+        const growAmount = MUSCLE_GROW_BASE + (squatNum - 1) * MUSCLE_GROW_INCREMENT;
+        const netGain = squatNum > SQUAT_CAP ? 0 : (MUSCLE_GROW_BASE - MUSCLE_SHRINK_AMOUNT);
 
-        $.state.muscleAnimPhase  = "growing";
+        $.state.muscleAnimPhase  = "waiting";
         $.state.muscleAnimTimer  = 0;
         $.state.muscleBaseValue  = base;
-        $.state.musclePeakValue  = Math.min(base + MUSCLE_GROW_AMOUNT, 1.0);
+        $.state.musclePeakValue  = Math.min(base + growAmount, 1.0);
         $.state.muscleFinalValue = Math.min(base + netGain, 1.0);
 
         $.log("[TEST] Simulated squat #" + squatNum + "/" + TEST_SQUAT_COUNT + " (net gain: " + netGain + ")");
@@ -364,7 +365,12 @@ $.onUpdate((deltaTime) => {
     if (phase !== "none") {
       let timer = ($.state.muscleAnimTimer ?? 0) + deltaTime;
 
-      if (phase === "growing") {
+      if (phase === "waiting") {
+        if (timer >= MUSCLE_GROW_DELAY) {
+          $.state.muscleAnimPhase = "growing";
+          timer = 0;
+        }
+      } else if (phase === "growing") {
         const progress = Math.min(timer / MUSCLE_GROW_DURATION, 1.0);
         $.state.muscleValue = $.state.muscleBaseValue +
             ($.state.musclePeakValue - $.state.muscleBaseValue) * progress;
@@ -392,6 +398,7 @@ $.onUpdate((deltaTime) => {
 
     // === Apply blendshape value to Animator ===
     for (const animator of animators) {
+      $.log($.state.muscleValue);
       animator.setFloat("MuscleWeight", $.state.muscleValue ?? 0);
     }
 });
