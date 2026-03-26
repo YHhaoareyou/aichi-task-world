@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11257973, g: 0.41770256, b: 0.72310334, a: 1}
+  m_IndirectSpecularColor: {r: 0.11281369, g: 0.41811544, b: 0.72691685, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -138,7 +138,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &31239173
 Transform:
@@ -167,7 +167,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.7
+  m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082
@@ -249,7 +249,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 699320113}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &142653812
 BoxCollider:
@@ -367,8 +367,77 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &290059636
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0399773
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7083243531045752014, guid: 029d235e6d092d0489069795ea979863,
+        type: 3}
+      propertyPath: m_Name
+      value: Gym
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 029d235e6d092d0489069795ea979863, type: 3}
 --- !u!1 &332418146
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +486,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &332418151
 MonoBehaviour:
@@ -483,7 +552,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &433993099
 Transform:
@@ -548,7 +617,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 699320113}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &652825463
 MonoBehaviour:
@@ -596,13 +665,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1936705051}
   - {fileID: 652825462}
   - {fileID: 1341670703}
   - {fileID: 142653811}
   - {fileID: 1033709955}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &740794595
 PrefabInstance:
@@ -611,15 +679,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2263574305468852293, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305468852295, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: worldOrEventId
+      value: d7251ef7-5d5e-412c-b57c-8f3c6c8d1236
+      objectReference: {fileID: 0}
     - target: {fileID: 2263574305700755203, guid: 5475fa3e27333b2419a0bb8086303137,
         type: 3}
       propertyPath: m_Name
-      value: PortalBackToLuidaBar
+      value: PortalBackToPainCamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263574305700755203, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2263574305700755212, guid: 5475fa3e27333b2419a0bb8086303137,
         type: 3}
@@ -670,6 +753,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334603059591836653, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334603059591836653, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334603059591836653, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060834067666487089, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635292384431297562, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_Height
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5635292384431297562, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7802549854459859036, guid: 5475fa3e27333b2419a0bb8086303137,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7983046424318925154, guid: 5475fa3e27333b2419a0bb8086303137,
         type: 3}
@@ -749,38 +867,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5475fa3e27333b2419a0bb8086303137, type: 3}
---- !u!1 &787405256
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 787405257}
-  m_Layer: 0
-  m_Name: StaticObjects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &787405257
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787405256}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 828225984}
-  m_Father: {fileID: 2029845015}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &814595607
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +914,7 @@ PrefabInstance:
     - target: {fileID: 4926791329565251792, guid: 8a330a53a72cdce43b6a29f5d3831173,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4926791329565251792, guid: 8a330a53a72cdce43b6a29f5d3831173,
         type: 3}
@@ -907,89 +993,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a330a53a72cdce43b6a29f5d3831173, type: 3}
---- !u!1 &828225983
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 828225984}
-  - component: {fileID: 828225986}
-  - component: {fileID: 828225985}
-  m_Layer: 0
-  m_Name: Plane
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
---- !u!4 &828225984
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828225983}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 787405257}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &828225985
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828225983}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 8cdafa240bf0d43ff9d217a125c4c929, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &828225986
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828225983}
-  m_Mesh: {fileID: 4300000, guid: f9f571ff5f7df4b8e97c0b5cc019d9ef, type: 3}
 --- !u!1 &876203313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,7 +1007,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &876203314
 Transform:
@@ -1037,72 +1040,70 @@ PrefabInstance:
     - target: {fileID: 320188938653792925, guid: c429a845517c96a419988cd638c846f1,
         type: 3}
       propertyPath: sourceCode
-      value: "expID = \"expID_example\";\ntoken = \"\";\ncallExternalEndpointID =
-        \"61c788d9-0da3-40aa-b5c2-f8858727c894\";\npNum = 1;\n\r\n$.onStart(() =>
-        {\r\n  $.state.isBetweenSubjectsConditionsSet = false;\r\n  $.groupState.isParticipantsEnough
-        = false;\r\n  $.groupState.sessionID = Date.now() + \"_\" +  (Math.random()
-        + 1).toString(36).substring(2, 8);\r\n  $.groupState.participants = []; //
-        array of PlayerHandle who are currently in the experiment\r\n  $.state.participantsEnvInfo
-        = [];\r\n  $.state.idfc2userId = {};\r\n  $.state.timer = 0;\r\n  \r\n  //
-        TODO: load exp info so that we can check later what environments this experiment
-        requires\r\n})\r\n\r\n$.onUpdate((deltaTime) => {\r\n    if (!$.groupState.isParticipantsEnough)
-        {\r\n        $.state.timer += deltaTime;\r\n        if ($.state.timer >=
-        1){\r\n            $.state.timer = 0;\r\n            let pIdfcs = $.groupState.participants.map(p
-        => p.idfc);\r\n            const newPlayers = $.getPlayersNear($.getPosition(),
-        Infinity)\r\n                .filter(p => !pIdfcs.includes(p.idfc));\r\n           
-        if (newPlayers.length > 0) {\r\n                for (const newPlayer of newPlayers)
-        {\r\n                    // TODO: Check if the player is eligible to join
-        the experiment before adding them to $.groupState.participants.\r\n                   
-        $.groupState.participants = [ ...$.groupState.participants, newPlayer ];\r\n                   
-        $.setPlayerScript(newPlayer);\r\n                    newPlayer.send(\"initializeParticipant\",
-        true);\r\n                }\r\n            }\r\n            if (!$.groupState.isParticipantsEnough
-        && $.groupState.participants.length >= pNum) {\r\n                HandleParticipantsEnough();\r\n           
-        }\r\n        }\r\n    } else if ($.state.isBetweenSubjectsConditionsSet)
-        { // participants are enough & conditions are set\r\n        $.state.isBetweenSubjectsConditionsSet
-        = false;\r\n        let request = {\r\n            type: \"uploadCustomData\",\r\n           
-        data: {\r\n                pInfo: $.state.participantsEnvInfo.map(info =>
-        ({ ts: Date.now(), sID: $.groupState.sessionID || \"\", ...info, betweenSubjectsConditions:
-        $.state.betweenSubjectsConditions })),\r\n                idfc2userId: $.state.idfc2userId\r\n           
-        },\r\n            token: token || \"\",\r\n            eID: expID || \"\",\r\n           
-        sID: $.groupState.sessionID || \"\"\r\n        };\r\n        $.callExternal(new
-        ExternalEndpointId(callExternalEndpointID), JSON.stringify(request), \"customDataUploaded\");\r\n   
-        }\r\n/*\r\n  if ($.getStateCompat(\"this\", \"exp_checkJoinEligibility\",
-        \"boolean\")) {\r\n    $.setStateCompat(\"this\", \"exp_checkJoinEligibility\",
-        false);\r\n\r\n    let pIdfcs = $.groupState.participants.map(p => p.idfc);\r\n   
-        const newPlayers = $.getPlayersNear($.getPosition(), 1)\r\n      .filter(p
-        => !pIDFCs.includes(p.idfc));\r\n    \r\n    if (newPlayers.length > 0) {\r\n     
-        $.state.newPlayers = newPlayers;\r\n      $.log(newPlayers[0].idfc);\r\n\r\n     
-        const request = {\r\n        type: \"checkJoinEligibility\",\r\n        token:
-        token || \"\",\r\n        eID: expID || \"\",\r\n        idfcs: newPlayers.map(p
-        => p.idfc).join(\"|\")\r\n      };\r\n      $.callExternal(new ExternalEndpointId(callExternalEndpointID),
-        JSON.stringify(request), \"joinEligibilityChecked\");\r\n    }\r\n  }\r\n*/\r\n})\r\n\r\n$.onReceive((messageType,
-        arg, sender) => {\r\n    switch (messageType) {\r\n        case \"betweenSubjectsCondition\":\r\n           
-        $.state.betweenSubjectsConditions = arg;\r\n            $.state.isBetweenSubjectsConditionsSet
-        = true;\r\n            break;\r\n        case \"envInfoResponse\":\r\n           
-        $.state.participantsEnvInfo = [\r\n              ...$.state.participantsEnvInfo,\r\n             
-        {\r\n                idfc: sender.idfc,\r\n                envInfo: arg\r\n             
-        }\r\n            ];\r\n            let idfc2userId = { ...$.state.idfc2userId
-        };\r\n            idfc2userId[sender.idfc] = sender.userId;\r\n           
-        $.state.idfc2userId = idfc2userId;\r\n            break;\r\n        default:\r\n           
-        break;\r\n    }\r\n}, { item: true, player: true });\r\n\r\nfunction HandleParticipantsEnough()
-        {\r\n  $.log(\"Participants are enough to start the experiment.\");\r\n 
-        $.groupState.isParticipantsEnough = true;\r\n  $.sendSignalCompat(\"this\",
-        \"exp_playersAreEnough\");\r\n  $.sendSignalCompat(\"this\", \"exp_StartStateTransition\");\r\n\r\n 
-        const conditionManager = $.worldItemReference(\"ConditionManager\");\r\n 
-        if (conditionManager) {\r\n    conditionManager.send(\"luida_participants_info\",
-        {\r\n      participants: $.groupState.participants,\r\n      sessionID: $.groupState.sessionID\r\n   
-        });\r\n  }\r\n}\r\n\r\n/*\r\n$.onExternalCallEnd((res, meta, err) =>\r\n{\r\n 
-        if (res == null) {\r\n    $.log(\"callExternal ERROR: \" + err);\r\n    return;\r\n 
-        }\r\n\r\n  if (meta === \"joinEligibilityChecked\") {\r\n    const parsedRes
-        = JSON.parse(res);\r\n    $.state.newPlayers.forEach(newPlayer => {\r\n     
-        if (parsedRes.ineligibleIdfcs.includes(newPlayer.idfc)) {\r\n        // TODO:
-        Show message about that this player is not eligible to join this experiment,
-        and teleport the player back to LUIDA bar world.\r\n      } else {\r\n       
-        newPlayer.setMoveSpeedRate(1);\r\n        $.groupState.participants = [ ...$.groupState.participants,
-        newPlayer ];\r\n        // TODO: Instead of enabling move, teleport the player
-        from the checking area to the task area.\r\n      }\r\n    });\r\n    \r\n   
-        $.state.newPlayers = [];\r\n    $.log(\"Only users who have not joined this
-        experiment before are allowed to proceed to the experiment.\");\r\n  }\r\n});\r\n*/\r\n"
+      value: "expID = \"expID_example\";\ntoken = \"token_example\";\ncallExternalEndpointID
+        = \"callExternalEndpointID_example\";\npNum = 1;\n\r\n$.onStart(() => {\n 
+        $.state.isBetweenSubjectsConditionsSet = false;\n  $.groupState.isParticipantsEnough
+        = false;\n  $.groupState.sessionID = Date.now() + \"_\" +  (Math.random()
+        + 1).toString(36).substring(2, 8);\n  $.groupState.participants = []; //
+        array of PlayerHandle who are currently in the experiment\n  $.state.participantsEnvInfo
+        = [];\n  $.state.idfc2userId = {};\n  $.state.timer = 0;\n  \n  // TODO:
+        load exp info so that we can check later what environments this experiment
+        requires\n})\n\n$.onUpdate((deltaTime) => {\n    if (!$.groupState.isParticipantsEnough)
+        {\n        $.state.timer += deltaTime;\n        if ($.state.timer >= 1){\n           
+        $.state.timer = 0;\n            let pIdfcs = $.groupState.participants.map(p
+        => p.idfc);\n            const newPlayers = $.getPlayersNear($.getPosition(),
+        Infinity)\n                .filter(p => !pIdfcs.includes(p.idfc));\n           
+        if (newPlayers.length > 0) {\n                for (const newPlayer of newPlayers)
+        {\n                    // TODO: Check if the player is eligible to join the
+        experiment before adding them to $.groupState.participants.\n                   
+        $.groupState.participants = [ ...$.groupState.participants, newPlayer ];\n                   
+        $.setPlayerScript(newPlayer);\n                    newPlayer.send(\"initializeParticipant\",
+        true);\n                }\n            }\n            if (!$.groupState.isParticipantsEnough
+        && $.groupState.participants.length >= pNum) {\n                HandleParticipantsEnough();\n           
+        }\n        }\n    } else if ($.state.isBetweenSubjectsConditionsSet) { //
+        participants are enough & conditions are set\n        $.state.isBetweenSubjectsConditionsSet
+        = false;\n        let request = {\n            type: \"uploadCustomData\",\n           
+        data: {\n                pInfo: $.state.participantsEnvInfo.map(info => ({
+        ts: Date.now(), sID: $.groupState.sessionID || \"\", ...info, betweenSubjectsConditions:
+        $.state.betweenSubjectsConditions })),\n                idfc2userId: $.state.idfc2userId\n           
+        },\n            token: token || \"\",\n            eID: expID || \"\",\n           
+        sID: $.groupState.sessionID || \"\"\n        };\n        $.callExternal(new
+        ExternalEndpointId(callExternalEndpointID), JSON.stringify(request), \"customDataUploaded\");\n   
+        }\n/*\n  if ($.getStateCompat(\"this\", \"exp_checkJoinEligibility\", \"boolean\"))
+        {\n    $.setStateCompat(\"this\", \"exp_checkJoinEligibility\", false);\n\n   
+        let pIdfcs = $.groupState.participants.map(p => p.idfc);\n    const newPlayers
+        = $.getPlayersNear($.getPosition(), 1)\n      .filter(p => !pIDFCs.includes(p.idfc));\n   
+        \n    if (newPlayers.length > 0) {\n      $.state.newPlayers = newPlayers;\n     
+        $.log(newPlayers[0].idfc);\n\n      const request = {\n        type: \"checkJoinEligibility\",\n       
+        token: token || \"\",\n        eID: expID || \"\",\n        idfcs: newPlayers.map(p
+        => p.idfc).join(\"|\")\n      };\n      $.callExternal(new ExternalEndpointId(callExternalEndpointID),
+        JSON.stringify(request), \"joinEligibilityChecked\");\n    }\n  }\n*/\n})\n\n$.onReceive((messageType,
+        arg, sender) => {\n    switch (messageType) {\n        case \"betweenSubjectsCondition\":\n           
+        $.state.betweenSubjectsConditions = arg;\n            $.state.isBetweenSubjectsConditionsSet
+        = true;\n            break;\n        case \"envInfoResponse\":\n           
+        $.state.participantsEnvInfo = [\n              ...$.state.participantsEnvInfo,\n             
+        {\n                idfc: sender.idfc,\n                envInfo: arg\n             
+        }\n            ];\n            let idfc2userId = { ...$.state.idfc2userId
+        };\n            idfc2userId[sender.idfc] = sender.userId;\n            $.state.idfc2userId
+        = idfc2userId;\n            break;\n        default:\n            break;\n   
+        }\n}, { item: true, player: true });\n\nfunction HandleParticipantsEnough()
+        {\n  $.log(\"Participants are enough to start the experiment.\");\n  $.groupState.isParticipantsEnough
+        = true;\n  $.sendSignalCompat(\"this\", \"exp_playersAreEnough\");\n  $.sendSignalCompat(\"this\",
+        \"exp_StartStateTransition\");\n\n  const conditionManager = $.worldItemReference(\"ConditionManager\");\n 
+        if (conditionManager) {\n    conditionManager.send(\"luida_participants_info\",
+        {\n      participants: $.groupState.participants,\n      sessionID: $.groupState.sessionID\n   
+        });\n  }\n}\n\n/*\n$.onExternalCallEnd((res, meta, err) =>\n{\n  if (res
+        == null) {\n    $.log(\"callExternal ERROR: \" + err);\n    return;\n  }\n\n 
+        if (meta === \"joinEligibilityChecked\") {\n    const parsedRes = JSON.parse(res);\n   
+        $.state.newPlayers.forEach(newPlayer => {\n      if (parsedRes.ineligibleIdfcs.includes(newPlayer.idfc))
+        {\n        // TODO: Show message about that this player is not eligible to
+        join this experiment, and teleport the player back to LUIDA bar world.\n     
+        } else {\n        newPlayer.setMoveSpeedRate(1);\n        $.groupState.participants
+        = [ ...$.groupState.participants, newPlayer ];\n        // TODO: Instead
+        of enabling move, teleport the player from the checking area to the task
+        area.\n      }\n    });\n    \n    $.state.newPlayers = [];\n    $.log(\"Only
+        users who have not joined this experiment before are allowed to proceed to
+        the experiment.\");\n  }\n});\n*/\n"
       objectReference: {fileID: 0}
     - target: {fileID: 908684358854966727, guid: c429a845517c96a419988cd638c846f1,
         type: 3}
@@ -1132,125 +1133,119 @@ PrefabInstance:
     - target: {fileID: 2963938157378484328, guid: c429a845517c96a419988cd638c846f1,
         type: 3}
       propertyPath: sourceCode
-      value: "const trialsCountForEachUniqueCondition = 1;\r\nconst within_subjects_variables
-        = [\r\n];\r\nconst between_subjects_variables = [\r\n];\r\nconst state_names
-        = [];\r\n\r\n$.onStart(() => {\r\n  initializeRandomBetweenSubjectsConditions();\r\n 
-        reset();\r\n});\r\n\r\n$.onUpdate(() => {\r\n  if (\r\n    $.state.trialID
-        !== $.getStateCompat(\"global\", \"exp_trialID\", \"integer\") &&\r\n     
-        $.getStateCompat(\"global\", \"exp_trialID\", \"integer\") >= 0\r\n  ) {\r\n   
-        $.state.trialID = $.getStateCompat(\"global\", \"exp_trialID\", \"integer\");\r\n   
-        updateCondition();\r\n  }\r\n});\r\n\r\n$.onReceive((messageType, arg, sender)
-        => {\r\n  switch (messageType) {\r\n    case \"luida_participants_info\":\r\n     
-        $.groupState.participants = arg.participants;\r\n      $.groupState.sessionID
-        = arg.sessionID;\r\n      sender.send(\"betweenSubjectsCondition\", $.state.betweenSubjectsConditions);\r\n     
-        break;\r\n    // case \"exp_questionnaire_answer\":\r\n    //     $.state.betweenSubjectsConditions
-        = GetBetweenSubjectsCondition(arg);\r\n    //     break;\r\n    default:\r\n     
-        break;\r\n  }\r\n});\r\n\r\nfunction updateCondition() {\r\n  if ($.state.trialID
-        >= $.state.trialCount) {\r\n    $.sendSignalCompat(\"this\", \"exp_resetTrials\");\r\n 
-        } else if ($.state.trialID <= -1) {\r\n    reset();\r\n  } else {\r\n   
-        let condition = { ...$.state.betweenSubjectsConditions };\r\n    for (let
-        i = 0; i < $.state.withinSubjectsVariableNames.length; i++) {\r\n      const
-        varName = $.state.withinSubjectsVariableNames[i];\r\n      const varValue
-        =\r\n          within_subjects_variables[i].values[\r\n              $.state.withinSubjectsConditionIndicesByTrial[$.state.trialID][i]\r\n             
-        ];\r\n      condition[varName] = varValue;\r\n    }\r\n    $.groupState.currentCondition
-        = condition;\r\n\r\n    // Check if this is the last trial (if true, stop
-        repeating trials when next state transition is triggered)\r\n    if (\r\n       
-        $.state.trialCount > 0 &&\r\n        !$.state.isLast &&\r\n        $.state.trialID
-        >= $.state.trialCount - 1\r\n    ) {\r\n      $.state.isLast = true;\r\n     
-        $.sendSignalCompat(\"this\", \"exp_readyToLeaveTrials\");\r\n    }\r\n  }\r\n}\r\n\r\nfunction
-        reset() {\r\n  $.state.trialID = 0;\r\n  if (!$.state.betweenSubjectsConditions)\r\n   
-        $.state.betweenSubjectsConditions = {};\r\n  $.state.withinSubjectsVariableNames
-        = [];\r\n  $.state.withinSubjectsConditionIndicesByTrial = [];\r\n  $.state.trialCount
-        = 1;\r\n  $.groupState.currentCondition = {\r\n    ...$.state.betweenSubjectsConditions,\r\n 
-        };\r\n  $.groupState.stateNames = state_names || [];\r\n  try {\r\n    initializeWithinSubjectsConditions(\r\n     
-        within_subjects_variables,\r\n      trialsCountForEachUniqueCondition\r\n   
-        );\r\n  } catch (error) {\r\n    $.log(error);\r\n    $.log(\"Within-subjects
-        variables are not defined.\");\r\n    initializeWithinSubjectsConditions([],
-        1);\r\n  }\r\n  updateCondition();\r\n}\r\n\r\nfunction initializeRandomBetweenSubjectsConditions()
-        {\r\n  let betweenSubjectsCondition = {};\r\n  try {\r\n    between_subjects_variables.forEach((v)
-        => {\r\n      if (!betweenSubjectsCondition[v.name]) {\r\n        if (v.debugValue)
-        {\r\n          betweenSubjectsCondition[v.name] = v.debugValue;\r\n       
-        } else if (v.isRandom) {\r\n          betweenSubjectsCondition[v.name] =\r\n             
-        v.values[Math.floor(Math.random() * v.values.length)];\r\n        }\r\n     
-        }\r\n    });\r\n  } catch (e) {\r\n    $.log(\"Between-subjects variables
-        are not defined.\");\r\n  }\r\n  $.state.betweenSubjectsConditions = betweenSubjectsCondition;\r\n}\r\n\r\nfunction
-        initializeWithinSubjectsConditions(variables, repeatsPerCond = 1) {\r\n 
-        variables = [...variables.sort((a, b) => a.isRandom - b.isRandom)];\r\n 
-        const varNames = variables.map((v) => v.name);\r\n\r\n  let indicesPerVar
-        = variables.map((v) =>\r\n    Array.from({ length: v.values.length }, (_,
-        i) => i)\r\n  );\r\n  let condIndicesList = indicesPerVar\r\n    .reduce(\r\n     
-        (acc, array) => {\r\n        return acc.flatMap((accItem) =>\r\n         
-        array.map((arrayItem) => [...accItem, arrayItem])\r\n        );\r\n     
-        },\r\n      [[]]\r\n    )\r\n    .flatMap((condIndices) =>\r\n      Array.from({
-        length: repeatsPerCond }, () => condIndices)\r\n    );\r\n\r\n  let shufflePartitionSize
-        = 0;\r\n  for (let i = 0; i < variables.length; i++) {\r\n    if (variables[i].isRandom)
-        {\r\n      shufflePartitionSize =\r\n        shufflePartitionSize === 0\r\n         
-        ? variables[i].values.length\r\n          : shufflePartitionSize * variables[i].values.length;\r\n   
-        }\r\n  }\r\n  shufflePartitionSize *= repeatsPerCond;\r\n\r\n  if (shufflePartitionSize
-        > 0) {\r\n    const result = [...condIndicesList]; // Copy the array to avoid
-        mutating the original\r\n    for (let i = 0; i < condIndicesList.length;
-        i += shufflePartitionSize) {\r\n      let partition = result.slice(i, i +
-        shufflePartitionSize);\r\n      partition = shuffleArray(partition);\r\n     
-        result.splice(i, shufflePartitionSize, ...partition);\r\n    }\r\n    condIndicesList
-        = result;\r\n  }\r\n\r\n  $.state.withinSubjectsVariableNames = varNames;\r\n 
-        $.state.withinSubjectsConditionIndicesByTrial = condIndicesList;\r\n  $.state.trialCount
-        = condIndicesList.length;\r\n}\r\n\r\nfunction shuffleArray(array) {\r\n 
-        for (let i = array.length - 1; i > 0; i--) {\r\n    const j = Math.floor(Math.random()
-        * (i + 1));\r\n    [array[i], array[j]] = [array[j], array[i]];\r\n  }\r\n 
-        return array;\r\n}\r\n"
+      value: "const trialsCountForEachUniqueCondition = 1;\nconst within_subjects_variables
+        = [\n];\nconst between_subjects_variables = [\n];\nconst state_names = [];\n\r\n$.onStart(()
+        => {\n  initializeRandomBetweenSubjectsConditions();\n  reset();\n});\n\n$.onUpdate(()
+        => {\n  if (\n    $.state.trialID !== $.getStateCompat(\"global\", \"exp_trialID\",
+        \"integer\") &&\n      $.getStateCompat(\"global\", \"exp_trialID\", \"integer\")
+        >= 0\n  ) {\n    $.state.trialID = $.getStateCompat(\"global\", \"exp_trialID\",
+        \"integer\");\n    updateCondition();\n  }\n});\n\n$.onReceive((messageType,
+        arg, sender) => {\n  switch (messageType) {\n    case \"luida_participants_info\":\n     
+        $.groupState.participants = arg.participants;\n      $.groupState.sessionID
+        = arg.sessionID;\n      sender.send(\"betweenSubjectsCondition\", $.state.betweenSubjectsConditions);\n     
+        break;\n    // case \"exp_questionnaire_answer\":\n    //     $.state.betweenSubjectsConditions
+        = GetBetweenSubjectsCondition(arg);\n    //     break;\n    default:\n     
+        break;\n  }\n});\n\nfunction updateCondition() {\n  if ($.state.trialID >=
+        $.state.trialCount) {\n    $.sendSignalCompat(\"this\", \"exp_resetTrials\");\n 
+        } else if ($.state.trialID <= -1) {\n    reset();\n  } else {\n    let condition
+        = { ...$.state.betweenSubjectsConditions };\n    for (let i = 0; i < $.state.withinSubjectsVariableNames.length;
+        i++) {\n      const varName = $.state.withinSubjectsVariableNames[i];\n     
+        const varValue =\n          within_subjects_variables[i].values[\n             
+        $.state.withinSubjectsConditionIndicesByTrial[$.state.trialID][i]\n             
+        ];\n      condition[varName] = varValue;\n    }\n    $.groupState.currentCondition
+        = condition;\n\n    // Check if this is the last trial (if true, stop repeating
+        trials when next state transition is triggered)\n    if (\n        $.state.trialCount
+        > 0 &&\n        !$.state.isLast &&\n        $.state.trialID >= $.state.trialCount
+        - 1\n    ) {\n      $.state.isLast = true;\n      $.sendSignalCompat(\"this\",
+        \"exp_readyToLeaveTrials\");\n    }\n  }\n}\n\nfunction reset() {\n  $.state.trialID
+        = 0;\n  if (!$.state.betweenSubjectsConditions)\n    $.state.betweenSubjectsConditions
+        = {};\n  $.state.withinSubjectsVariableNames = [];\n  $.state.withinSubjectsConditionIndicesByTrial
+        = [];\n  $.state.trialCount = 1;\n  $.groupState.currentCondition = {\n   
+        ...$.state.betweenSubjectsConditions,\n  };\n  $.groupState.stateNames =
+        state_names || [];\n  try {\n    initializeWithinSubjectsConditions(\n     
+        within_subjects_variables,\n      trialsCountForEachUniqueCondition\n   
+        );\n  } catch (error) {\n    $.log(error);\n    $.log(\"Within-subjects variables
+        are not defined.\");\n    initializeWithinSubjectsConditions([], 1);\n  }\n 
+        updateCondition();\n}\n\nfunction initializeRandomBetweenSubjectsConditions()
+        {\n  let betweenSubjectsCondition = {};\n  try {\n    between_subjects_variables.forEach((v)
+        => {\n      if (!betweenSubjectsCondition[v.name]) {\n        if (v.debugValue)
+        {\n          betweenSubjectsCondition[v.name] = v.debugValue;\n        }
+        else if (v.isRandom) {\n          betweenSubjectsCondition[v.name] =\n             
+        v.values[Math.floor(Math.random() * v.values.length)];\n        }\n     
+        }\n    });\n  } catch (e) {\n    $.log(\"Between-subjects variables are not
+        defined.\");\n  }\n  $.state.betweenSubjectsConditions = betweenSubjectsCondition;\n}\n\nfunction
+        initializeWithinSubjectsConditions(variables, repeatsPerCond = 1) {\n  variables
+        = [...variables.sort((a, b) => a.isRandom - b.isRandom)];\n  const varNames
+        = variables.map((v) => v.name);\n\n  let indicesPerVar = variables.map((v)
+        =>\n    Array.from({ length: v.values.length }, (_, i) => i)\n  );\n  let
+        condIndicesList = indicesPerVar\n    .reduce(\n      (acc, array) => {\n       
+        return acc.flatMap((accItem) =>\n          array.map((arrayItem) => [...accItem,
+        arrayItem])\n        );\n      },\n      [[]]\n    )\n    .flatMap((condIndices)
+        =>\n      Array.from({ length: repeatsPerCond }, () => condIndices)\n   
+        );\n\n  let shufflePartitionSize = 0;\n  for (let i = 0; i < variables.length;
+        i++) {\n    if (variables[i].isRandom) {\n      shufflePartitionSize =\n       
+        shufflePartitionSize === 0\n          ? variables[i].values.length\n         
+        : shufflePartitionSize * variables[i].values.length;\n    }\n  }\n  shufflePartitionSize
+        *= repeatsPerCond;\n\n  if (shufflePartitionSize > 0) {\n    const result
+        = [...condIndicesList]; // Copy the array to avoid mutating the original\n   
+        for (let i = 0; i < condIndicesList.length; i += shufflePartitionSize) {\n     
+        let partition = result.slice(i, i + shufflePartitionSize);\n      partition
+        = shuffleArray(partition);\n      result.splice(i, shufflePartitionSize,
+        ...partition);\n    }\n    condIndicesList = result;\n  }\n\n  $.state.withinSubjectsVariableNames
+        = varNames;\n  $.state.withinSubjectsConditionIndicesByTrial = condIndicesList;\n 
+        $.state.trialCount = condIndicesList.length;\n}\n\nfunction shuffleArray(array)
+        {\n  for (let i = array.length - 1; i > 0; i--) {\n    const j = Math.floor(Math.random()
+        * (i + 1));\n    [array[i], array[j]] = [array[j], array[i]];\n  }\n  return
+        array;\n}\n"
       objectReference: {fileID: 0}
     - target: {fileID: 3321547682731800438, guid: c429a845517c96a419988cd638c846f1,
         type: 3}
       propertyPath: sourceCode
-      value: "const haptics = _.hapticsHandle;\r\n\r\n_.onReceive((id, body, sender)
-        => {\r\n    switch (id) {\r\n        case \"haptics\":\r\n            if
-        (haptics.isAvailable()) {\r\n                const effect = new HapticsEffect();\r\n               
-        effect.frequency = body.frequency;\r\n                effect.amplitude =
-        body.amplitude;\r\n                effect.duration = body.duration;\r\n               
-        haptics.playEffect(effect, body.target);\r\n            }\r\n           
-        break;\r\n        case \"sendOsc\":\r\n            sendOsc(body.address,
-        body.values);\r\n            break;\r\n        case \"initializeParticipant\":\r\n           
-        _.setMoveSpeedRate(1);\r\n            _.sendTo(sender, \"envInfoResponse\",
-        {\r\n                isAndroid: _.isAndroid,\r\n                isDesktop:
-        _.isDesktop,\r\n                isIos: _.isIos,\r\n                isMacOs:
-        _.isMacOs,\r\n                isMobile: _.isMobile,\r\n                isVr:
-        _.isVr,\r\n                isWindows: _.isWindows\r\n            });\r\n           
-        break;\r\n        case \"setQuestionnaireUI\":\r\n            setQuestionnaireUI(body.n,\r\n               
-        (body.hasOwnProperty(\"e\") ? body.e : null),\r\n                body.p,
-        body.r,\r\n                (body.hasOwnProperty(\"t\") ? body.t.toString()
-        : null));\r\n            break;\r\n        case \"setQuestionnaireUIs\":\r\n           
-        for (const ui of body) {\r\n                setQuestionnaireUI(ui.n,\r\n                   
-        (ui.hasOwnProperty(\"e\") ? ui.e : null),\r\n                    ui.p, ui.r,\r\n                   
-        (ui.hasOwnProperty(\"t\") ? ui.t.toString() : null));\r\n            }\r\n           
-        break;\r\n        case \"clearQuestionnaireAnswerUIs\":\r\n            let
-        targetUI = _.playerLocalObject(\"luida_questionnaire_ui\").findObject(\"AnsText\");\r\n           
-        targetUI.setEnabled(false);\r\n            for (let i = 0; i < 20; i++) {\r\n               
+      value: "const haptics = _.hapticsHandle;\n\n_.onReceive((id, body, sender)
+        => {\n    switch (id) {\n        case \"haptics\":\n            if (haptics.isAvailable())
+        {\n                const effect = new HapticsEffect();\n                effect.frequency
+        = body.frequency;\n                effect.amplitude = body.amplitude;\n               
+        effect.duration = body.duration;\n                haptics.playEffect(effect,
+        body.target);\n            }\n            break;\n        case \"sendOsc\":\n           
+        sendOsc(body.address, body.values);\n            break;\n        case \"initializeParticipant\":\n           
+        _.setMoveSpeedRate(1);\n            _.sendTo(sender, \"envInfoResponse\",
+        {\n                isAndroid: _.isAndroid,\n                isDesktop: _.isDesktop,\n               
+        isIos: _.isIos,\n                isMacOs: _.isMacOs,\n                isMobile:
+        _.isMobile,\n                isVr: _.isVr,\n                isWindows: _.isWindows\n           
+        });\n            break;\n        case \"setQuestionnaireUI\":\n           
+        setQuestionnaireUI(body.n,\n                (body.hasOwnProperty(\"e\") ?
+        body.e : null),\n                body.p, body.r,\n                (body.hasOwnProperty(\"t\")
+        ? body.t.toString() : null));\n            break;\n        case \"setQuestionnaireUIs\":\n           
+        for (const ui of body) {\n                setQuestionnaireUI(ui.n,\n                   
+        (ui.hasOwnProperty(\"e\") ? ui.e : null),\n                    ui.p, ui.r,\n                   
+        (ui.hasOwnProperty(\"t\") ? ui.t.toString() : null));\n            }\n           
+        break;\n        case \"clearQuestionnaireAnswerUIs\":\n            let targetUI
+        = _.playerLocalObject(\"luida_questionnaire_ui\").findObject(\"AnsText\");\n           
+        targetUI.setEnabled(false);\n            for (let i = 0; i < 20; i++) {\n               
         targetUI = _.playerLocalObject(\"luida_questionnaire_ui\").findObject(\"AnsOptLabel_\"
-        + i);\r\n                if (targetUI) {\r\n                    targetUI.setEnabled(false);\r\n               
-        } else {\r\n                    break;\r\n                }\r\n           
-        }\r\n            break;\r\n        default:\r\n            break;\r\n   
-        }\r\n});\r\n\r\nfunction setQuestionnaireUI(targetName, isEnabled, position,
-        rotation, text) {\r\n    let targetUI = _.playerLocalObject(\"luida_questionnaire_ui\").findObject(targetName);\r\n   
-        if (!targetUI) return;\r\n    if (isEnabled !== null) targetUI.setEnabled(isEnabled);\r\n   
+        + i);\n                if (targetUI) {\n                    targetUI.setEnabled(false);\n               
+        } else {\n                    break;\n                }\n            }\n           
+        break;\n        default:\n            break;\n    }\n});\n\nfunction setQuestionnaireUI(targetName,
+        isEnabled, position, rotation, text) {\n    let targetUI = _.playerLocalObject(\"luida_questionnaire_ui\").findObject(targetName);\n   
+        if (!targetUI) return;\n    if (isEnabled !== null) targetUI.setEnabled(isEnabled);\n   
         if (position) targetUI.getUnityComponent(\"Transform\").unityProp.localPosition
-        = position;\r\n    if (rotation) targetUI.getUnityComponent(\"Transform\").unityProp.localRotation
-        = rotation;\r\n    if (text !== null) targetUI.findObject(\"Text\").getUnityComponent(\"Text\").unityProp.text
-        = text;\r\n}\r\n\r\nfunction sendOsc(address, values) {\r\n    if (typeof
-        _ === 'undefined' || typeof _.oscHandle === 'undefined') {\r\n        _.log(\"Error:
-        PlayerScript environment or oscHandle not found.\");\r\n        return;\r\n   
-        }\r\n\r\n    try {\r\n        const oscValues = values.map(val => {\r\n           
-        const type = typeof val;\r\n            if (type === 'boolean') {\r\n               
-        return OscValue.bool(val);\r\n            } else if (type === 'number') {\r\n               
-        if (Number.isInteger(val)) {\r\n                    return OscValue.int(val);\r\n               
-        } else {\r\n                    return OscValue.float(val);\r\n               
-        }\r\n            } else if (type === 'string') {\r\n                return
-        OscValue.asciiString(val);\r\n            } else {\r\n                _.log(`Warning:
-        Unsupported data type '${type}' for value '${val}'. Skipping.`);\r\n               
-        return null;\r\n            }\r\n        }).filter(v => v !== null);\r\n       
-        const message = new OscMessage(address, oscValues);\r\n        _.oscHandle.send(message);\r\n       
-        // _.log(`OSC message sent to ${address} with ${oscValues.length} value(s).`);\r\n\r\n   
-        } catch (e) {\r\n        _.log(`Error sending OSC message: ${e.message}`);\r\n   
-        }\r\n}\r\n"
+        = position;\n    if (rotation) targetUI.getUnityComponent(\"Transform\").unityProp.localRotation
+        = rotation;\n    if (text !== null) targetUI.findObject(\"Text\").getUnityComponent(\"Text\").unityProp.text
+        = text;\n}\n\nfunction sendOsc(address, values) {\n    if (typeof _ === 'undefined'
+        || typeof _.oscHandle === 'undefined') {\n        _.log(\"Error: PlayerScript
+        environment or oscHandle not found.\");\n        return;\n    }\n\n    try
+        {\n        const oscValues = values.map(val => {\n            const type
+        = typeof val;\n            if (type === 'boolean') {\n                return
+        OscValue.bool(val);\n            } else if (type === 'number') {\n               
+        if (Number.isInteger(val)) {\n                    return OscValue.int(val);\n               
+        } else {\n                    return OscValue.float(val);\n               
+        }\n            } else if (type === 'string') {\n                return OscValue.asciiString(val);\n           
+        } else {\n                _.log(`Warning: Unsupported data type '${type}'
+        for value '${val}'. Skipping.`);\n                return null;\n           
+        }\n        }).filter(v => v !== null);\n        const message = new OscMessage(address,
+        oscValues);\n        _.oscHandle.send(message);\n        // _.log(`OSC message
+        sent to ${address} with ${oscValues.length} value(s).`);\n\n    } catch (e)
+        {\n        _.log(`Error sending OSC message: ${e.message}`);\n    }\n}\n"
       objectReference: {fileID: 0}
     - target: {fileID: 3660925819112729135, guid: c429a845517c96a419988cd638c846f1,
         type: 3}
@@ -1364,18 +1359,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c429a845517c96a419988cd638c846f1, type: 3}
---- !u!114 &930668818 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7022389377809828575, guid: c429a845517c96a419988cd638c846f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 930668817}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6487efbf7339493cb3e1fa581f53b763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &997367276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,7 +1374,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &997367277
 Transform:
@@ -1451,7 +1434,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 699320113}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 5, y: 180, z: 0}
 --- !u!20 &1033709956
 Camera:
@@ -1574,7 +1557,7 @@ PrefabInstance:
     - target: {fileID: 4926791329565251792, guid: 8a330a53a72cdce43b6a29f5d3831173,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4926791329565251792, guid: 8a330a53a72cdce43b6a29f5d3831173,
         type: 3}
@@ -1683,7 +1666,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 699320113}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1341670704
 MonoBehaviour:
@@ -1766,177 +1749,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1434940726}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1594737542
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2627616726396763139, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: clusterScripts.Array.data[2]
-      value: 
-      objectReference: {fileID: 5022602860645237092, guid: 30bd7f0545cfc4d5abc0da4d8d895d4a,
-        type: 3}
-    - target: {fileID: 5964733846762761523, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_Name
-      value: LUIDA-DataCollector
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761524, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761526, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: sourceCode
-      value: "expID = \"expID_example\";\ntoken = \"\";\ncallExternalEndpointID =
-        \"61c788d9-0da3-40aa-b5c2-f8858727c894\";\npNum = 1;\n\r\nconst uploadInterval
-        = 1;\r\nconst dataLengthPerUpload = 100;\r\nconst dataByteLengthPerUpload
-        = 100000; // 102400\r\n\r\n$.onStart(() => {\r\n    $.state.customData =
-        [];\r\n    $.state.uploadIndex = 0;\r\n    $.state.elapsedTime = 0;\r\n   
-        // $.state.dataLength = 0;\r\n    $.state.steps = 0;\r\n    $.state.isUploading
-        = false;\r\n})\r\n\r\n$.onUpdate((deltaTime) => {\r\n    if ($.getStateCompat(\"this\",
-        \"exp_recordCustomData\", \"boolean\")) {\r\n        $.setStateCompat(\"this\",
-        \"exp_recordCustomData\", false);\r\n        recordData();\r\n    }\r\n   
-        if ($.getStateCompat(\"this\", \"exp_uploadCustomData\", \"boolean\")) {\r\n       
-        if ($.state.uploadIndex === 0) {\r\n            uploadDataInit();\r\n           
-        $.setStateCompat(\"this\", \"exp_uploadCustomData\", false);\r\n        }\r\n   
-        }\r\n    if ($.state.isUploading) {\r\n        $.state.elapsedTime = $.state.elapsedTime
-        + deltaTime;\r\n        if ($.state.elapsedTime >= uploadInterval && $.state.uploadIndex
-        < $.state.steps) {\r\n            $.state.elapsedTime = 0;\r\n           
-        uploadDataStep();\r\n        }\r\n    }\r\n})\r\n\r\n$.onExternalCallEnd((res,
-        meta, err) =>\r\n{\r\n    if (res == null) {\r\n        $.log(\"callExternal
-        ERROR: \" + err);\r\n        return;\r\n    }\r\n\r\n    if (meta === \"customDataUploaded\")
-        {\r\n        $.log(\"Response after customDataUploaded called: \" + JSON.stringify(res));\r\n   
-        }\r\n});\r\n\r\nfunction recordData () {\r\n    $.state.customData = calculateData();\r\n}\r\n\r\nfunction
-        uploadDataInit() {\r\n    $.state.uploadIndex = 0;\r\n    $.state.elapsedTime
-        = 0;\r\n    $.state.isUploading = true;\r\n\r\n    let dataByteLength = utf8ByteLength(JSON.stringify($.state.customData));\r\n   
-        $.log(\"Data byte length: \" + dataByteLength);\r\n    $.state.steps = Math.ceil(dataByteLength
-        / dataByteLengthPerUpload);\r\n}\r\n\r\nfunction uploadDataStep() {\r\n   
-        $.log(\"Upload data step: \" + $.state.uploadIndex);\r\n    if ($.state.uploadIndex
-        < $.state.steps) {\r\n        let request = {\r\n            type: \"uploadCustomData\",\r\n           
-        token: token || \"\",\r\n            data: { data: $.state.customData.slice($.state.uploadIndex
-        * dataLengthPerUpload, ($.state.uploadIndex + 1) * dataLengthPerUpload) },\r\n           
-        eID: expID || \"\",\r\n            sID: $.groupState.sessionID || \"\"\r\n       
-        };\r\n        $.log(JSON.stringify(request));\r\n        $.callExternal(\r\n           
-        new ExternalEndpointId(callExternalEndpointID),\r\n            JSON.stringify(request),\r\n           
-        \"customDataUploaded\");\r\n        $.state.uploadIndex = $.state.uploadIndex
-        + 1;\r\n\r\n        if ($.state.uploadIndex >= $.state.steps) {\r\n           
-        $.state.uploadIndex = 0;\r\n            $.state.isUploading = false;\r\n           
-        $.state.customData = [];\r\n        }\r\n    }\r\n}\r\n\r\nfunction utf8ByteLength(str)
-        {\r\n    let bytes = 0;\r\n    for (let i = 0; i < str.length; i++) {\r\n       
-        const code = str.charCodeAt(i);\r\n\r\n        if (code <= 0x7F)                     
-        bytes += 1; // U+0000 \u2013 U+007F\r\n        else if (code <= 0x7FF)               
-        bytes += 2; // U+0080 \u2013 U+07FF\r\n        else if (code >= 0xD800 &&
-        code <= 0xDBFF) {\r\n            // Surrogate pair (astral plane)\r\n           
-        bytes += 4;                          // Whole pair is 4 bytes\r\n           
-        i++;                                 // Skip the next surrogate\r\n       
-        }\r\n        else                                   bytes += 3; // U+0800
-        \u2013 U+FFFF\r\n    }\r\n    return bytes;\r\n}\r\n\r\nfunction calculateData
-        () {\r\n    let returnData = $.state.customData;\r\n    if (!Array.isArray(returnData))
-        returnData = [];\r\n    const CONDITION = $.groupState.currentCondition;\r\n   
-        const PARTICIPANTS = [null].concat($.groupState.participants);\r\n    const
-        COLLECTED_DATA = $.groupState.collectedData;\r\n    function saveData() {\r\n\r\n/*\r\n#
-        Available Variables in LUIDA Data Collector Script\r\n\r\nThe script for
-        LUIDA Data Collector is primarily to be written using ClusterScript (https://docs.cluster.mu/script/index.html).\r\n\r\nWe
-        also provide the following variables that work with LUIDA-only features.\r\n\r\nTip:
-        When asking an LLM service for coding assistance, first share the `Asset/Doc/CCK-Types.d.ts`
-        file and this comment section with it.\r\n\r\n### CONDITION\r\n    - Only
-        available if **LUIDA experiment progress automation feature is enabled and
-        during the trial states** (e.g., `Trial - Start`, `Trial - Rest`).\r\n   
-        - Contains values from your configured experimental variables for the current
-        trial.\r\n    - Use `CONDITION[\"your_variable_name\"]` to retrieve a specific
-        condition value within the current trial.\r\n\r\n### PARTICIPANTS\r\n   
-        - An array of PlayerHandle of the participants joining this experiment.\"\r\n   
-        - Use `PARTICIPANTS[1]` to retrieve the first participant, `PARTICIPANTS[2]`
-        to retrieve the second participant, etc.\r\n\r\n### COLLECTED_DATA\r\n   
-        - Contains data that are sent from state-listening items' `Send Data To Collector`
-        action or a customized action script's `SendDataToCollector(\"your_data_label\",
-        your_data_value)` function.\r\n    - Use `COLLECTED_DATA[\"your_data_label\"]`
-        to retrieve specific values.\r\n\r\n---\r\n\r\n**Important Note:** The script
-        **must return a value** at the end of its code block.\r\n\r\nExamples:\r\n   
-        - return { score: 100 };`\r\n    - const answer = $.getStateCompat('global',
-        'count', 'integer') > 5; return { isLarger: answer };`\r\n*/\r\nreturn {\r\n   
-        stateLog: COLLECTED_DATA ? COLLECTED_DATA[\"stateLog\"] : \"\", // Include
-        log of the current state by default (state name, id, and the timestamp when
-        the state starts)\r\n    cond: CONDITION || {}, // Include conditions in
-        the collected data by default (if you have enabled the experiment automation
-        feature)\r\n    someCckState: $.getStateCompat(\"global\", \"someCckState\",
-        \"boolean\"), // Replace with your in-scene state triggered by CCK components\r\n   
-        foo: 'bar' // Replace with your custom collected data\r\n};\r\n\r\n    return
-        {};\r\n  }\r\n  returnData.push(saveData());\r\n  return returnData;\r\n}\r\n"
-      objectReference: {fileID: 0}
-    - target: {fileID: 5964733846762761527, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: id.value
-      value: 604499309546360555
-      objectReference: {fileID: 0}
-    - target: {fileID: 8273925800708392170, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: host
-      value: 
-      objectReference: {fileID: 930668818}
-    - target: {fileID: 8901108051797212556, guid: 964d6187f971a8f43b4ee67279f1ef90,
-        type: 3}
-      propertyPath: calculationScript
-      value: 
-      objectReference: {fileID: 5022602860645237092, guid: 30bd7f0545cfc4d5abc0da4d8d895d4a,
-        type: 3}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 964d6187f971a8f43b4ee67279f1ef90, type: 3}
 --- !u!224 &1597264811 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7983046424833205508, guid: 5475fa3e27333b2419a0bb8086303137,
@@ -1957,7 +1769,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1604143552
 Transform:
@@ -1973,7 +1785,7 @@ Transform:
   m_Children:
   - {fileID: 997367277}
   m_Father: {fileID: 2029845015}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752504904
 GameObject:
@@ -2006,7 +1818,7 @@ Transform:
   - {fileID: 1434940727}
   - {fileID: 814595608}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1768545924
 GameObject:
@@ -2023,7 +1835,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1768545925
 Transform:
@@ -2052,7 +1864,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.7
+  m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082
@@ -2102,930 +1914,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1001 &1800870593
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 136767763226521495, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 147020801998891239, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 147842851547969021, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 148399369192057523, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 148501427409447201, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 148504802247424269, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 175657414576869426, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 271547777331361859, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 271667950479889253, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 271738221564839273, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 272201233948421157, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 272203789854780285, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 326484624013051667, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 441363531769798499, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 583619774678788685, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 858361518603338275, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 859751738674255633, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 859957553606456403, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 860016567624525039, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 860110821628304565, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 919927202873751968, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 919927202873751970, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 919927202873751972, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 919927202873751974, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 919927202873751982, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1085305220808708810, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1222780582495883924, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1224583181599606022, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1224863614062654724, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1224887669725009662, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1224970097773058934, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1253219898577989064, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1589084743172790239, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1972898808532615316, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1973004515935310634, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1973007856816194310, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1973459792004227034, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 1973790292075725504, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2117285597559112255, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120277312199618411, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2547300149711309206, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2547933601673758800, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2547939020647602300, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548115097478138818, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2548684535306114188, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2568473273952303310, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2568497528945537470, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2568873200449094556, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2569124281306949178, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2569286980328218754, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2798240464722689923, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2798273383663269619, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2798473307033404625, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2798715425322967415, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2798886909757515727, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 2892354654655856824, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3184397610313602727, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3184573687133652249, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3184588039639602485, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3184967408265005545, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3185217093564978419, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3313304274653777061, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616530194608521595, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616621670043271913, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3616635868333052613, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3617086731847786037, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3617821920251380527, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3676531872690916338, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3857525944346337270, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4008245539655774882, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4008351213359325468, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4008356666424471856, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4008802000374640108, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4009695463972335862, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4621967994242501480, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622005306472923672, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622517684447318820, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622618868721898908, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622930870423285818, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4652239964191492826, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4652416041005259108, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4652428056780589384, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4652805157653829012, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653759149156042894, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4754195505712044407, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.0399773
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -15.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769769719036344325, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4946158642330287049, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4952766679042392552, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954211152259629756, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954596025219911244, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954610242300075616, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4954772067128679922, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4956079598246993830, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4956542161958498757, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4956858793643833259, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4957015135049138035, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4957140744707826629, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 4958394457767589491, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112613658519908311, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5112808159678839525, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113004628764809639, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113064192552847643, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5113167173913407809, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5194109804562948709, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5305804507466777846, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5306549526757009464, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5306727699212233894, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5306809111927800120, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5307267479774514352, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5446627225567235886, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5679360892841860010, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 5746579548478894775, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128357785427027495, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353463279548008594, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353634841122885162, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353784455812427060, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354114020811855462, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354147207315676950, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6655129614482246199, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6760853513236021222, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6792307166660254436, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6792784187046312190, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6792995216300104830, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6793068237240713168, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 6793140481816460238, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7083243531045752014, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_Name
-      value: Gym
-      objectReference: {fileID: 0}
-    - target: {fileID: 7083243531045752014, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7258788550892523312, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7265291635429138764, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7265421025773665148, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7265661148161169136, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7265690557766969076, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7265922143990523692, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7308262405495611104, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7409557875159925592, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498816051092692707, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498819253997784783, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7498924687059443057, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7499494482578539071, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 7499868416736288549, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003786869486338330, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8143057160108017823, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8289687353882861837, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8290438980346330135, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8290886513191821515, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8290889750456660199, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8290995424019702617, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316752156729630232, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8499768108708495791, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500001808141311521, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500334346576073787, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500341113334923973, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8500402890254754071, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8592348523217894065, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8592435719458518263, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8592503213540779141, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8592710888361253013, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8607452042875558116, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8673709295527811216, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8694478473150823323, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883725188353193886, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8884562479991848606, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8884715101954946630, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8884995954581119528, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8885524366422683688, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9034830355929303828, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9057793143400924631, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9117727936514545400, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9117768933211725872, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9117878186334939996, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9117933043802115948, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9118187969574113856, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 9119520076171958116, guid: 029d235e6d092d0489069795ea979863,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 029d235e6d092d0489069795ea979863, type: 3}
 --- !u!1 &1900181732
 GameObject:
   m_ObjectHideFlags: 0
@@ -3041,7 +1929,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!82 &1900181733
 AudioSource:
@@ -3055,7 +1943,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d1240f5e85e885249b4d785aabc9a377, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3152,106 +2040,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1936705050
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1936705051}
-  - component: {fileID: 1936705054}
-  - component: {fileID: 1936705053}
-  - component: {fileID: 1936705052}
-  m_Layer: 0
-  m_Name: Quad
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1936705051
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1936705050}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0.00999999}
-  m_LocalScale: {x: 6.3, y: 2.6, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 699320113}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1936705052
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1936705050}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1936705053
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1936705050}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1936705054
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1936705050}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2029845014
 GameObject:
   m_ObjectHideFlags: 0
@@ -3266,7 +2056,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2029845015
 Transform:
@@ -3281,8 +2071,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 876203314}
-  - {fileID: 787405257}
   - {fileID: 1604143552}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
