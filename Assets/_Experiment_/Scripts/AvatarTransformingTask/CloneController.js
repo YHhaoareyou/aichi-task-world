@@ -6,7 +6,7 @@ const INIT_TIMEOUT    = 5.0;  // seconds: self-destruct if assignPlayer not rece
 
 // === Non-VR Test Mode Settings ===
 const TEST_MODE_ENABLED   = false;  // Set to false for production
-const TEST_SQUAT_INTERVAL = 3.0;   // seconds between simulated squats
+const TEST_SQUAT_INTERVAL = 3.0;   // seconds between simulated squatse l
 const TEST_SQUAT_COUNT    = 20;    // total number of simulated squats
 
 // Muscle pump animation settings
@@ -59,12 +59,8 @@ const BONE_MAP = [
   { bone: HumanoidBone.RightHand, name: "CC_Base_R_Hand" },
   { bone: HumanoidBone.LeftUpperLeg, name: "CC_Base_L_Thigh" },
   { bone: HumanoidBone.LeftLowerLeg, name: "CC_Base_L_Calf" },
-  { bone: HumanoidBone.LeftFoot, name: "CC_Base_L_Foot" },
-  { bone: HumanoidBone.LeftToes, name: "CC_Base_L_ToeBase" },
   { bone: HumanoidBone.RightUpperLeg, name: "CC_Base_R_Thigh" },
-  { bone: HumanoidBone.RightLowerLeg, name: "CC_Base_R_Calf" },
-  { bone: HumanoidBone.RightFoot, name: "CC_Base_R_Foot" },
-  { bone: HumanoidBone.RightToes, name: "CC_Base_R_ToeBase" }
+  { bone: HumanoidBone.RightLowerLeg, name: "CC_Base_R_Calf" }
 ];
 
 // Parent bone for each bone (null = parent is item root)
@@ -84,16 +80,15 @@ const BONE_PARENT = {
   [HumanoidBone.RightHand]: HumanoidBone.RightLowerArm,
   [HumanoidBone.LeftUpperLeg]: HumanoidBone.Hips,
   [HumanoidBone.LeftLowerLeg]: HumanoidBone.LeftUpperLeg,
-  [HumanoidBone.LeftFoot]: HumanoidBone.LeftLowerLeg,
-  [HumanoidBone.LeftToes]: HumanoidBone.LeftFoot,
   [HumanoidBone.RightUpperLeg]: HumanoidBone.Hips,
   [HumanoidBone.RightLowerLeg]: HumanoidBone.RightUpperLeg,
-  [HumanoidBone.RightFoot]: HumanoidBone.RightLowerLeg,
-  [HumanoidBone.RightToes]: HumanoidBone.RightFoot,
 };
 
 let boneNodes = []; // Cached bone node references
 let hipsNode = null; // Cached Hips subnode for position sync
+let frameCount = 0;          // module-level (avoids $.state sync overhead)
+let staggerOffset = 0;       // module-level (set via message)
+let syncInterval = 1;        // module-level (dynamic: set to clone count by Manager)
 
 $.onStart(() => {
   $.state.player         = null;  // PlayerHandle
@@ -121,6 +116,8 @@ $.onStart(() => {
   $.state.offsetTestTimer = 0;
   $.state.offsetConfigIndex = 0;
 
+  $.state.lastAppliedMuscleValue = -1;
+
   // Get Animators (must be done in onStart, not top level)
   for (const subNodeName of MUSCLE_ADJUSTABLE_SUBNODE_NAMES) {
     if (!$.subNode(subNodeName)) continue;
@@ -146,6 +143,14 @@ $.onReceive((messageType, arg, sender) => {
     $.state.player      = arg; // PlayerHandle is Sendable
     $.state.initialized = true;
     $.log("clone assigned to: " + arg.userDisplayName);
+  }
+
+  if (messageType === "setStaggerOffset") {
+    staggerOffset = arg;
+  }
+
+  if (messageType === "setSyncInterval") {
+    syncInterval = arg;
   }
 
   if (messageType === "setScale") {
@@ -236,15 +241,18 @@ $.onUpdate((deltaTime) => {
   */
     const player = $.state.player;
     if (!player || !player.exists()) return;
-  
-    // === Position/Rotation sync ===
+
+    // === Round-robin: only sync on this clone's designated frame ===
+    frameCount = (frameCount + 1) % syncInterval;
+    if (frameCount !== staggerOffset) return;
+
+    // === Full sync with fresh data ===
     const pos = player.getPosition();
     const rot = player.getRotation();
     if (pos) $.setPosition(pos);
     if (rot) $.setRotation(rot);
-    // $.subNode("HumanoidModel").setPosition(new Vector3(0, 1, 0));
 
-    // === Sync Hips position so the clone squats down with the player ===
+    // === Sync Hips position (squatting) ===
     if (hipsNode && pos && rot) {
       const hipsWorldPos = player.getHumanoidBonePosition(HumanoidBone.Hips);
       if (hipsWorldPos) {
@@ -258,32 +266,22 @@ $.onUpdate((deltaTime) => {
     }
 
     // === Apply all bone rotations from player to clone ===
-    // Fetch all world bone rotations in one pass
     const worldRots = {};
     for (let i = 0; i < boneNodes.length; i++) {
       const boneRot = player.getHumanoidBoneRotation(boneNodes[i].bone);
       if (boneRot) worldRots[boneNodes[i].bone] = boneRot;
     }
-
-    // Convert world rotations to parent-local for each bone
-    // setRotation sets rotation relative to the parent node, so:
-    //   localRot = inverse(parentWorldRot) * boneWorldRot
     for (let i = 0; i < boneNodes.length; i++) {
       const entry = boneNodes[i];
       const boneRot = worldRots[entry.bone];
       if (!entry.node || !boneRot) continue;
 
-      // Determine parent's world rotation
       let parentWorldRot;
       if (entry.parentBone === null) {
-        // Hips: parent is the item root
         parentWorldRot = rot;
       } else {
         parentWorldRot = worldRots[entry.parentBone];
-        if (!parentWorldRot) {
-          // Fallback to item root if parent rotation unavailable
-          parentWorldRot = rot;
-        }
+        if (!parentWorldRot) parentWorldRot = rot;
       }
 
       const invParent = new Quaternion(-parentWorldRot.x, -parentWorldRot.y, -parentWorldRot.z, parentWorldRot.w);
@@ -296,7 +294,6 @@ $.onUpdate((deltaTime) => {
     if (pos && headPos) {
       const currentHeadHeight = headPos.y - pos.y;
 
-      // Record standing head height on first measurement
       let standingHeight = $.state.standingHeight;
       if (standingHeight === null) {
         standingHeight = currentHeadHeight;
@@ -305,8 +302,6 @@ $.onUpdate((deltaTime) => {
 
       const isSquatting  = (standingHeight - currentHeadHeight) > SQUAT_THRESHOLD;
       const wasSquatting = $.state.wasSquatting ?? false;
-      if (isSquatting) {
-        $.log(standingHeight - currentHeadHeight);}
 
       // stand -> squat down = trigger pump animation
       if (!wasSquatting && isSquatting && $.state.muscleAnimPhase === "none") {
@@ -396,9 +391,12 @@ $.onUpdate((deltaTime) => {
       $.state.muscleAnimTimer = timer;
     }
 
-    // === Apply blendshape value to Animator ===
-    for (const animator of animators) {
-      $.log($.state.muscleValue);
-      animator.setFloat("MuscleWeight", $.state.muscleValue ?? 0);
+    // === Apply blendshape value to Animator (only when changed) ===
+    const currentMuscle = $.state.muscleValue ?? 0;
+    if (currentMuscle !== $.state.lastAppliedMuscleValue) {
+      for (const animator of animators) {
+        animator.setFloat("MuscleWeight", currentMuscle);
+      }
+      $.state.lastAppliedMuscleValue = currentMuscle;
     }
 });

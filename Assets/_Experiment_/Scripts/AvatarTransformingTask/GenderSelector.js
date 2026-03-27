@@ -18,6 +18,9 @@ $.onReceive((messageType, arg, sender) => {
     $.state.gender  = arg.gender;
     $.state.manager = sender;      // Manager ItemHandle
     $.state.initialized = true;
+    if (!arg.gender) {
+      label.setEnabled(false);
+    }
 
     // Set label text
     textView.setText(arg.label);

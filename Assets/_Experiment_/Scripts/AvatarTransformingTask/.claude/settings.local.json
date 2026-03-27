@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /mnt/c/Users/cyber/Documents/GitHub/aichi-task-world/Assets/ClusterMetaverseLab -name *.cs -type f)"
+    ]
+  }
+}

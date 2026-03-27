@@ -27,6 +27,22 @@ $.onStart(() => {
   $.state.nextPlayerIndex = 0;
 });
 
+// Reassign round-robin sync slots to all active clones
+function reassignSyncSlots(known) {
+  const clones = [];
+  const ids = Object.keys(known);
+  for (let i = 0; i < ids.length; i++) {
+    const entry = known[ids[i]];
+    if (entry.clone && entry.clone.exists()) {
+      clones.push(entry.clone);
+    }
+  }
+  for (let i = 0; i < clones.length; i++) {
+    clones[i].send("setSyncInterval", clones.length);
+    clones[i].send("setStaggerOffset", i);
+  }
+}
+
 $.onUpdate((deltaTime) => {
   let timer = ($.state.scanTimer ?? 0) + deltaTime;
   if (timer < SCAN_INTERVAL) {
@@ -64,12 +80,14 @@ $.onUpdate((deltaTime) => {
       }
 
       known[player.id] = {
-        selMale:   null,
-        selFemale: null,
-        clone:     clone,
-        playerId:  player.id,
-        gender:    AVATAR_ASSIGNMENT_MODE
+        selMale:    null,
+        selFemale:  null,
+        selObserver: null,
+        clone:      clone,
+        playerId:   player.id,
+        gender:     AVATAR_ASSIGNMENT_MODE
       };
+      reassignSyncSlots(known);
 
       $.log("clone (" + AVATAR_ASSIGNMENT_MODE + ") auto-assigned to: " + player.userDisplayName);
     } else {
@@ -98,7 +116,13 @@ $.onUpdate((deltaTime) => {
       const rightX = fwdZ;
       const rightZ = -fwdX;
 
-      // Selectors: 1m forward, 1m up, ±0.5m left/right
+      // Title label: 1m forward, 1.5m up, centered
+      const titlePos = new Vector3(
+        initX + fwdX * 1,
+        1.5,
+        initZ + fwdZ * 1
+      );
+      // Male/Female buttons: 1m forward, 1m up, ±0.5m left/right
       const malePos = new Vector3(
         initX + fwdX * 1 - rightX * 0.5,
         1,
@@ -109,10 +133,23 @@ $.onUpdate((deltaTime) => {
         1,
         initZ + fwdZ * 1 + rightZ * 0.5
       );
+      // Observer button: 1m forward, 0.5m up, centered below
+      const observerPos = new Vector3(
+        initX + fwdX * 1,
+        0.5,
+        initZ + fwdZ * 1
+      );
 
+      const standReminder = $.createItem(TEMPLATE_SELECTOR, titlePos, facingRot);
       const selMale = $.createItem(TEMPLATE_SELECTOR, malePos, facingRot);
       const selFemale = $.createItem(TEMPLATE_SELECTOR, femalePos, facingRot);
+      const selObserver = $.createItem(TEMPLATE_SELECTOR, observerPos, facingRot);
 
+      standReminder.send("init", {
+        player: player,
+        gender: null,
+        label:  "立ち上がってから、下のボタンをクリックしてください"
+      })
       selMale.send("init", {
         player: player,
         gender: "male",
@@ -123,12 +160,19 @@ $.onUpdate((deltaTime) => {
         gender: "female",
         label:  "女性"
       });
+      selObserver.send("init", {
+        player: player,
+        gender: "observer",
+        label:  "観察モード"
+      });
 
       known[player.id] = {
-        selMale:   selMale,
-        selFemale: selFemale,
-        clone:     null,
-        playerId:  player.id
+        standReminder:   standReminder,
+        selMale:    selMale,
+        selObserver: selObserver,
+        selFemale:  selFemale,
+        clone:      null,
+        playerId:   player.id
       };
 
       $.log("selectors created for: " + player.userDisplayName + " at (" + initX.toFixed(1) + ", 0, " + initZ.toFixed(1) + ")");
@@ -142,13 +186,18 @@ $.onUpdate((deltaTime) => {
     if (currentIds[pid]) continue;
 
     const entry = known[pid];
+    if (entry.standReminder && entry.standReminder.exists())
+      entry.standReminder.send("selfDestruct", null);
     if (entry.selMale && entry.selMale.exists())
       entry.selMale.send("selfDestruct", null);
+    if (entry.selObserver && entry.selObserver.exists())
+      entry.selObserver.send("selfDestruct", null);
     if (entry.selFemale && entry.selFemale.exists())
       entry.selFemale.send("selfDestruct", null);
     if (entry.clone && entry.clone.exists())
       entry.clone.send("selfDestruct", null);
     delete known[pid];
+    reassignSyncSlots(known);
     $.log("cleaned up for: " + pid);
   }
 
@@ -159,13 +208,12 @@ $.onUpdate((deltaTime) => {
     const entry = known[pid];
     if (!entry) continue;
 
-    // Clone was created but no longer exists -> re-create
+    // Clone was created but no longer exists -> re-create (skip observers)
     if (entry.clone && !entry.clone.exists()) {
       $.log("clone lost for " + pid + ", will be re-created on next gender select or rejoin");
       entry.clone = null;
 
-      if (entry.gender) {
-        // Re-get PlayerHandle
+      if (entry.gender && entry.gender !== "observer") {
         let ph = null;
         for (let j = 0; j < currentPlayers.length; j++) {
           if (currentPlayers[j].id === pid) { ph = currentPlayers[j]; break; }
@@ -182,6 +230,7 @@ $.onUpdate((deltaTime) => {
               newClone.send("setScale", headPos2.y / 1.6);
             }
             entry.clone = newClone;
+            reassignSyncSlots(known);
             $.log("clone re-created for: " + pid);
           }
         }
@@ -197,19 +246,26 @@ $.onReceive((messageType, arg, sender) => {
   if (messageType !== "genderSelected") return;
 
   const playerId = arg.playerId;
-  const gender   = arg.gender; // "male" or "female"
+  const gender   = arg.gender;
+  if (!gender) return; // Ignore clicks on title label
   const known    = $.state.knownPlayers ?? {};
   const entry    = known[playerId];
   if (!entry) return;
 
-  // Destroy both selectors
+  // Destroy all selectors
+  if (entry.standReminder && entry.standReminder.exists())
+    entry.standReminder.send("selfDestruct", null);
   if (entry.selMale && entry.selMale.exists())
     entry.selMale.send("selfDestruct", null);
+  if (entry.selObserver && entry.selObserver.exists())
+    entry.selObserver.send("selfDestruct", null);
   if (entry.selFemale && entry.selFemale.exists())
     entry.selFemale.send("selfDestruct", null);
-  entry.selMale   = null;
-  entry.selFemale = null;
-  entry.gender    = gender; // Remember for re-creation
+  entry.standReminder   = null;
+  entry.selMale    = null;
+  entry.selObserver = null;
+  entry.selFemale  = null;
+  entry.gender     = gender;
 
   // Re-get PlayerHandle
   const players = $.getPlayersNear($.getPosition(), Infinity);
@@ -229,10 +285,17 @@ $.onReceive((messageType, arg, sender) => {
   const rx = (Math.random() - 0.5) * MIRROR_RANDOM_RANGE * 2;
   const rz = (Math.random() - 0.5) * MIRROR_RANDOM_RANGE * 2;
   const mirrorTarget = new Vector3(MIRROR_POS_X + rx, 0, MIRROR_POS_Z + rz);
-  // Face +Z direction (toward mirror)
   const mirrorRot = new Quaternion(0, 0, 0, 1);
   playerHandle.setPosition(mirrorTarget);
   playerHandle.setRotation(mirrorRot);
+
+  if (gender === "observer") {
+    // Observer mode: no clone created
+    entry.clone = null;
+    $.state.knownPlayers = known;
+    $.log("observer mode for: " + playerHandle.userDisplayName);
+    return;
+  }
 
   // Create Clone at mirror position
   const templateId = (gender === "male") ? TEMPLATE_MALE : TEMPLATE_FEMALE;
@@ -244,6 +307,7 @@ $.onReceive((messageType, arg, sender) => {
   }
 
   entry.clone = clone;
+  reassignSyncSlots(known);
   $.state.knownPlayers = known;
   $.log("clone (" + gender + ") created for: " + playerHandle.userDisplayName);
 });
