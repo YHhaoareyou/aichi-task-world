@@ -87,10 +87,10 @@ const BONE_PARENT = {
 let boneNodes = []; // Cached bone node references
 let hipsNode = null; // Cached Hips subnode for position sync
 let frameCount = 0;          // module-level (avoids $.state sync overhead)
-let staggerOffset = 0;       // module-level (set via message)
-let syncInterval = 1;        // module-level (dynamic: set to clone count by Manager)
 
 $.onStart(() => {
+  $.state.staggerOffset  = 0;     // round-robin slot index (set by Manager)
+  $.state.syncInterval   = 1;     // total clone count for round-robin (set by Manager)
   $.state.player         = null;  // PlayerHandle
   $.state.muscleValue    = 0;     // 0.0 ~ 1.0
   $.state.standingHeight = null;  // Initial head height measurement
@@ -146,11 +146,11 @@ $.onReceive((messageType, arg, sender) => {
   }
 
   if (messageType === "setStaggerOffset") {
-    staggerOffset = arg;
+    $.state.staggerOffset = arg;
   }
 
   if (messageType === "setSyncInterval") {
-    syncInterval = arg;
+    $.state.syncInterval = arg;
   }
 
   if (messageType === "setScale") {
@@ -243,8 +243,9 @@ $.onUpdate((deltaTime) => {
     if (!player || !player.exists()) return;
 
     // === Round-robin: only sync on this clone's designated frame ===
+    const syncInterval = $.state.syncInterval ?? 1;
     frameCount = (frameCount + 1) % syncInterval;
-    if (frameCount !== staggerOffset) return;
+    if (frameCount !== ($.state.staggerOffset ?? 0)) return;
 
     // === Full sync with fresh data ===
     const pos = player.getPosition();
