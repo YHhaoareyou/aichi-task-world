@@ -2,11 +2,10 @@
 // Shared script for both Male/Female Clone prefabs
 
 const SQUAT_THRESHOLD = 0.35; // meters: head drops more than this = squatting
-const INIT_TIMEOUT    = 5.0;  // seconds: self-destruct if assignPlayer not received
 
 // === Non-VR Test Mode Settings ===
 const TEST_MODE_ENABLED   = false;  // Set to false for production
-const TEST_SQUAT_INTERVAL = 3.0;   // seconds between simulated squatse l
+const TEST_SQUAT_INTERVAL = 3.0;   // seconds between simulated squats
 const TEST_SQUAT_COUNT    = 20;    // total number of simulated squats
 
 // Muscle pump animation settings
@@ -17,22 +16,6 @@ const MUSCLE_GROW_BASE       = 0.5;  // initial inflate amount (escalates each s
 const MUSCLE_GROW_INCREMENT  = 0.05; // extra inflate/shrink per squat
 const MUSCLE_SHRINK_AMOUNT   = 0.46;  // shrink amount for first 15 squats (net gain = 0.05)
 const SQUAT_CAP              = 20;   // after this many squats, net gain becomes 0
-
-// Fixed rotation offsets for lower arms and hands
-// Right side: Z +90, Left side: Z -90
-const RIGHT_ARM_OFFSET = { axis: 'Z', degrees: 90 };
-const LEFT_ARM_OFFSET = { axis: 'Z', degrees: -90 };
-
-// All possible 90-degree rotation offsets to test
-// Format: { axis: 'X'|'Y'|'Z', degrees: 90|-90, label: string }
-const OFFSET_CONFIGS = [
-  { axis: 'X', degrees: 90, label: 'X +90' },
-  { axis: 'X', degrees: -90, label: 'X -90' },
-  { axis: 'Y', degrees: 90, label: 'Y +90' },
-  { axis: 'Y', degrees: -90, label: 'Y -90' },
-  { axis: 'Z', degrees: 90, label: 'Z +90' },
-  { axis: 'Z', degrees: -90, label: 'Z -90' },
-];
 
 const animators = []; // Content retrieved in onStart
 
@@ -86,24 +69,20 @@ const BONE_PARENT = {
 
 let boneNodes = []; // Cached bone node references
 let hipsNode = null; // Cached Hips subnode for position sync
-let frameCount = 0;          // module-level (avoids $.state sync overhead)
 
 $.onStart(() => {
-  $.state.staggerOffset  = 0;     // round-robin slot index (set by Manager)
-  $.state.syncInterval   = 1;     // total clone count for round-robin (set by Manager)
   $.state.player         = null;  // PlayerHandle
+  $.state.owned          = false; // Whether ownership has transferred to the player
   $.state.muscleValue    = 0;     // 0.0 ~ 1.0
   $.state.standingHeight = null;  // Initial head height measurement
   $.state.wasSquatting   = false;
-  $.state.initTimer      = 0;
-  $.state.initialized    = false;
 
   // Muscle pump animation state
-  $.state.muscleAnimPhase  = "none";  // "none" | "growing" | "shrinking"
+  $.state.muscleAnimPhase  = "none";  // "none" | "waiting" | "growing" | "shrinking"
   $.state.muscleAnimTimer  = 0;
   $.state.muscleBaseValue  = 0;       // value at animation start
   $.state.musclePeakValue  = 0;       // peak value (capped at 1.0)
-  $.state.muscleFinalValue = 0;       // final value = base + 0.1 (capped at 1.0)
+  $.state.muscleFinalValue = 0;       // final value = base + net gain (capped at 1.0)
 
   // Squat counter (for determining net gain)
   $.state.squatCount = 0;
@@ -111,10 +90,6 @@ $.onStart(() => {
   // Non-VR test mode state
   $.state.testSquatTimer = 0;
   $.state.testSquatsDone = 0;
-
-  // Rotation offset testing state
-  $.state.offsetTestTimer = 0;
-  $.state.offsetConfigIndex = 0;
 
   $.state.lastAppliedMuscleValue = -1;
 
@@ -137,26 +112,12 @@ $.onStart(() => {
   }
 });
 
-// --- Receive PlayerHandle from Manager ---
+// --- Receive messages from Manager ---
 $.onReceive((messageType, arg, sender) => {
   if (messageType === "assignPlayer") {
-    $.state.player      = arg; // PlayerHandle is Sendable
-    $.state.initialized = true;
+    $.state.player = arg;
+    $.requestOwner(arg);
     $.log("clone assigned to: " + arg.userDisplayName);
-  }
-
-  if (messageType === "setStaggerOffset") {
-    $.state.staggerOffset = arg;
-  }
-
-  if (messageType === "setSyncInterval") {
-    $.state.syncInterval = arg;
-  }
-
-  if (messageType === "setScale") {
-    const s = arg;
-    const transform = $.getUnityComponent("Transform");
-    transform.unityProp.localScale = new Vector3(s, s, s);
   }
 
   if (messageType === "selfDestruct") {
@@ -164,46 +125,9 @@ $.onReceive((messageType, arg, sender) => {
   }
 });
 
-// Helper: Create quaternion for axis-angle rotation
-function createAxisRotation(axis, degrees) {
-  const radians = degrees * Math.PI / 180;
-  const halfAngle = radians / 2;
-  const sinHalf = Math.sin(halfAngle);
-  const cosHalf = Math.cos(halfAngle);
-
-  if (axis === 'X') {
-    return new Quaternion(sinHalf, 0, 0, cosHalf);
-  } else if (axis === 'Y') {
-    return new Quaternion(0, sinHalf, 0, cosHalf);
-  } else { // Z
-    return new Quaternion(0, 0, sinHalf, cosHalf);
-  }
-}
-
-// Helper: Check if bone is lower arm or hand
-function isLowerArmOrHand(bone) {
-  return bone === HumanoidBone.LeftLowerArm ||
-         bone === HumanoidBone.RightLowerArm ||
-         bone === HumanoidBone.LeftHand ||
-         bone === HumanoidBone.RightHand;
-}
-
-// Helper: Check if bone is right side lower arm or hand
-function isRightLowerArmOrHand(bone) {
-  return bone === HumanoidBone.RightLowerArm ||
-         bone === HumanoidBone.RightHand;
-}
-
-// Helper: Check if bone is left side lower arm or hand
-function isLeftLowerArmOrHand(bone) {
-  return bone === HumanoidBone.LeftLowerArm ||
-         bone === HumanoidBone.LeftHand;
-}
-
 // Helper: Rotate a vector by a quaternion (v' = q * v * q_inv)
 function rotateVector(q, x, y, z) {
   const qx = q.x, qy = q.y, qz = q.z, qw = q.w;
-  // t = 2 * cross(q.xyz, v)
   const tx = 2 * (qy * z - qz * y);
   const ty = 2 * (qz * x - qx * z);
   const tz = 2 * (qx * y - qy * x);
@@ -226,28 +150,10 @@ function multiplyQuaternions(q1, q2) {
 
 // --- Every frame ---
 $.onUpdate((deltaTime) => {
-  /*
-    // === Init timeout check ===
-    if (!$.state.initialized) {
-      let timer = ($.state.initTimer ?? 0) + deltaTime;
-      if (timer > INIT_TIMEOUT) {
-        $.log("clone init timeout, self-destructing");
-        $.destroy();
-        return;
-      }
-      $.state.initTimer = timer;
-      return;
-    }
-  */
     const player = $.state.player;
     if (!player || !player.exists()) return;
 
-    // === Round-robin: only sync on this clone's designated frame ===
-    const syncInterval = $.state.syncInterval ?? 1;
-    frameCount = (frameCount + 1) % syncInterval;
-    if (frameCount !== ($.state.staggerOffset ?? 0)) return;
-
-    // === Full sync with fresh data ===
+    // === Sync position and rotation ===
     const pos = player.getPosition();
     const rot = player.getRotation();
     if (pos) $.setPosition(pos);
@@ -266,16 +172,15 @@ $.onUpdate((deltaTime) => {
       }
     }
 
-    // === Apply all bone rotations from player to clone ===
+    // === Apply all bone rotations from player to clone (single pass) ===
     const worldRots = {};
     for (let i = 0; i < boneNodes.length; i++) {
-      const boneRot = player.getHumanoidBoneRotation(boneNodes[i].bone);
-      if (boneRot) worldRots[boneNodes[i].bone] = boneRot;
-    }
-    for (let i = 0; i < boneNodes.length; i++) {
       const entry = boneNodes[i];
-      const boneRot = worldRots[entry.bone];
-      if (!entry.node || !boneRot) continue;
+      const boneRot = player.getHumanoidBoneRotation(entry.bone);
+      if (!boneRot) continue;
+      worldRots[entry.bone] = boneRot;
+
+      if (!entry.node) continue;
 
       let parentWorldRot;
       if (entry.parentBone === null) {
@@ -288,6 +193,21 @@ $.onUpdate((deltaTime) => {
       const invParent = new Quaternion(-parentWorldRot.x, -parentWorldRot.y, -parentWorldRot.z, parentWorldRot.w);
       const localBoneRot = multiplyQuaternions(invParent, boneRot);
       entry.node.setRotation(localBoneRot);
+    }
+
+    // === Wait for ownership before enabling scale + muscle logic ===
+    if (!$.state.owned) {
+      const owner = $.getOwner();
+      if (!owner || owner.id !== player.id) return;
+
+      // First frame as owner: set scale based on player height
+      const headPos = player.getHumanoidBonePosition(HumanoidBone.Head);
+      if (headPos) {
+        const s = headPos.y / 1.6;
+        const transform = $.getUnityComponent("Transform");
+        transform.unityProp.localScale = new Vector3(s, s, s);
+      }
+      $.state.owned = true;
     }
 
     // === Squat detection ===
@@ -334,7 +254,6 @@ $.onUpdate((deltaTime) => {
         const squatNum = ($.state.squatCount ?? 0) + 1;
         $.state.squatCount = squatNum;
 
-        // Trigger muscle pump animation as if player completed a squat
         const base = $.state.muscleValue ?? 0;
         const growAmount = MUSCLE_GROW_BASE + (squatNum - 1) * MUSCLE_GROW_INCREMENT;
         const netGain = squatNum > SQUAT_CAP ? 0 : (MUSCLE_GROW_BASE - MUSCLE_SHRINK_AMOUNT);

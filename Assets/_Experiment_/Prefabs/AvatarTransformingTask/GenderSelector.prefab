@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textMesh: {fileID: 0}
   text: Male
-  size: 1.2
+  size: 1
   textAnchor: 4
   textAlignment: 1
   color: {r: 1, g: 1, b: 1, a: 1}
