@@ -1,7 +1,7 @@
 // ===== Clone Item - Scriptable Item =====
 // Shared script for both Male/Female Clone prefabs
 
-const SQUAT_THRESHOLD = 0.35; // meters: head drops more than this = squatting
+const SQUAT_THRESHOLD = 0.25; // meters: head drops more than this = squatting
 
 // === Non-VR Test Mode Settings ===
 const TEST_MODE_ENABLED   = false;  // Set to false for production
